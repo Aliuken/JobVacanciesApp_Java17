@@ -1,0 +1,190 @@
+package com.aliuken.jobvacanciesapp.config;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.authentication.configuration.GlobalAuthenticationConfigurerAdapter;
+import org.springframework.security.config.annotation.authentication.configurers.provisioning.JdbcUserDetailsManagerConfigurer;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.DefaultSecurityFilterChain;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
+import com.aliuken.jobvacanciesapp.enumtype.AllowedViewsEnum;
+import com.aliuken.jobvacanciesapp.security.CustomAuthenticationHandler;
+import com.aliuken.jobvacanciesapp.security.CustomBasicAuthenticationEntryPoint;
+import com.aliuken.jobvacanciesapp.service.JdbcTokenByEmailService;
+
+@Configuration
+@EnableWebSecurity
+public class WebSecurityConfig extends GlobalAuthenticationConfigurerAdapter {
+	private static final String USERS_BY_USERNAME_QUERY = WebSecurityConfig.getUsersByUsernameQuery();
+	private static final String AUTHORITIES_BY_USERNAME_QUERY = WebSecurityConfig.getAuthoritiesByUsernameQuery();
+	private static final AntPathRequestMatcher[] STATIC_RESOURCES_ARRAY = WebSecurityConfig.getStaticResourcesArray();
+	private static final Map<Boolean, SecurityFilterChain> SECURITY_FILTER_CHAIN_MAP = new HashMap<>();
+
+	@Autowired
+	private ConfigPropertiesBean configPropertiesBean;
+
+	@Autowired
+	private DataSource dataSource;
+
+	@Autowired
+	private JdbcTokenByEmailService jdbcTokenByEmailService;
+
+	@Autowired
+	private CustomAuthenticationHandler customAuthenticationHandler;
+
+	@Autowired
+	private CustomBasicAuthenticationEntryPoint customBasicAuthenticationEntryPoint;
+
+	private static final int BCRYPT_LOG_ROUNDS = 12;
+	private static final PasswordEncoder PASSWORD_ENCODER = new BCryptPasswordEncoder(WebSecurityConfig.BCRYPT_LOG_ROUNDS);
+
+	/**
+	 * Spring Security password encoder implementation using BCrypt algorithm
+	 */
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return WebSecurityConfig.PASSWORD_ENCODER;
+	}
+
+	@Bean
+	public AuthenticationManager authenticationManager(final AuthenticationConfiguration authenticationConfiguration) throws Exception {
+		final AuthenticationManager authenticationManager = authenticationConfiguration.getAuthenticationManager();
+		return authenticationManager;
+	}
+
+	/**
+	 * Configuration of the authentication via JDBC
+	 */
+	@Override
+	public void init(final AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
+		final JdbcUserDetailsManagerConfigurer<AuthenticationManagerBuilder> jdbcUserDetailsManagerConfigurer = authenticationManagerBuilder.jdbcAuthentication();
+
+		jdbcUserDetailsManagerConfigurer
+			.dataSource(dataSource)
+			.passwordEncoder(WebSecurityConfig.PASSWORD_ENCODER)
+			.usersByUsernameQuery(WebSecurityConfig.USERS_BY_USERNAME_QUERY)
+			.authoritiesByUsernameQuery(WebSecurityConfig.AUTHORITIES_BY_USERNAME_QUERY);
+	}
+
+	private static final String getUsersByUsernameQuery() {
+		return "select au.email, auc.encrypted_password, au.enabled from auth_user au, auth_user_credentials auc where au.email = ? and au.email = auc.email";
+	}
+
+	private static final String getAuthoritiesByUsernameQuery() {
+		return "select au.email, ar.name from auth_user_role aur inner join auth_user au on au.id = aur.auth_user_id inner join auth_role ar on ar.id = aur.auth_role_id where au.email = ?";
+	}
+
+//	@Bean
+//	public FilterChainProxy springSecurityFilterChain(final HttpSecurity httpSecurity) throws ServletException, Exception {
+//		final SecurityFilterChain securityFilterChain = filterChain(httpSecurity);
+//		final FilterChainProxy filterChainProxy = new FilterChainProxy(securityFilterChain);
+//
+//		return filterChainProxy;
+//	}
+
+	@Bean
+	public SecurityFilterChain filterChain(final HttpSecurity httpSecurity) throws Exception {
+		final Boolean anonymousAccessAllowed = configPropertiesBean.getCurrentAnonymousAccessAllowed();
+
+		final SecurityFilterChain securityFilterChain;
+		if(WebSecurityConfig.SECURITY_FILTER_CHAIN_MAP.containsKey(anonymousAccessAllowed)) {
+			securityFilterChain = WebSecurityConfig.SECURITY_FILTER_CHAIN_MAP.get(anonymousAccessAllowed);
+		} else {
+			securityFilterChain = filterChain(httpSecurity, anonymousAccessAllowed);
+			WebSecurityConfig.SECURITY_FILTER_CHAIN_MAP.put(anonymousAccessAllowed, securityFilterChain);
+		}
+
+		return securityFilterChain;
+	}
+
+	/**
+	 * Customization of access to the application URLs and the login, logout and remember-me functionalities
+	 */
+	private SecurityFilterChain filterChain(final HttpSecurity httpSecurity, final boolean anonymousAccessAllowed) throws Exception {
+		final AllowedViewsEnum allowedViewsEnum = AllowedViewsEnum.getInstance(anonymousAccessAllowed);
+
+		httpSecurity
+			.securityMatcher("/**")
+			.authorizeHttpRequests(authorizationManagerRequestMatcherRegistry -> authorizationManagerRequestMatcherRegistry
+				// Static resources don't require authentication
+				.requestMatchers(WebSecurityConfig.STATIC_RESOURCES_ARRAY).permitAll()
+
+				// Public views don't require authentication
+				.requestMatchers(allowedViewsEnum.getAnonymousViewsArray()).permitAll()
+
+				// Assign permissions to URLs by roles
+				.requestMatchers(allowedViewsEnum.getUserViewsArray()).hasAnyAuthority("USER", "SUPERVISOR", "ADMINISTRATOR")
+				.requestMatchers(allowedViewsEnum.getSupervisorViewsArray()).hasAnyAuthority("SUPERVISOR", "ADMINISTRATOR")
+				.requestMatchers(allowedViewsEnum.getAdministratorViewsArray()).hasAnyAuthority("ADMINISTRATOR")
+//				.requestMatchers(allowedViewsEnum.getUserViewsArray()).access(AuthorityAuthorizationManager.hasAnyAuthority("USER", "SUPERVISOR", "ADMINISTRATOR"))
+//				.requestMatchers(allowedViewsEnum.getSupervisorViewsArray()).access(AuthorityAuthorizationManager.hasAnyAuthority("SUPERVISOR", "ADMINISTRATOR"))
+//				.requestMatchers(allowedViewsEnum.getAdministratorViewsArray()).access(AuthorityAuthorizationManager.hasAnyAuthority("ADMINISTRATOR"))
+
+				// The rest of the URLs in the application require authentication
+				.anyRequest().authenticated())
+
+			.httpBasic(httpBasicConfigurer -> httpBasicConfigurer
+				.authenticationEntryPoint(customBasicAuthenticationEntryPoint))
+
+			.sessionManagement(sessionManagementConfigurer -> sessionManagementConfigurer
+				.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED))
+
+			.csrf(csrfConfigurer -> csrfConfigurer
+				.disable())
+
+			// Configuration for login, logout and remember me
+			.formLogin(formLoginConfigurer -> formLoginConfigurer
+				.successHandler(customAuthenticationHandler)
+				.loginPage("/login")
+				.usernameParameter("email")
+				.passwordParameter("password")
+//				.defaultSuccessUrl("/",true)
+				.permitAll())
+			.logout(logoutConfigurer -> logoutConfigurer
+				.addLogoutHandler(customAuthenticationHandler)
+				.logoutUrl("/logout")
+				.permitAll())
+			.rememberMe(rememberMeConfigurer -> rememberMeConfigurer
+				.tokenRepository(jdbcTokenByEmailService));
+
+		final DefaultSecurityFilterChain defaultSecurityFilterChain = httpSecurity.build();
+		return defaultSecurityFilterChain;
+	}
+
+//	public void setSecurityFilterChain(final String nextDefaultLanguageCode, final String nextAnonymousAccessPermissionName, final String nextDefaultInitialTablePageSizeValue, final String nextDefaultColorModeCode, final String nextUserInterfaceFrameworkCode) throws Exception {
+//		MainApp.restartApp(nextDefaultLanguageCode, nextAnonymousAccessPermissionName, nextDefaultInitialTablePageSizeValue, nextDefaultColorModeCode, nextUserInterfaceFrameworkCode);
+//		BeanUtils.refreshBean("springSecurityFilterChain");
+//	}
+
+	private static final AntPathRequestMatcher[] getStaticResourcesArray() {
+		return new AntPathRequestMatcher[]{
+			new AntPathRequestMatcher("/auth-user-curriculum-files/**"),
+			new AntPathRequestMatcher("/job-company-logos/**"),
+			new AntPathRequestMatcher("/bootstrap-5.3.2-dist/**"),
+			new AntPathRequestMatcher("/fontawesome-free-6.5.1-web/**"),
+			new AntPathRequestMatcher("/images/**"),
+			new AntPathRequestMatcher("/jobvacanciesapp-utils/**"),
+			new AntPathRequestMatcher("/jquery/**"),
+			new AntPathRequestMatcher("/jquery-timepicker-addon-1.6.3-dist/**"),
+			new AntPathRequestMatcher("/jquery-ui-1.13.2/**"),
+			new AntPathRequestMatcher("/MDB5-STANDARD-UI-KIT-Free-7.1.0/**"),
+			new AntPathRequestMatcher("/tinymce-6.8.2/**")
+		};
+	}
+
+}
