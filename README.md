@@ -98,10 +98,11 @@ The Java SE core technologies currently used are:
 * **java.time API**: To deal with dates (including time) by using:
     * The standard Java classes "LocalDate" and "LocalDateTime".
     * The utility classes "DateUtils" and "DateTimeUtils" (of type "TemporalUtils").
-* **Java try-with-resources**: Used in the methods:
-    * **getStackTrace**: In the utility class ThrowableUtils (over StringWriter and PrintWriter).
-    * **getFolderAllowedFilesRecursive**: In the enum FileType (over DirectoryStream&lt;Path&gt;).
-    * **unzipFile**: In the utility class FileUtils (over ZipFile).
+* **Java try-with-resources**: Used in the classes:
+    * **FileType**: Over DirectoryStream&lt;Path&gt;
+    * **ThrowableUtils**: Over StringWriter and PrintWriter.
+    * **FileUtils**: Over ServletOutputStream and ZipFile.
+    * **AuthUserQueryReport**: Over AuthUserQueryReport&lt;T&gt;.
 * **Java Locale class**: To deal with internationalization (i18n).
 
 ### 3.3. Spring Core technologies
