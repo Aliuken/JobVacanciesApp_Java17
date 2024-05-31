@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import com.aliuken.jobvacanciesapp.util.javase.EnumUtils;
+import com.aliuken.jobvacanciesapp.util.javase.ConfigurableEnumUtils;
 import com.aliuken.jobvacanciesapp.util.javase.stream.ParallelStreamUtils;
 import com.aliuken.jobvacanciesapp.util.javase.stream.SequentialStreamUtils;
 import com.aliuken.jobvacanciesapp.util.javase.stream.superclass.StreamUtils;
@@ -47,5 +47,5 @@ public class Constants {
 	public static final String JOB_COMPANY_PREDEFINED_FILTER_NAME = "jobCompany";
 	public static final String JOB_VACANCY_PREDEFINED_FILTER_NAME = "jobVacancy";
 
-	public static final EnumUtils ENUM_UTILS = EnumUtils.getInstance();
+	public static final ConfigurableEnumUtils ENUM_UTILS = ConfigurableEnumUtils.getInstance();
 }

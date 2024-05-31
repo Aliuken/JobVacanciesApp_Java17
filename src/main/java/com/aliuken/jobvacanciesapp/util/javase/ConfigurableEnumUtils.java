@@ -8,12 +8,12 @@ import com.aliuken.jobvacanciesapp.enumtype.superinterface.ConfigurableEnum;
 import com.aliuken.jobvacanciesapp.model.entity.enumtype.Language;
 import com.aliuken.jobvacanciesapp.util.springcore.di.BeanFactoryUtils;
 
-public class EnumUtils {
-	private static final EnumUtils SINGLETON_INSTANCE = new EnumUtils();
+public class ConfigurableEnumUtils {
+	private static final ConfigurableEnumUtils SINGLETON_INSTANCE = new ConfigurableEnumUtils();
 
-	private EnumUtils(){}
+	private ConfigurableEnumUtils(){}
 
-	public static EnumUtils getInstance() {
+	public static ConfigurableEnumUtils getInstance() {
 		return SINGLETON_INSTANCE;
 	}
 
