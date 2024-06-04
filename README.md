@@ -89,7 +89,7 @@ The Java SE core technologies currently used are:
 * **Java parallel streams**: To iterate over elements using the following methods of ParallelStreamUtils:
     * **ofNullableCollection**: For JPA entity methods annotated with @LazyEntityRelationGetter.
     * **ofEnum**: For Java enum methods.
-    * **ofArrays**: To create an array with the elements of two initial arrays.
+    * **ofArrays/ofLists/ofSets**: To mix multiple arrays/lists/sets into one.
     * **convertList**: To convert a list of JPA entities to a list of DTOs.
     * **convertSet**: To convert a set of JPA entities to a set of DTOs.
 * **Java NIO API**: To deal with files and folders by using:
