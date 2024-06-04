@@ -46,17 +46,17 @@ public class ParallelStreamUtils extends StreamUtils {
 	}
 
 	@Override
-	public <T> T[] ofArrays(IntFunction<T[]> generator, final T[] array1, final T[] array2) {
+	public <T> T[] joinArrays(IntFunction<T[]> generator, final T[] array1, final T[] array2) {
 		final Object[][] objectMatrix = new Object[][]{array1, array2};
 		final T[][] arrays = GenericsUtils.cast(objectMatrix);
 
-		final T[] elementArray = this.ofArrays(generator, arrays);
+		final T[] elementArray = this.joinArrays(generator, arrays);
 
 		return elementArray;
 	}
 
 	@Override
-	public <T> T[] ofArrays(IntFunction<T[]> generator, final T[][] arrays) {
+	public <T> T[] joinArrays(IntFunction<T[]> generator, final T[][] arrays) {
 		Stream<T[]> arrayStream = Stream.empty();
 		arrayStream = arrayStream.parallel();
 		if(arrays != null) {
@@ -73,17 +73,17 @@ public class ParallelStreamUtils extends StreamUtils {
 	}
 
 	@Override
-	public <T> List<T> ofLists(final List<T> list1, final List<T> list2) {
+	public <T> List<T> joinLists(final List<T> list1, final List<T> list2) {
 		final Object[] objectArray = new Object[]{list1, list2};
 		final List<T>[] lists = GenericsUtils.cast(objectArray);
 
-		final List<T> elementList = this.ofLists(lists);
+		final List<T> elementList = this.joinLists(lists);
 
 		return elementList;
 	}
 
 	@Override
-	public <T> List<T> ofLists(final List<T>[] lists) {
+	public <T> List<T> joinLists(final List<T>[] lists) {
 		Stream<List<T>> listStream = Stream.empty();
 		listStream = listStream.parallel();
 		if(lists != null) {
@@ -100,17 +100,17 @@ public class ParallelStreamUtils extends StreamUtils {
 	}
 
 	@Override
-	public <T> Set<T> ofSets(final Set<T> set1, final Set<T> set2) {
+	public <T> Set<T> joinSets(final Set<T> set1, final Set<T> set2) {
 		final Object[] objectArray = new Object[]{set1, set2};
 		final Set<T>[] sets = GenericsUtils.cast(objectArray);
 
-		final Set<T> elementSet = this.ofSets(sets);
+		final Set<T> elementSet = this.joinSets(sets);
 
 		return elementSet;
 	}
 
 	@Override
-	public <T> Set<T> ofSets(final Set<T>[] sets) {
+	public <T> Set<T> joinSets(final Set<T>[] sets) {
 		Stream<Set<T>> setStream = Stream.empty();
 		setStream = setStream.parallel();
 		if(sets != null) {

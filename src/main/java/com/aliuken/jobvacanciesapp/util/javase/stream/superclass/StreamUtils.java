@@ -28,17 +28,17 @@ public abstract class StreamUtils {
 
 	public abstract <T extends Enum<T>> Stream<T> ofEnum(final Class<T> enumClass);
 
-	public abstract <T> T[] ofArrays(IntFunction<T[]> generator, final T[] array1, final T[] array2);
+	public abstract <T> T[] joinArrays(IntFunction<T[]> generator, final T[] array1, final T[] array2);
 
-	public abstract <T> T[] ofArrays(IntFunction<T[]> generator, final T[][] arrays);
+	public abstract <T> T[] joinArrays(IntFunction<T[]> generator, final T[][] arrays);
 
-	public abstract <T> List<T> ofLists(final List<T> list1, final List<T> list2);
+	public abstract <T> List<T> joinLists(final List<T> list1, final List<T> list2);
 
-	public abstract <T> List<T> ofLists(final List<T>[] lists);
+	public abstract <T> List<T> joinLists(final List<T>[] lists);
 
-	public abstract <T> Set<T> ofSets(final Set<T> set1, final Set<T> set2);
+	public abstract <T> Set<T> joinSets(final Set<T> set1, final Set<T> set2);
 
-	public abstract <T> Set<T> ofSets(final Set<T>[] sets);
+	public abstract <T> Set<T> joinSets(final Set<T>[] sets);
 
 	public abstract <T,U> U[] convertArray(final T[] initialArray, final Function<T,U> conversionFunction, final Class<T> inputClass, final Class<U> outputClass, final IntFunction<U[]> arrayGenerator);
 

@@ -75,11 +75,11 @@ public enum AllowedViewsEnum implements Serializable {
 		this.anonymousAccessPermission = Constants.ENUM_UTILS.getFinalEnumElement(anonymousAccessPermission, AnonymousAccessPermission.class);
 
 		if(AnonymousAccessPermission.ACCESS_ALLOWED == this.anonymousAccessPermission) {
-			this.anonymousViewsArray = Constants.PARALLEL_STREAM_UTILS.ofArrays(AntPathRequestMatcher[]::new, FIXED_ANONYMOUS_VIEWS_ARRAY, VARIABLE_VIEWS_ARRAY);
+			this.anonymousViewsArray = Constants.PARALLEL_STREAM_UTILS.joinArrays(AntPathRequestMatcher[]::new, FIXED_ANONYMOUS_VIEWS_ARRAY, VARIABLE_VIEWS_ARRAY);
 			this.userViewsArray = FIXED_USER_VIEWS_ARRAY;
 		} else {
 			this.anonymousViewsArray = FIXED_ANONYMOUS_VIEWS_ARRAY;
-			this.userViewsArray = Constants.PARALLEL_STREAM_UTILS.ofArrays(AntPathRequestMatcher[]::new, FIXED_USER_VIEWS_ARRAY, VARIABLE_VIEWS_ARRAY);
+			this.userViewsArray = Constants.PARALLEL_STREAM_UTILS.joinArrays(AntPathRequestMatcher[]::new, FIXED_USER_VIEWS_ARRAY, VARIABLE_VIEWS_ARRAY);
 		}
 
 		this.supervisorViewsArray = SUPERVISOR_VIEWS_ARRAY;
