@@ -37,7 +37,7 @@ The following design patterns are used in the application:
 * **DTO**: In the package [com.aliuken.jobvacanciesapp.model.dto](https://github.com/Aliuken/JobVacanciesApp_Java17/tree/main/src/main/java/com/aliuken/jobvacanciesapp/model/dto).
 * **DAO**: Through @Repository interfaces (pkg: [com.aliuken.jobvacanciesapp.repository](https://github.com/Aliuken/JobVacanciesApp_Java17/tree/main/src/main/java/com/aliuken/jobvacanciesapp/repository)) and @Entity classes (pkg: [com.aliuken.jobvacanciesapp.model.entity](https://github.com/Aliuken/JobVacanciesApp_Java17/tree/main/src/main/java/com/aliuken/jobvacanciesapp/model/entity)).
 * **Singleton**: It is used when we want a single instance of a class and it is not possible to use enums, @Autowired or utility classes (with only static methods). This pattern is used in the packages:
-    * [com.aliuken.jobvacanciesapp.model.dto.converter](https://github.com/Aliuken/JobVacanciesApp_Java17/tree/main/src/main/java/com/aliuken/jobvacanciesapp/model/dto/converter): To get EntityToDtoConverter instances statically in controllers, DTOs, JUnit tests and other converters.
+    * [com.aliuken.jobvacanciesapp.model.dto.converter](https://github.com/Aliuken/JobVacanciesApp_Java17/tree/main/src/main/java/com/aliuken/jobvacanciesapp/model/dto/converter): To get [EntityToDtoConverter](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/src/main/java/com/aliuken/jobvacanciesapp/model/dto/converter/superclass/EntityToDtoConverter.java) instances statically in controllers, DTOs, JUnit tests and other converters.
     * [com.aliuken.jobvacanciesapp.util.javase](https://github.com/Aliuken/JobVacanciesApp_Java17/tree/main/src/main/java/com/aliuken/jobvacanciesapp/util/javase): To get the ConfigurableEnumUtils instance statically to execute its instance methods (that use generics).
     * [com.aliuken.jobvacanciesapp.util.javase.stream](https://github.com/Aliuken/JobVacanciesApp_Java17/tree/main/src/main/java/com/aliuken/jobvacanciesapp/util/javase/stream): To get StreamUtils instances statically (of type SequentialStreamUtils or ParallelStreamUtils) to execute its instance methods (that use generics).
     * [com.aliuken.jobvacanciesapp.util.javase.time](https://github.com/Aliuken/JobVacanciesApp_Java17/tree/main/src/main/java/com/aliuken/jobvacanciesapp/util/javase/time): To add the TemporalUtils instances (dateUtils and dateTimeUtils) as static variables in the thymeleafViewResolver (in [WebTemplateConfig](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/src/main/java/com/aliuken/jobvacanciesapp/config/WebTemplateConfig.java)).
@@ -90,8 +90,7 @@ The Java SE core technologies currently used are:
     * **ofNullableCollection**: For JPA entity methods annotated with @LazyEntityRelationGetter.
     * **ofEnum**: For Java enum methods.
     * **joinArrays/joinLists/joinSets**: To mix multiple arrays/lists/sets into one.
-    * **convertList**: To convert a list of JPA entities to a list of DTOs.
-    * **convertSet**: To convert a set of JPA entities to a set of DTOs.
+    * **convertArray/convertList/convertSet**: Used in [EntityToDtoConverter](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/src/main/java/com/aliuken/jobvacanciesapp/model/dto/converter/superclass/EntityToDtoConverter.java) to convert JPA entities to DTOs.
 * **Java NIO API**: To deal with files and folders by using:
     * The standard Java classes "Path", "Paths", "Files", "DirectoryStream" and "DirectoryStream.Filter".
     * The enum "FileType" and the utility classes "FileUtils" and "FileNameUtils".
