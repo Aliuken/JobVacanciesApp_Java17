@@ -63,7 +63,7 @@ The core technologies currently used are:
     * The model entities (pkg: [com.aliuken.jobvacanciesapp.model.entity](https://github.com/Aliuken/JobVacanciesApp_Java17/tree/main/src/main/java/com/aliuken/jobvacanciesapp/model/entity)) with @Data.
     * The "log" variable used for logging (with @Slf4j).
 * **Configuration**: Explained in section "7. Configuration and application properties".
-* **Internationalization** (**i18n**): Configured in [LocaleConfig](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/src/main/java/com/aliuken/jobvacanciesapp/config/LocaleConfig.java) (as in <https://www.baeldung.com/spring-boot-internationalization>). It uses Locale and MessageSource (in the interface [Internationalizable](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/src/main/java/com/aliuken/jobvacanciesapp/superinterface/Internationalizable.java)) and is built for:
+* **Internationalization** (**i18n**): Configured in [LocaleConfig](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/src/main/java/com/aliuken/jobvacanciesapp/config/LocaleConfig.java) (as in <https://www.baeldung.com/spring-boot-internationalization>). It uses Locale and MessageSource (in the interface [Internationalizable](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/src/main/java/com/aliuken/jobvacanciesapp/superinterface/Internationalizable.java)). Built for:
     * **English**: Using the file [src/main/resources/messages_en.properties](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/src/main/resources/messages_en.properties).
     * **Spanish**: Using the file [src/main/resources/messages_es.properties](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/src/main/resources/messages_es.properties).
 * **Logging**: By using:
