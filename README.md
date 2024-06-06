@@ -49,7 +49,7 @@ The following design patterns are used in the application:
 ### 3.1. Core technologies
 
 The core technologies currently used are:
-* **OpenJDK 17**: As the Java SE implementation (using the default garbage collector, **G1 GC**).
+* **OpenJDK 17**: As the Java SE implementation (using the default garbage collector: **G1 GC**).
 * **Spring Boot 3.3.0**: Starting in the class "MainApp" (which is annotated with @SpringBootApplication and is restartable through the method "MainApp.restartApp(...)").
 * **Jakarta EE** classes, including:
     * **@PostConstruct** and **Bean Validation** annotations (@NotNull, @NotEmpty, @Size, @Digits, @Email).
