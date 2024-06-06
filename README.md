@@ -117,7 +117,7 @@ The Spring Core technologies currently used are:
     * The utility class **BeanFactoryUtils** to get, refresh and replace beans statically.
 * **Aspect-Oriented Programming** (**AOP**): Explained in detail in the section "3.7. AOP technologies".
 * **Spring @Value annotation**: To get values from "application.properties" or "application.yaml" files.
-* **Spring MessageSource interface**: To deal with internationalization (i18n) in "StringUtils.getInternationalizedMessage". It is configured in [LocaleConfig](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/src/main/java/com/aliuken/jobvacanciesapp/config/LocaleConfig.java).
+* **Spring MessageSource interface**: In "StringUtils.getInternationalizedMessage", to deal with internationalization (i18n). It is configured in [LocaleConfig](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/src/main/java/com/aliuken/jobvacanciesapp/config/LocaleConfig.java).
 
 ### 3.4. Web technologies
 
