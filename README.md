@@ -102,7 +102,7 @@ The Java SE core technologies currently used are:
     * **ThrowableUtils**: Over "StringWriter" and "PrintWriter".
     * **FileUtils**: Over "ServletOutputStream" and "ZipFile".
     * **AuthUserQueryReport**: Over "AuthUserQueryReport&lt;T&gt;".
-* **Java Locale class**: To deal with internationalization (i18n) in "StringUtils.getInternationalizedMessage".
+* **Java Locale class**: In "StringUtils.getInternationalizedMessage", to deal with internationalization (i18n).
 
 ### 3.3. Spring Core technologies
 
