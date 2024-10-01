@@ -70,7 +70,7 @@ The core technologies currently used are:
     * **Spanish**: Using the file [src/main/resources/messages_es.properties](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/src/main/resources/messages_es.properties).
 * **Logging**: By using:
     * The implementation of the **SLF4J** API for **Logback** (with @Slf4j from Lombok).
-    * The utility class [ControllerAspectLoggingUtils](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/src/main/java/com/aliuken/jobvacanciesapp/util/springcore/aop/logging/ControllerAspectLoggingUtils.java): Used in **ControllerAspect** to log multiple stats..
+    * The utility class [ControllerAspectLoggingUtils](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/src/main/java/com/aliuken/jobvacanciesapp/util/springcore/aop/logging/ControllerAspectLoggingUtils.java): Used in **ControllerAspect** to log multiple stats.
     * The utility class [RepositoryAspectLoggingUtils](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/src/main/java/com/aliuken/jobvacanciesapp/util/springcore/aop/logging/RepositoryAspectLoggingUtils.java): Used in **RepositoryAspect** to log multiple stats.
 * **Utilities**: There are multiple utility classes in the package [com.aliuken.jobvacanciesapp.util](https://github.com/Aliuken/JobVacanciesApp_Java17/tree/main/src/main/java/com/aliuken/jobvacanciesapp/util).
 * **Markdown**: As the file format (***.md**) of the [documentation files](https://github.com/Aliuken/JobVacanciesApp_Java17/tree/main/documentation).
