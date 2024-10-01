@@ -18,7 +18,8 @@ import jakarta.servlet.http.HttpSession;
 public class SessionUtils {
 
 	private SessionUtils() throws InstantiationException {
-		throw new InstantiationException(StringUtils.getStringJoined("Cannot instantiate class ", SessionUtils.class.getName()));
+		final String className = this.getClass().getName();
+		throw new InstantiationException(StringUtils.getStringJoined(Constants.INSTANTIATION_NOT_ALLOWED, className));
 	}
 
 	//----------------------------------------------------------------------------------------------------------------------------
