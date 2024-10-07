@@ -1,4 +1,4 @@
-name: "es-j17"
+name: "elk-j17"
 
 services:
   filebeat-service:
