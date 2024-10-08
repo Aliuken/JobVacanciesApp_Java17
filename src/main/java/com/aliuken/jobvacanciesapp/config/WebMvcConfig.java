@@ -31,6 +31,18 @@ public class WebMvcConfig implements WebMvcConfigurer {
 	private LocalDateTimeFormatter localDateTimeFormatter;
 
 	@Override
+	public void addFormatters(final FormatterRegistry formatterRegistry) {
+		formatterRegistry.addFormatterForFieldType(LocalDate.class, localDateFormatter);
+		formatterRegistry.addFormatterForFieldType(LocalDateTime.class, localDateTimeFormatter);
+	}
+
+	@Override
+	public void addInterceptors(final InterceptorRegistry interceptorRegistry) {
+		final LocaleChangeInterceptor localeChangeInterceptor = i18nConfig.localeChangeInterceptor();
+		interceptorRegistry.addInterceptor(localeChangeInterceptor);
+	}
+
+	@Override
 	public void addResourceHandlers(final ResourceHandlerRegistry resourceHandlerRegistry) {
 		final String authUserCurriculumFilesPath = configPropertiesBean.getAuthUserCurriculumFilesPath();
 		final String authUserEntityQueryFilesPath = configPropertiesBean.getAuthUserEntityQueryFilesPath();
@@ -41,17 +53,5 @@ public class WebMvcConfig implements WebMvcConfigurer {
 		resourceHandlerRegistry.addResourceHandler("/auth-user-curriculum-files/**").addResourceLocations(resourceLocation1);
 		resourceHandlerRegistry.addResourceHandler("/auth-user-entity-query-files/**").addResourceLocations(resourceLocation2);
 		resourceHandlerRegistry.addResourceHandler("/job-company-logos/**").addResourceLocations(resourceLocation3);
-	}
-
-	@Override
-	public void addInterceptors(final InterceptorRegistry interceptorRegistry) {
-		final LocaleChangeInterceptor localeChangeInterceptor = i18nConfig.localeChangeInterceptor();
-		interceptorRegistry.addInterceptor(localeChangeInterceptor);
-	}
-
-	@Override
-	public void addFormatters(final FormatterRegistry formatterRegistry) {
-		formatterRegistry.addFormatterForFieldType(LocalDate.class, localDateFormatter);
-		formatterRegistry.addFormatterForFieldType(LocalDateTime.class, localDateTimeFormatter);
 	}
 }
