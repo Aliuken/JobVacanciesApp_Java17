@@ -339,13 +339,6 @@ Steps:
 
 > [!IMPORTANT]
 > In the next sections:
-> * The folders **docker-compose-app**, **docker-compose-elk** and **lib** (which is created, with the jar of the app, after compiling) are located inside the folder [build-context](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/build-context).
-> * The path **/AppData_Java17** is the folder in my PC (which is Linux) that contains the data from the repository [JobVacanciesApp_AppData_Java17](https://github.com/Aliuken/JobVacanciesApp_AppData_Java17).
-
-### 5.1. Explanation of the docker-compose.yaml for the application
-
-> [!IMPORTANT]
-> In the next sections:
 > * The path **/AppData_Java17** is the folder in my PC (which is Linux) that contains the data from the repository [JobVacanciesApp_AppData_Java17](https://github.com/Aliuken/JobVacanciesApp_AppData_Java17).
 > * The folder [build-context](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/build-context) is the build context of the file [docker-compose-app/Dockerfile](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/build-context/docker-compose-app/Dockerfile) and contains:
 >     * The folders **docker-compose-app**, **docker-compose-elk** and **lib** (which is created, with the jar of the app, after compiling).
