@@ -9,7 +9,7 @@ services:
         ipv4_address: 192.168.10.3
         ipv6_address: 2001:3984:3989::13
     ports:
-      - ${DB_PORT}:3306
+      - ${DB_PORT:-3306}:3306
     environment:
       - MYSQL_DATABASE=job-vacancies-app-db
       - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD:-root}
