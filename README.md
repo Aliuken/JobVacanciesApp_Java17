@@ -259,9 +259,9 @@ The security technologies currently used are:
 > [!IMPORTANT]
 > The utility classes related to AOP are in the package [com.aliuken.jobvacanciesapp.util.springcore.aop](https://github.com/Aliuken/JobVacanciesApp_Java17/tree/main/src/main/java/com/aliuken/jobvacanciesapp/util/springcore/aop).
 
-AOP (Aspect-Oriented Programming) is used to deal with cross-cutting concerns in the different layers of the application (controllers, services and DAOs/entities).
+AOP (Aspect-Oriented Programming) is implemented (with **Spring AOP** and **AspectJ**) to deal with cross-cutting concerns in the different layers of the application (controllers, services and DAOs/entities) and configured in [AopConfig](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/src/main/java/com/aliuken/jobvacanciesapp/config/AopConfig.java).
 
-Specifically, the following AOP aspects (pkg: [com.aliuken.jobvacanciesapp.aop.aspect](https://github.com/Aliuken/JobVacanciesApp_Java17/tree/main/src/main/java/com/aliuken/jobvacanciesapp/aop/aspect)) are implemented with **Spring AOP** and **AspectJ** and configured in [AopConfig](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/src/main/java/com/aliuken/jobvacanciesapp/config/AopConfig.java):
+Specifically, the following AOP aspects (pkg: [com.aliuken.jobvacanciesapp.aop.aspect](https://github.com/Aliuken/JobVacanciesApp_Java17/tree/main/src/main/java/com/aliuken/jobvacanciesapp/aop/aspect)) were created:
 * **ControllerAspect**: For logging multiple stats in controllers (pkg: [com.aliuken.jobvacanciesapp.controller](https://github.com/Aliuken/JobVacanciesApp_Java17/tree/main/src/main/java/com/aliuken/jobvacanciesapp/controller)). It works around methods annotated with @RequestMapping, @GetMapping or @PostMapping and uses:
     * The call "EndpointType.getInstance(httpMethod, informedPath)" where the informedPath is used to match with one of the regular expressions defined in [EndpointType](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/src/main/java/com/aliuken/jobvacanciesapp/enumtype/EndpointType.java). Those regex can contain "([^/]+)" to represent a path parameter (formed by consecutive characters without "/").
     * The DB time inside the controller, calculated in RepositoryAspect.
