@@ -259,7 +259,7 @@ The security technologies currently used are:
 > [!IMPORTANT]
 > The utility classes related to AOP are in the package [com.aliuken.jobvacanciesapp.util.springcore.aop](https://github.com/Aliuken/JobVacanciesApp_Java17/tree/main/src/main/java/com/aliuken/jobvacanciesapp/util/springcore/aop).
 
-AOP (Aspect-Oriented Programming) is implemented (with **Spring AOP** and **AspectJ**) to deal with cross-cutting concerns in different layers of the application (controllers, services and DAOs/entities) and configured in [AopConfig](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/src/main/java/com/aliuken/jobvacanciesapp/config/AopConfig.java).
+AOP (Aspect-Oriented Programming) is implemented (with **Spring AOP** and **AspectJ**) to deal with cross-cutting concerns in different layers of the app (controllers, services and DAOs/entities) and configured in [AopConfig](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/src/main/java/com/aliuken/jobvacanciesapp/config/AopConfig.java).
 
 Specifically, the following AOP aspects (pkg: [com.aliuken.jobvacanciesapp.aop.aspect](https://github.com/Aliuken/JobVacanciesApp_Java17/tree/main/src/main/java/com/aliuken/jobvacanciesapp/aop/aspect)) were created:
 * **ControllerAspect**: For logging multiple stats in controllers (pkg: [com.aliuken.jobvacanciesapp.controller](https://github.com/Aliuken/JobVacanciesApp_Java17/tree/main/src/main/java/com/aliuken/jobvacanciesapp/controller)). It works around methods annotated with @RequestMapping, @GetMapping or @PostMapping and uses:
