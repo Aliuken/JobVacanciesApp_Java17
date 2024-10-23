@@ -108,7 +108,7 @@ public enum EndpointType implements Serializable {
 
 	private static final Map<EndpointRegexPatternDTO, EndpointType> ENDPOINT_TYPE_MAP = EndpointType.getEndpointTypeMap();
 
-	private EndpointType(final HttpMethod  httpMethod, final String pathRegex, final String description) {
+	private EndpointType(final HttpMethod httpMethod, final String pathRegex, final String description) {
 		this.endpointRegexPatternDTO = EndpointRegexPatternDTO.getNewInstance(httpMethod, pathRegex, description);
 	}
 
@@ -124,7 +124,7 @@ public enum EndpointType implements Serializable {
 		for(final Map.Entry<EndpointRegexPatternDTO, EndpointType> endpointTypeMapEntry : ENDPOINT_TYPE_MAP.entrySet()) {
 			final EndpointRegexPatternDTO endpointRegexPatternDTO = endpointTypeMapEntry.getKey();
 
-			boolean matches = endpointRegexPatternDTO.matches(httpMethod, path);
+			final boolean matches = endpointRegexPatternDTO.matches(httpMethod, path);
 
 			if(matches) {
 				final EndpointType endpointType = endpointTypeMapEntry.getValue();
