@@ -15,7 +15,7 @@ import com.aliuken.jobvacanciesapp.model.dto.AbstractEntityPageWithExceptionDTO;
 import com.aliuken.jobvacanciesapp.model.dto.TableSearchDTO;
 import com.aliuken.jobvacanciesapp.model.entity.AuthUser;
 import com.aliuken.jobvacanciesapp.model.entity.enumtype.TableField;
-import com.aliuken.jobvacanciesapp.model.entity.enumtype.TableOrder;
+import com.aliuken.jobvacanciesapp.model.entity.enumtype.TableSorting;
 import com.aliuken.jobvacanciesapp.model.entity.superclass.AbstractEntity;
 import com.aliuken.jobvacanciesapp.repository.superinterface.UpgradedJpaRepository;
 import com.aliuken.jobvacanciesapp.repository.superinterface.UpgradedJpaRepositoryInterface;
@@ -91,17 +91,17 @@ public abstract class AbstractEntityServiceSuperclass<T extends AbstractEntity> 
 
 	@Override
 	@ServiceMethod
-	public Page<T> findAll(final Pageable pageable, final TableOrder tableOrder) {
+	public Page<T> findAll(final Pageable pageable, final TableSorting tableSorting) {
 		final UpgradedJpaRepository<T> upgradedJpaRepository = this.getEntityRepository();
-		final Page<T> page = upgradedJpaRepository.findAll(pageable, tableOrder);
+		final Page<T> page = upgradedJpaRepository.findAll(pageable, tableSorting);
 		return page;
 	}
 
 	@Override
 	@ServiceMethod
-	public Page<T> findAll(final Pageable pageable, final TableOrder tableOrder, final Specification<T> specification) {
+	public Page<T> findAll(final Pageable pageable, final TableSorting tableSorting, final Specification<T> specification) {
 		final UpgradedJpaRepository<T> upgradedJpaRepository = this.getEntityRepository();
-		final Page<T> page = upgradedJpaRepository.findAll(pageable, tableOrder, specification);
+		final Page<T> page = upgradedJpaRepository.findAll(pageable, tableSorting, specification);
 		return page;
 	}
 
@@ -131,9 +131,9 @@ public abstract class AbstractEntityServiceSuperclass<T extends AbstractEntity> 
 
 	@Override
 	@ServiceMethod
-	public <S extends T> Page<S> findAll(final Example<S> example, final Pageable pageable, final TableOrder tableOrder) {
+	public <S extends T> Page<S> findAll(final Example<S> example, final Pageable pageable, final TableSorting tableSorting) {
 		final UpgradedJpaRepository<T> upgradedJpaRepository = this.getEntityRepository();
-		final Page<S> page = upgradedJpaRepository.findAll(example, pageable, tableOrder);
+		final Page<S> page = upgradedJpaRepository.findAll(example, pageable, tableSorting);
 		return page;
 	}
 
@@ -177,9 +177,9 @@ public abstract class AbstractEntityServiceSuperclass<T extends AbstractEntity> 
 			if(tableSearchDTO != null) {
 				final TableField tableField = TableField.findByCode(tableSearchDTO.tableFieldCode());
 				final String tableFieldValue = tableSearchDTO.tableFieldValue();
-				final TableOrder tableOrder = TableOrder.findByCode(tableSearchDTO.tableOrderCode());
+				final TableSorting tableSorting = TableSorting.findByCode(tableSearchDTO.tableSortingCode());
 
-				page = this.getEntityPage(tableField, tableFieldValue, tableOrder, pageable);
+				page = this.getEntityPage(tableField, tableFieldValue, tableSorting, pageable);
 			} else {
 				page = this.findAll(pageable);
 			}
@@ -197,7 +197,7 @@ public abstract class AbstractEntityServiceSuperclass<T extends AbstractEntity> 
 		return pageWithExceptionDTO;
 	}
 
-	private Page<T> getEntityPage(final TableField tableField, final String tableFieldValue, final TableOrder tableOrder, final Pageable pageable) {
+	private Page<T> getEntityPage(final TableField tableField, final String tableFieldValue, final TableSorting tableSorting, final Pageable pageable) {
 		final Page<T> page;
 		if(tableField != null && LogicalUtils.isNotNullNorEmptyString(tableFieldValue)) {
 			switch(tableField) {
@@ -215,12 +215,12 @@ public abstract class AbstractEntityServiceSuperclass<T extends AbstractEntity> 
 
 					final T abstractEntitySearch = this.getNewEntityForSearchByExample(entityId, null, null);
 					final Example<T> example = Example.of(abstractEntitySearch, ID_EXAMPLE_MATCHER);
-					page = this.findAll(example, pageable, tableOrder);
+					page = this.findAll(example, pageable, tableSorting);
 					break;
 				}
 				case FIRST_REGISTRATION_DATE_TIME -> {
 					final Specification<T> specification = this.equalsFirstRegistrationDateTime(tableFieldValue);
-					page = this.findAll(pageable, tableOrder, specification);
+					page = this.findAll(pageable, tableSorting, specification);
 					break;
 				}
 				case FIRST_REGISTRATION_AUTH_USER_EMAIL -> {
@@ -229,12 +229,12 @@ public abstract class AbstractEntityServiceSuperclass<T extends AbstractEntity> 
 
 					final T abstractEntitySearch = this.getNewEntityForSearchByExample(null, authUserSearch, null);
 					final Example<T> example = Example.of(abstractEntitySearch, FIRST_REGISTRATION_AUTH_USER_EMAIL_EXAMPLE_MATCHER);
-					page = this.findAll(example, pageable, tableOrder);
+					page = this.findAll(example, pageable, tableSorting);
 					break;
 				}
 				case LAST_MODIFICATION_DATE_TIME -> {
 					final Specification<T> specification = this.equalsLastModificationDateTime(tableFieldValue);
-					page = this.findAll(pageable, tableOrder, specification);
+					page = this.findAll(pageable, tableSorting, specification);
 					break;
 				}
 				case LAST_MODIFICATION_AUTH_USER_EMAIL -> {
@@ -243,17 +243,17 @@ public abstract class AbstractEntityServiceSuperclass<T extends AbstractEntity> 
 
 					final T abstractEntitySearch = this.getNewEntityForSearchByExample(null, null, authUserSearch);
 					final Example<T> example = Example.of(abstractEntitySearch, LAST_MODIFICATION_AUTH_USER_EMAIL_EXAMPLE_MATCHER);
-					page = this.findAll(example, pageable, tableOrder);
+					page = this.findAll(example, pageable, tableSorting);
 					break;
 				}
 				default -> {
 					final Example<T> example = this.getDefaultEntityPageExample(tableField, tableFieldValue);
-					page = this.findAll(example, pageable, tableOrder);
+					page = this.findAll(example, pageable, tableSorting);
 					break;
 				}
 			}
 		} else {
-			page = this.findAll(pageable, tableOrder);
+			page = this.findAll(pageable, tableSorting);
 		}
 
 		return page;

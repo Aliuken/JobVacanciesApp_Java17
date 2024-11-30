@@ -15,7 +15,7 @@ import com.aliuken.jobvacanciesapp.model.entity.JobCategory;
 import com.aliuken.jobvacanciesapp.model.entity.JobCompany;
 import com.aliuken.jobvacanciesapp.model.entity.JobVacancy;
 import com.aliuken.jobvacanciesapp.model.entity.enumtype.TableField;
-import com.aliuken.jobvacanciesapp.model.entity.enumtype.TableOrder;
+import com.aliuken.jobvacanciesapp.model.entity.enumtype.TableSorting;
 import com.aliuken.jobvacanciesapp.util.javase.LogicalUtils;
 import com.aliuken.jobvacanciesapp.util.javase.StringUtils;
 import com.aliuken.jobvacanciesapp.util.javase.ThrowableUtils;
@@ -49,9 +49,9 @@ public abstract class JobVacancyServiceSuperclass extends AbstractEntityServiceS
 			if(tableSearchDTO != null) {
 				final TableField tableField = TableField.findByCode(tableSearchDTO.tableFieldCode());
 				final String tableFieldValue = tableSearchDTO.tableFieldValue();
-				final TableOrder tableOrder = TableOrder.findByCode(tableSearchDTO.tableOrderCode());
+				final TableSorting tableSorting = TableSorting.findByCode(tableSearchDTO.tableSortingCode());
 
-				page = this.getJobCategoryJobVacanciesPage(jobCategoryId, tableField, tableFieldValue, tableOrder, pageable);
+				page = this.getJobCategoryJobVacanciesPage(jobCategoryId, tableField, tableFieldValue, tableSorting, pageable);
 			} else {
 				final Example<JobVacancy> example = this.getJobCategoryIdExample(jobCategoryId);
 				page = this.findAll(example, pageable);
@@ -70,7 +70,7 @@ public abstract class JobVacancyServiceSuperclass extends AbstractEntityServiceS
 		return pageWithExceptionDTO;
 	}
 
-	private Page<JobVacancy> getJobCategoryJobVacanciesPage(final long jobCategoryId, final TableField tableField, final String tableFieldValue, final TableOrder tableOrder, final Pageable pageable) {
+	private Page<JobVacancy> getJobCategoryJobVacanciesPage(final long jobCategoryId, final TableField tableField, final String tableFieldValue, final TableSorting tableSorting, final Pageable pageable) {
 		final Page<JobVacancy> page;
 		if(tableField != null && LogicalUtils.isNotNullNorEmptyString(tableFieldValue)) {
 			switch(tableField) {
@@ -94,12 +94,12 @@ public abstract class JobVacancyServiceSuperclass extends AbstractEntityServiceS
 					jobVacancySearch.setJobCategory(jobCategory);
 
 					final Example<JobVacancy> example = Example.of(jobVacancySearch, JOB_CATEGORY_ID_AND_ID_EXAMPLE_MATCHER);
-					page = this.findAll(example, pageable, tableOrder);
+					page = this.findAll(example, pageable, tableSorting);
 					break;
 				}
 				case FIRST_REGISTRATION_DATE_TIME -> {
 					final Specification<JobVacancy> specification = this.equalsJobCategoryIdAndFirstRegistrationDateTime(jobCategoryId, tableFieldValue);
-					page = this.findAll(pageable, tableOrder, specification);
+					page = this.findAll(pageable, tableSorting, specification);
 					break;
 				}
 				case FIRST_REGISTRATION_AUTH_USER_EMAIL -> {
@@ -114,12 +114,12 @@ public abstract class JobVacancyServiceSuperclass extends AbstractEntityServiceS
 					jobVacancySearch.setJobCategory(jobCategory);
 
 					final Example<JobVacancy> example = Example.of(jobVacancySearch, JOB_CATEGORY_ID_AND_FIRST_REGISTRATION_AUTH_USER_EMAIL_EXAMPLE_MATCHER);
-					page = this.findAll(example, pageable, tableOrder);
+					page = this.findAll(example, pageable, tableSorting);
 					break;
 				}
 				case LAST_MODIFICATION_DATE_TIME -> {
 					final Specification<JobVacancy> specification = this.equalsJobCategoryIdAndLastModificationDateTime(jobCategoryId, tableFieldValue);
-					page = this.findAll(pageable, tableOrder, specification);
+					page = this.findAll(pageable, tableSorting, specification);
 					break;
 				}
 				case LAST_MODIFICATION_AUTH_USER_EMAIL -> {
@@ -134,7 +134,7 @@ public abstract class JobVacancyServiceSuperclass extends AbstractEntityServiceS
 					jobVacancySearch.setJobCategory(jobCategory);
 
 					final Example<JobVacancy> example = Example.of(jobVacancySearch, JOB_CATEGORY_ID_AND_LAST_MODIFICATION_AUTH_USER_EMAIL_EXAMPLE_MATCHER);
-					page = this.findAll(example, pageable, tableOrder);
+					page = this.findAll(example, pageable, tableSorting);
 					break;
 				}
 				default -> {
@@ -143,7 +143,7 @@ public abstract class JobVacancyServiceSuperclass extends AbstractEntityServiceS
 			}
 		} else {
 			final Example<JobVacancy> example = this.getJobCategoryIdExample(jobCategoryId);
-			page = this.findAll(example, pageable, tableOrder);
+			page = this.findAll(example, pageable, tableSorting);
 		}
 
 		return page;
@@ -157,9 +157,9 @@ public abstract class JobVacancyServiceSuperclass extends AbstractEntityServiceS
 			if(tableSearchDTO != null) {
 				final TableField tableField = TableField.findByCode(tableSearchDTO.tableFieldCode());
 				final String tableFieldValue = tableSearchDTO.tableFieldValue();
-				final TableOrder tableOrder = TableOrder.findByCode(tableSearchDTO.tableOrderCode());
+				final TableSorting tableSorting = TableSorting.findByCode(tableSearchDTO.tableSortingCode());
 
-				page = this.getJobCompanyJobVacanciesPage(jobCompanyId, tableField, tableFieldValue, tableOrder, pageable);
+				page = this.getJobCompanyJobVacanciesPage(jobCompanyId, tableField, tableFieldValue, tableSorting, pageable);
 			} else {
 				final Example<JobVacancy> example = this.getJobCompanyIdExample(jobCompanyId);
 				page = this.findAll(example, pageable);
@@ -178,7 +178,7 @@ public abstract class JobVacancyServiceSuperclass extends AbstractEntityServiceS
 		return pageWithExceptionDTO;
 	}
 
-	private Page<JobVacancy> getJobCompanyJobVacanciesPage(final long jobCompanyId, final TableField tableField, final String tableFieldValue, final TableOrder tableOrder, final Pageable pageable) {
+	private Page<JobVacancy> getJobCompanyJobVacanciesPage(final long jobCompanyId, final TableField tableField, final String tableFieldValue, final TableSorting tableSorting, final Pageable pageable) {
 		final Page<JobVacancy> page;
 		if(tableField != null && LogicalUtils.isNotNullNorEmptyString(tableFieldValue)) {
 			switch(tableField) {
@@ -202,12 +202,12 @@ public abstract class JobVacancyServiceSuperclass extends AbstractEntityServiceS
 					jobVacancySearch.setJobCompany(jobCompany);
 
 					final Example<JobVacancy> example = Example.of(jobVacancySearch, JOB_COMPANY_ID_AND_ID_EXAMPLE_MATCHER);
-					page = this.findAll(example, pageable, tableOrder);
+					page = this.findAll(example, pageable, tableSorting);
 					break;
 				}
 				case FIRST_REGISTRATION_DATE_TIME -> {
 					final Specification<JobVacancy> specification = this.equalsJobCompanyIdAndFirstRegistrationDateTime(jobCompanyId, tableFieldValue);
-					page = this.findAll(pageable, tableOrder, specification);
+					page = this.findAll(pageable, tableSorting, specification);
 					break;
 				}
 				case FIRST_REGISTRATION_AUTH_USER_EMAIL -> {
@@ -222,12 +222,12 @@ public abstract class JobVacancyServiceSuperclass extends AbstractEntityServiceS
 					jobVacancySearch.setJobCompany(jobCompany);
 
 					final Example<JobVacancy> example = Example.of(jobVacancySearch, JOB_COMPANY_ID_AND_FIRST_REGISTRATION_AUTH_USER_EMAIL_EXAMPLE_MATCHER);
-					page = this.findAll(example, pageable, tableOrder);
+					page = this.findAll(example, pageable, tableSorting);
 					break;
 				}
 				case LAST_MODIFICATION_DATE_TIME -> {
 					final Specification<JobVacancy> specification = this.equalsJobCompanyIdAndLastModificationDateTime(jobCompanyId, tableFieldValue);
-					page = this.findAll(pageable, tableOrder, specification);
+					page = this.findAll(pageable, tableSorting, specification);
 					break;
 				}
 				case LAST_MODIFICATION_AUTH_USER_EMAIL -> {
@@ -242,7 +242,7 @@ public abstract class JobVacancyServiceSuperclass extends AbstractEntityServiceS
 					jobVacancySearch.setJobCompany(jobCompany);
 
 					final Example<JobVacancy> example = Example.of(jobVacancySearch, JOB_COMPANY_ID_AND_LAST_MODIFICATION_AUTH_USER_EMAIL_EXAMPLE_MATCHER);
-					page = this.findAll(example, pageable, tableOrder);
+					page = this.findAll(example, pageable, tableSorting);
 					break;
 				}
 				default -> {
@@ -251,7 +251,7 @@ public abstract class JobVacancyServiceSuperclass extends AbstractEntityServiceS
 			}
 		} else {
 			final Example<JobVacancy> example = this.getJobCompanyIdExample(jobCompanyId);
-			page = this.findAll(example, pageable, tableOrder);
+			page = this.findAll(example, pageable, tableSorting);
 		}
 
 		return page;

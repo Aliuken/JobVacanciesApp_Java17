@@ -138,7 +138,7 @@ public enum EndpointType implements Serializable {
 					final String endpointTypeString = (endpointType != null) ? endpointType.toString() : null;
 
 					final String logTrace = StringUtils.getStringJoined(
-						"  The endpoint '", httpMethod, " ", path, "' matched with the endpoint pattern '", endpointRegexPatternString, "'. The EndpointType ", endpointTypeString, " will be used");
+						"  The endpoint '", httpMethod, Constants.SPACE, path, "' matched with the endpoint pattern '", endpointRegexPatternString, "'. The EndpointType ", endpointTypeString, " will be used");
 
 					log.info(logTrace);
 				}
@@ -149,7 +149,7 @@ public enum EndpointType implements Serializable {
 
 		if(log.isInfoEnabled()) {
 			final String logTrace = StringUtils.getStringJoined(
-				"  The endpoint '", httpMethod, " ", path, "' didn't match with any path pattern. The EndpointType ", null, " will be used");
+				"  The endpoint '", httpMethod, Constants.SPACE, path, "' didn't match with any path pattern. The EndpointType ", null, " will be used");
 
 			log.info(logTrace);
 		}
