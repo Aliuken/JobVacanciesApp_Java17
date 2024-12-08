@@ -69,8 +69,8 @@ public class JobCategoryJobVacancyController extends AbstractEntityControllerWit
 				}
 
 				final Page<JobVacancy> jobVacancies = Page.empty();
-				model.addAttribute("jobCategoryId", jobCategoryId);
-				model.addAttribute("jobCategoryName", jobCategoryName);
+				model.addAttribute("predefinedFilterField1", jobCategoryId);
+				model.addAttribute("predefinedFilterField2", jobCategoryName);
 				model.addAttribute("jobVacancies", jobVacancies);
 				model.addAttribute("paginationUrl", this.getPaginationUrl(jobCategoryId));
 				model.addAttribute("exportToPdfUrl", EXPORT_TO_PDF_DISABLED_VALUE);
@@ -81,8 +81,8 @@ public class JobCategoryJobVacancyController extends AbstractEntityControllerWit
 			final String firstBindingErrorString = ControllerValidationUtils.getFirstBindingErrorString(bindingResult);
 			if(firstBindingErrorString != null) {
 				final Page<JobVacancy> jobVacancies = Page.empty();
-				model.addAttribute("jobCategoryId", jobCategoryId);
-				model.addAttribute("jobCategoryName", jobCategoryName);
+				model.addAttribute("predefinedFilterField1", jobCategoryId);
+				model.addAttribute("predefinedFilterField2", jobCategoryName);
 				model.addAttribute("jobVacancies", jobVacancies);
 				model.addAttribute("paginationUrl", this.getPaginationUrl(jobCategoryId));
 				model.addAttribute("exportToPdfUrl", EXPORT_TO_PDF_DISABLED_VALUE);
@@ -96,8 +96,8 @@ public class JobCategoryJobVacancyController extends AbstractEntityControllerWit
 			final Page<JobVacancy> jobVacancies = pageWithExceptionDTO.page();
 			final Throwable throwable = pageWithExceptionDTO.throwable();
 
-			model.addAttribute("jobCategoryId", jobCategoryId);
-			model.addAttribute("jobCategoryName", jobCategoryName);
+			model.addAttribute("predefinedFilterField1", jobCategoryId);
+			model.addAttribute("predefinedFilterField2", jobCategoryName);
 			model.addAttribute("jobVacancies", jobVacancies);
 			model.addAttribute("paginationUrl", this.getPaginationUrl(jobCategoryId));
 			model.addAttribute("exportToPdfUrl", this.getExportToPdfUrl(jobCategoryId));
@@ -116,8 +116,8 @@ public class JobCategoryJobVacancyController extends AbstractEntityControllerWit
 			}
 
 			final Page<JobVacancy> jobVacancies = Page.empty();
-			model.addAttribute("jobCategoryId", jobCategoryId);
-			model.addAttribute("jobCategoryName", jobCategoryName);
+			model.addAttribute("predefinedFilterField1", jobCategoryId);
+			model.addAttribute("predefinedFilterField2", jobCategoryName);
 			model.addAttribute("jobVacancies", jobVacancies);
 			model.addAttribute("paginationUrl", this.getPaginationUrl(jobCategoryId));
 			model.addAttribute("exportToPdfUrl", EXPORT_TO_PDF_DISABLED_VALUE);
