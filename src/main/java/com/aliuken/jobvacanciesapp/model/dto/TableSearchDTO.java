@@ -5,6 +5,7 @@ import java.util.Objects;
 
 import com.aliuken.jobvacanciesapp.model.entity.enumtype.Language;
 import com.aliuken.jobvacanciesapp.model.entity.enumtype.PredefinedFilterEntity;
+import com.aliuken.jobvacanciesapp.model.entity.enumtype.TableField;
 import com.aliuken.jobvacanciesapp.util.javase.LogicalUtils;
 import com.aliuken.jobvacanciesapp.util.javase.StringUtils;
 
@@ -55,6 +56,11 @@ public record TableSearchDTO(
 	public PredefinedFilterEntity getPredefinedFilterEntity() {
 		final PredefinedFilterEntity predefinedFilterEntity = PredefinedFilterEntity.findByEntityName(predefinedFilterName);
 		return predefinedFilterEntity;
+	}
+
+	public TableField getFilterTableField() {
+		final TableField filterTableField = TableField.findByCode(filterName);
+		return filterTableField;
 	}
 
 	//If not all pagination URL parameters -> empty table (in Java)

@@ -47,7 +47,7 @@ public abstract class JobVacancyServiceSuperclass extends AbstractEntityServiceS
 		Exception exception;
 		try {
 			if(tableSearchDTO != null) {
-				final TableField tableField = TableField.findByCode(tableSearchDTO.filterName());
+				final TableField tableField = tableSearchDTO.getFilterTableField();
 				final String filterValue = tableSearchDTO.filterValue();
 				final TableSorting tableSorting = TableSorting.findByCode(tableSearchDTO.tableSortingCode());
 
@@ -155,7 +155,7 @@ public abstract class JobVacancyServiceSuperclass extends AbstractEntityServiceS
 		Exception exception;
 		try {
 			if(tableSearchDTO != null) {
-				final TableField tableField = TableField.findByCode(tableSearchDTO.filterName());
+				final TableField tableField = tableSearchDTO.getFilterTableField();
 				final String filterValue = tableSearchDTO.filterValue();
 				final TableSorting tableSorting = TableSorting.findByCode(tableSearchDTO.tableSortingCode());
 
