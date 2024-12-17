@@ -21,11 +21,11 @@ public record TableSearchDTO(
 
 	String predefinedFilterValue,
 
-	@NotNull(message="{tableFieldCode.notEmpty}")
-	String tableFieldCode,
+	@NotNull(message="{filterName.notEmpty}")
+	String filterName,
 
-	@NotNull(message="{tableFieldValue.notEmpty}")
-	String tableFieldValue,
+	@NotNull(message="{filterValue.notEmpty}")
+	String filterValue,
 
 	@NotEmpty(message="{tableSortingCode.notEmpty}")
 	String tableSortingCode,
@@ -59,7 +59,7 @@ public record TableSearchDTO(
 
 	//If not all pagination URL parameters -> empty table (in Java)
 	public boolean hasAllParameters() {
-		final boolean hasAllParameters = (LogicalUtils.isNotNullNorEmptyString(languageParam) && !Language.BY_DEFAULT.getCode().equals(languageParam) && tableFieldCode != null && tableFieldValue != null && LogicalUtils.isNotNullNorEmptyString(tableSortingCode) && pageSize != null && pageNumber != null);
+		final boolean hasAllParameters = (LogicalUtils.isNotNullNorEmptyString(languageParam) && !Language.BY_DEFAULT.getCode().equals(languageParam) && filterName != null && filterValue != null && LogicalUtils.isNotNullNorEmptyString(tableSortingCode) && pageSize != null && pageNumber != null);
 		return hasAllParameters;
 	}
 
@@ -69,7 +69,7 @@ public record TableSearchDTO(
 		final String predefinedFilterEntityName = Objects.toString(predefinedFilterEntity);
 		final String pageSizeString = Objects.toString(pageSize);
 		final String pageNumberString = Objects.toString(pageNumber);
-		final String result = StringUtils.getStringJoined("TableSearchDTO [languageParam=", languageParam, ", predefinedFilterName=", predefinedFilterName, ", predefinedFilterEntityName=", predefinedFilterEntityName, ", predefinedFilterValue=", predefinedFilterValue, ", tableFieldCode=", tableFieldCode, ", tableFieldValue=", tableFieldValue, ", tableSortingCode=", tableSortingCode, ", pageSize=", pageSizeString, ", pageNumber=", pageNumberString, "]");
+		final String result = StringUtils.getStringJoined("TableSearchDTO [languageParam=", languageParam, ", predefinedFilterName=", predefinedFilterName, ", predefinedFilterEntityName=", predefinedFilterEntityName, ", predefinedFilterValue=", predefinedFilterValue, ", filterName=", filterName, ", filterValue=", filterValue, ", tableSortingCode=", tableSortingCode, ", pageSize=", pageSizeString, ", pageNumber=", pageNumberString, "]");
 		return result;
 	}
 }

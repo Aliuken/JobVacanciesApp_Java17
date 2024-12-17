@@ -152,13 +152,13 @@ public class AuthUserController extends AbstractEntityControllerWithoutPredefine
 			@Validated TableSearchDTO tableSearchDTO, BindingResult bindingResult,
 			HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse,
 			@RequestParam(name="languageParam", required=false) String languageCode,
-			@RequestParam(name="tableFieldCode", required=false) String tableFieldCode,
-			@RequestParam(name="tableFieldValue", required=false) String tableFieldValue,
+			@RequestParam(name="filterName", required=false) String filterName,
+			@RequestParam(name="filterValue", required=false) String filterValue,
 			@RequestParam(name="tableSortingCode", required=false) String tableSortingCode,
 			@RequestParam(name="pageSize", required=false) Integer pageSize,
 			@RequestParam(name="pageNumber", required=false) Integer pageNumber) {
 
-		tableSearchDTO = new TableSearchDTO(languageCode, null, null, tableFieldCode, tableFieldValue, tableSortingCode, pageSize, pageNumber);
+		tableSearchDTO = new TableSearchDTO(languageCode, null, null, filterName, filterValue, tableSortingCode, pageSize, pageNumber);
 
 		this.index(model, pageable, tableSearchDTO, bindingResult);
 		final byte[] pdfByteArray = this.storeAndDownloadPdf(tableSearchDTO, model, PageEntityEnum.AUTH_USER, httpServletRequest, httpServletResponse);
@@ -185,8 +185,8 @@ public class AuthUserController extends AbstractEntityControllerWithoutPredefine
 	@GetMapping("/auth-users/delete/{authUserId}")
 	public String deleteById(RedirectAttributes redirectAttributes, @PathVariable("authUserId") long authUserId,
 			@RequestParam(name="languageParam", required=false) String languageCode,
-			@RequestParam(name="tableFieldCode", required=false) String tableFieldCode,
-			@RequestParam(name="tableFieldValue", required=false) String tableFieldValue,
+			@RequestParam(name="filterName", required=false) String filterName,
+			@RequestParam(name="filterValue", required=false) String filterValue,
 			@RequestParam(name="tableSortingCode", required=false) String tableSortingCode,
 			@RequestParam(name="pageSize", required=false) String pageSize,
 			@RequestParam(name="pageNumber", required=false) String pageNumber) {
@@ -196,7 +196,7 @@ public class AuthUserController extends AbstractEntityControllerWithoutPredefine
 		final String successMsg = I18nUtils.getInternationalizedMessage(languageCode, "deleteAuthUser.successMsg", null);
 		redirectAttributes.addFlashAttribute("successMsg", successMsg);
 
-		return ControllerNavigationUtils.getNextRedirectWithTable("/auth-users/index", languageCode, tableFieldCode, tableFieldValue, tableSortingCode, pageSize, pageNumber);
+		return ControllerNavigationUtils.getNextRedirectWithTable("/auth-users/index", languageCode, filterName, filterValue, tableSortingCode, pageSize, pageNumber);
 	}
 
 	public void deleteById(long authUserId) {
@@ -240,8 +240,8 @@ public class AuthUserController extends AbstractEntityControllerWithoutPredefine
 	@GetMapping("/auth-users/lock/{authUserId}")
 	public String lock(RedirectAttributes redirectAttributes, @PathVariable("authUserId") long authUserId,
 			@RequestParam(name="languageParam", required=false) String languageCode,
-			@RequestParam(name="tableFieldCode", required=false) String tableFieldCode,
-			@RequestParam(name="tableFieldValue", required=false) String tableFieldValue,
+			@RequestParam(name="filterName", required=false) String filterName,
+			@RequestParam(name="filterValue", required=false) String filterValue,
 			@RequestParam(name="tableSortingCode", required=false) String tableSortingCode,
 			@RequestParam(name="pageSize", required=false) String pageSize,
 			@RequestParam(name="pageNumber", required=false) String pageNumber) {
@@ -250,7 +250,7 @@ public class AuthUserController extends AbstractEntityControllerWithoutPredefine
 		final String successMsg = I18nUtils.getInternationalizedMessage(languageCode, "lockAuthUser.successMsg", null);
 		redirectAttributes.addFlashAttribute("successMsg", successMsg);
 
-		return ControllerNavigationUtils.getNextRedirectWithTable("/auth-users/index", languageCode, tableFieldCode, tableFieldValue, tableSortingCode, pageSize, pageNumber);
+		return ControllerNavigationUtils.getNextRedirectWithTable("/auth-users/index", languageCode, filterName, filterValue, tableSortingCode, pageSize, pageNumber);
 	}
 
 	/**
@@ -259,8 +259,8 @@ public class AuthUserController extends AbstractEntityControllerWithoutPredefine
 	@GetMapping("/auth-users/unlock/{authUserId}")
 	public String unlock(RedirectAttributes redirectAttributes, @PathVariable("authUserId") long authUserId,
 			@RequestParam(name="languageParam", required=false) String languageCode,
-			@RequestParam(name="tableFieldCode", required=false) String tableFieldCode,
-			@RequestParam(name="tableFieldValue", required=false) String tableFieldValue,
+			@RequestParam(name="filterName", required=false) String filterName,
+			@RequestParam(name="filterValue", required=false) String filterValue,
 			@RequestParam(name="tableSortingCode", required=false) String tableSortingCode,
 			@RequestParam(name="pageSize", required=false) String pageSize,
 			@RequestParam(name="pageNumber", required=false) String pageNumber) {
@@ -269,7 +269,7 @@ public class AuthUserController extends AbstractEntityControllerWithoutPredefine
 		final String successMsg = I18nUtils.getInternationalizedMessage(languageCode, "unlockAuthUser.successMsg", null);
 		redirectAttributes.addFlashAttribute("successMsg", successMsg);
 
-		return ControllerNavigationUtils.getNextRedirectWithTable("/auth-users/index", languageCode, tableFieldCode, tableFieldValue, tableSortingCode, pageSize, pageNumber);
+		return ControllerNavigationUtils.getNextRedirectWithTable("/auth-users/index", languageCode, filterName, filterValue, tableSortingCode, pageSize, pageNumber);
 	}
 
 	@Override
