@@ -14,7 +14,7 @@ import com.aliuken.jobvacanciesapp.model.entity.AuthUser;
 import com.aliuken.jobvacanciesapp.model.entity.JobRequest;
 import com.aliuken.jobvacanciesapp.model.entity.JobVacancy;
 import com.aliuken.jobvacanciesapp.model.entity.enumtype.TableField;
-import com.aliuken.jobvacanciesapp.model.entity.enumtype.TableSorting;
+import com.aliuken.jobvacanciesapp.model.entity.enumtype.TableSortingDirection;
 import com.aliuken.jobvacanciesapp.util.javase.LogicalUtils;
 import com.aliuken.jobvacanciesapp.util.javase.StringUtils;
 import com.aliuken.jobvacanciesapp.util.javase.ThrowableUtils;
@@ -41,11 +41,12 @@ public abstract class JobRequestServiceSuperclass extends AbstractEntityWithAuth
 		Exception exception;
 		try {
 			if(tableSearchDTO != null) {
-				final TableField tableField = tableSearchDTO.getFilterTableField();
+				final TableField filterTableField = tableSearchDTO.getFilterTableField();
 				final String filterValue = tableSearchDTO.filterValue();
-				final TableSorting tableSorting = TableSorting.findByCode(tableSearchDTO.tableSortingCode());
+				final TableField tableSortingField = tableSearchDTO.getTableSortingField();
+				final TableSortingDirection tableSortingDirection = tableSearchDTO.getTableSortingDirection();
 
-				page = this.getJobVacancyJobRequestsPage(jobVacancyId, tableField, filterValue, tableSorting, pageable);
+				page = this.getJobVacancyJobRequestsPage(jobVacancyId, filterTableField, filterValue, tableSortingField, tableSortingDirection, pageable);
 			} else {
 				final Example<JobRequest> example = this.getJobVacancyIdExample(jobVacancyId);
 				page = this.findAll(example, pageable);
@@ -64,10 +65,10 @@ public abstract class JobRequestServiceSuperclass extends AbstractEntityWithAuth
 		return pageWithExceptionDTO;
 	}
 
-	private Page<JobRequest> getJobVacancyJobRequestsPage(final Long jobVacancyId, final TableField tableField, final String filterValue, final TableSorting tableSorting, final Pageable pageable) {
+	private Page<JobRequest> getJobVacancyJobRequestsPage(final Long jobVacancyId, final TableField filterTableField, final String filterValue, final TableField tableSortingField, final TableSortingDirection tableSortingDirection, final Pageable pageable) {
 		final Page<JobRequest> page;
-		if(tableField != null && LogicalUtils.isNotNullNorEmptyString(filterValue)) {
-			switch(tableField) {
+		if(filterTableField != null && LogicalUtils.isNotNullNorEmptyString(filterValue)) {
+			switch(filterTableField) {
 				case ID -> {
 					final JobVacancy jobVacancy = new JobVacancy();
 					jobVacancy.setId(jobVacancyId);
@@ -88,12 +89,12 @@ public abstract class JobRequestServiceSuperclass extends AbstractEntityWithAuth
 					jobRequestSearch.setJobVacancy(jobVacancy);
 
 					final Example<JobRequest> example = Example.of(jobRequestSearch, JOB_VACANCY_ID_AND_ID_EXAMPLE_MATCHER);
-					page = this.findAll(example, pageable, tableSorting);
+					page = this.findAll(example, pageable, tableSortingField, tableSortingDirection);
 					break;
 				}
 				case FIRST_REGISTRATION_DATE_TIME -> {
 					final Specification<JobRequest> specification = this.equalsJobVacancyIdAndFirstRegistrationDateTime(jobVacancyId, filterValue);
-					page = this.findAll(pageable, tableSorting, specification);
+					page = this.findAll(pageable, tableSortingField, tableSortingDirection, specification);
 					break;
 				}
 				case FIRST_REGISTRATION_AUTH_USER_EMAIL -> {
@@ -108,12 +109,12 @@ public abstract class JobRequestServiceSuperclass extends AbstractEntityWithAuth
 					jobRequestSearch.setJobVacancy(jobVacancy);
 
 					final Example<JobRequest> example = Example.of(jobRequestSearch, JOB_VACANCY_ID_AND_FIRST_REGISTRATION_AUTH_USER_EMAIL_EXAMPLE_MATCHER);
-					page = this.findAll(example, pageable, tableSorting);
+					page = this.findAll(example, pageable, tableSortingField, tableSortingDirection);
 					break;
 				}
 				case LAST_MODIFICATION_DATE_TIME -> {
 					final Specification<JobRequest> specification = this.equalsJobVacancyIdAndLastModificationDateTime(jobVacancyId, filterValue);
-					page = this.findAll(pageable, tableSorting, specification);
+					page = this.findAll(pageable, tableSortingField, tableSortingDirection, specification);
 					break;
 				}
 				case LAST_MODIFICATION_AUTH_USER_EMAIL -> {
@@ -128,16 +129,16 @@ public abstract class JobRequestServiceSuperclass extends AbstractEntityWithAuth
 					jobRequestSearch.setJobVacancy(jobVacancy);
 
 					final Example<JobRequest> example = Example.of(jobRequestSearch, JOB_VACANCY_ID_AND_LAST_MODIFICATION_AUTH_USER_EMAIL_EXAMPLE_MATCHER);
-					page = this.findAll(example, pageable, tableSorting);
+					page = this.findAll(example, pageable, tableSortingField, tableSortingDirection);
 					break;
 				}
 				default -> {
-					throw new IllegalArgumentException(StringUtils.getStringJoined("TableField '", tableField.name(), "' not supported"));
+					throw new IllegalArgumentException(StringUtils.getStringJoined("TableField '", filterTableField.name(), "' not supported"));
 				}
 			}
 		} else {
 			final Example<JobRequest> example = this.getJobVacancyIdExample(jobVacancyId);
-			page = this.findAll(example, pageable, tableSorting);
+			page = this.findAll(example, pageable, tableSortingField, tableSortingDirection);
 		}
 
 		return page;
