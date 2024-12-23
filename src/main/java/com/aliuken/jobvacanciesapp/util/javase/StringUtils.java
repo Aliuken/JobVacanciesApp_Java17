@@ -1,5 +1,7 @@
 package com.aliuken.jobvacanciesapp.util.javase;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.Map;
 import java.util.StringJoiner;
@@ -108,6 +110,22 @@ public class StringUtils {
 		} else {
 			result = Constants.EMPTY_STRING;
 		}
+		return result;
+	}
+
+	public static String getUrlWithoutParametersAndFragment(String url) throws URISyntaxException {
+		final URI initialURI = new URI(url);
+		final URI finalURI = new URI(initialURI.getScheme(), initialURI.getAuthority(), initialURI.getPath(), null, null);
+
+		final String result = finalURI.toString();
+		return result;
+	}
+
+	public static String getUrlPath(String url) throws URISyntaxException {
+		final URI initialURI = new URI(url);
+		final URI finalURI = new URI(null, null, initialURI.getPath(), null, null);
+
+		final String result = finalURI.toString();
 		return result;
 	}
 }

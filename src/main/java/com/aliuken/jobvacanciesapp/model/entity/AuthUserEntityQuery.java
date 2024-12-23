@@ -1,5 +1,6 @@
 package com.aliuken.jobvacanciesapp.model.entity;
 
+import java.net.URISyntaxException;
 import java.util.Objects;
 
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -227,9 +228,15 @@ public class AuthUserEntityQuery extends AbstractEntityWithAuthUser {
 	}
 
 	public String getEndpointTypeString() {
-		final EndpointType endpointType = EndpointType.getInstance(RequestMethod.GET.toString(), queryUrl);
-		final String endpointTypeString = (endpointType != null) ? endpointType.toString() : null;
-		return endpointTypeString;
+		try {
+			final String httpMethod = RequestMethod.GET.toString();
+			final String queryUrlPath = StringUtils.getUrlPath(queryUrl);
+			final EndpointType endpointType = EndpointType.getInstance(httpMethod, queryUrlPath);
+			final String endpointTypeString = (endpointType != null) ? endpointType.toString() : null;
+			return endpointTypeString;
+		} catch (URISyntaxException e) {
+			return null;
+		}
 	}
 
 	@Override

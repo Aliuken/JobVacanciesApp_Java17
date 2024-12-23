@@ -242,6 +242,8 @@ public class AuthUserQueryReport<T extends AbstractEntity> extends PdfDocument {
 			PdfDocument.addCellWithPhrase(userInfo, languageField, userLanguageMessage);
 			PdfDocument.addCellWithPhrase(userInfo, pdfDocumentPageFormatField, pdfDocumentPageFormatMessage);
 			PdfDocument.addCellWithPhrase(userInfo, null, null);
+			PdfDocument.addCellWithPhrase(userInfo, null, null);
+			PdfDocument.addCellWithPhrase(userInfo, null, null);
 
 			final String predefinedFilterEntityName = authUserEntityQuery.getPredefinedFilterEntityName();
 			final String predefinedFilterValue = authUserEntityQuery.getPredefinedFilterValue();

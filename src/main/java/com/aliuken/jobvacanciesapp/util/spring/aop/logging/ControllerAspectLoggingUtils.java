@@ -32,7 +32,7 @@ public class ControllerAspectLoggingUtils {
 		MDC.put(LoggingStats.HTTP_METHOD.getKey(), requestMethod.toString());
 		MDC.put(LoggingStats.MAPPING_PATH.getKey(), mappingPath);
 
-		final String requestURI = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest().getRequestURI();
+		final String requestURI = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getRequestURI();
 		MDC.put(LoggingStats.INFORMED_PATH.getKey(), requestURI);
 
 		MDC.put(LoggingStats.OPERATION.getKey(), operation);
