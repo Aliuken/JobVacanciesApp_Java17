@@ -22,7 +22,7 @@ public enum TableField implements Serializable, Internationalizable {
 
 	private final static Predicate<TableField> VALUES_PREDICATE = (tableField -> true);
 	private final static Predicate<TableField> VALUES_WITHOUT_AUTH_USER_PREDICATE = (tableField -> !tableField.isAuthUserField);
-	private final static Predicate<TableField> VALUES_WITHOUT_LAST_MODIFICATION = (tableField -> !tableField.isLastModificationField);
+	private final static Predicate<TableField> VALUES_WITHOUT_LAST_MODIFICATION_PREDICATE = (tableField -> !tableField.isLastModificationField);
 	private final static Predicate<TableField> VALUES_WITHOUT_AUTH_USER_AND_LAST_MODIFICATION_PREDICATE = (tableField -> (!tableField.isAuthUserField && !tableField.isLastModificationField));
 
 	@NotNull
@@ -102,7 +102,7 @@ public enum TableField implements Serializable, Internationalizable {
 		final Predicate<? super TableField> valuesPredicate;
 		if(entityWithAuthUserFields) {
 			if(isUnmodifiableEntity) {
-				valuesPredicate = TableField.VALUES_WITHOUT_LAST_MODIFICATION;
+				valuesPredicate = TableField.VALUES_WITHOUT_LAST_MODIFICATION_PREDICATE;
 			} else {
 				valuesPredicate = TableField.VALUES_PREDICATE;
 			}
