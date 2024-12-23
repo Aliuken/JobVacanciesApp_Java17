@@ -283,12 +283,8 @@ public interface UpgradedJpaRepository<T extends AbstractEntity> extends JpaRepo
 
 			final String authUserFieldPath = tableSortingField.getAuthUserFieldPath();
 
-			if(authUserFieldPath != null) {
-				if(AuthUser.class.equals(entityClass)) {
-					finalPageable = UpgradedJpaRepository.getFinalPageable(pageable, tableFieldPath, sortDirection);
-				} else {
-					finalPageable = UpgradedJpaRepository.getFinalPageable(pageable, authUserFieldPath, sortDirection);
-				}
+			if(authUserFieldPath != null && !AuthUser.class.equals(entityClass)) {
+				finalPageable = UpgradedJpaRepository.getFinalPageable(pageable, authUserFieldPath, sortDirection);
 			} else {
 				finalPageable = UpgradedJpaRepository.getFinalPageable(pageable, tableFieldPath, sortDirection);
 			}
