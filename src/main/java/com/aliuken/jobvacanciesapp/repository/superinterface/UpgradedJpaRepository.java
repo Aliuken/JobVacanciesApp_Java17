@@ -272,7 +272,8 @@ public interface UpgradedJpaRepository<T extends AbstractEntity> extends JpaRepo
 		if(tableSortingField == null) {
 			finalPageable = pageable;
 		} else {
-			final String tableFieldPath = tableSortingField.getFieldPath();
+			final String sortFieldPath = tableSortingField.getFieldPath();
+			final String authUserSortFieldPath = tableSortingField.getAuthUserFieldPath();
 
 			final Sort.Direction sortDirection;
 			if(tableSortingDirection != null) {
@@ -281,12 +282,10 @@ public interface UpgradedJpaRepository<T extends AbstractEntity> extends JpaRepo
 				sortDirection = Sort.Direction.ASC;
 			}
 
-			final String authUserFieldPath = tableSortingField.getAuthUserFieldPath();
-
-			if(authUserFieldPath != null && !AuthUser.class.equals(entityClass)) {
-				finalPageable = UpgradedJpaRepository.getFinalPageable(pageable, authUserFieldPath, sortDirection);
+			if(authUserSortFieldPath != null && !AuthUser.class.equals(entityClass)) {
+				finalPageable = UpgradedJpaRepository.getFinalPageable(pageable, authUserSortFieldPath, sortDirection);
 			} else {
-				finalPageable = UpgradedJpaRepository.getFinalPageable(pageable, tableFieldPath, sortDirection);
+				finalPageable = UpgradedJpaRepository.getFinalPageable(pageable, sortFieldPath, sortDirection);
 			}
 		}
 
