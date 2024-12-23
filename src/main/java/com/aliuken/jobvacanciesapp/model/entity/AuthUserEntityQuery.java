@@ -2,8 +2,11 @@ package com.aliuken.jobvacanciesapp.model.entity;
 
 import java.util.Objects;
 
+import org.springframework.web.bind.annotation.RequestMethod;
+
 import com.aliuken.jobvacanciesapp.Constants;
 import com.aliuken.jobvacanciesapp.config.ConfigPropertiesBean;
+import com.aliuken.jobvacanciesapp.enumtype.EndpointType;
 import com.aliuken.jobvacanciesapp.model.dto.TableSearchDTO;
 import com.aliuken.jobvacanciesapp.model.entity.enumtype.Language;
 import com.aliuken.jobvacanciesapp.model.entity.enumtype.PageEntityEnum;
@@ -221,6 +224,12 @@ public class AuthUserEntityQuery extends AbstractEntityWithAuthUser {
 		Integer realPageNumber = this.getRealPageNumber();
 		final String pageNumberString = Objects.toString(realPageNumber);
 		return pageNumberString;
+	}
+
+	public String getEndpointTypeString() {
+		final EndpointType endpointType = EndpointType.getInstance(RequestMethod.GET.toString(), queryUrl);
+		final String endpointTypeString = (endpointType != null) ? endpointType.toString() : null;
+		return endpointTypeString;
 	}
 
 	@Override

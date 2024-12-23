@@ -11,9 +11,9 @@ import jakarta.validation.constraints.NotNull;
 
 public enum TableField implements Serializable, Internationalizable {
 	ID("id", "id", null, "abstractEntity.id", false),
-	USER_EMAIL("email", "email", "authUser.email", "abstractEntityWithAuthUser.email", false),
-	USER_NAME("name", "name", "authUser.name", "abstractEntityWithAuthUser.name", false),
-	USER_SURNAMES("surnames", "surnames", "authUser.surnames", "abstractEntityWithAuthUser.surnames", false),
+	USER_EMAIL("userEmail", "email", "authUser.email", "abstractEntityWithAuthUser.email", false),
+	USER_NAME("userName", "name", "authUser.name", "abstractEntityWithAuthUser.name", false),
+	USER_SURNAMES("userSurnames", "surnames", "authUser.surnames", "abstractEntityWithAuthUser.surnames", false),
 	FIRST_REGISTRATION_DATE_TIME("firstRegistrationDateTime", "firstRegistrationDateTime", null, "abstractEntity.firstRegistrationDateTime", false),
 	FIRST_REGISTRATION_AUTH_USER_EMAIL("firstRegistrationAuthUserEmail", "firstRegistrationAuthUser.email", null, "abstractEntity.firstRegistrationAuthUserEmail", false),
 	LAST_MODIFICATION_DATE_TIME("lastModificationDateTime", "lastModificationDateTime", null, "abstractEntity.lastModificationDateTime", true),

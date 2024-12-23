@@ -289,6 +289,7 @@ public class AuthUserQueryReport<T extends AbstractEntity> extends PdfDocument {
 		final List<PdfPCell> queryInfo = new ArrayList<>();
 
 		final String idField = I18nUtils.getInternationalizedMessage(queryLanguage, "queryReport.query.id", null);
+		final String typeField = I18nUtils.getInternationalizedMessage(queryLanguage, "queryReport.query.type", null);
 		final String dateField = I18nUtils.getInternationalizedMessage(queryLanguage, "queryReport.query.date", null);
 		final String sortingFieldField = I18nUtils.getInternationalizedMessage(queryLanguage, "queryReport.query.sortingField", null);
 		final String sortingDirectionField = I18nUtils.getInternationalizedMessage(queryLanguage, "queryReport.query.sortingDirection", null);
@@ -303,6 +304,7 @@ public class AuthUserQueryReport<T extends AbstractEntity> extends PdfDocument {
 		final String queryLanguageMessage = queryLanguage.getMessage(queryLanguage);
 
 		PdfDocument.addCellWithPhrase(queryInfo, idField, authUserEntityQuery.getIdString());
+		PdfDocument.addCellWithPhrase(queryInfo, typeField, authUserEntityQuery.getEndpointTypeString());
 		PdfDocument.addCellWithPhrase(queryInfo, dateField, authUserEntityQuery.getFirstRegistrationDateTimeString());
 		PdfDocument.addCellWithPhrase(queryInfo, sortingFieldField, tableSortingFieldMessage);
 		PdfDocument.addCellWithPhrase(queryInfo, sortingDirectionField, tableDirectionFieldMessage);
