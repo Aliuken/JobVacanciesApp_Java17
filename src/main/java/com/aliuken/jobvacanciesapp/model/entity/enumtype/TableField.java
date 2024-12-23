@@ -6,24 +6,23 @@ import java.util.function.Predicate;
 import com.aliuken.jobvacanciesapp.Constants;
 import com.aliuken.jobvacanciesapp.superinterface.Internationalizable;
 import com.aliuken.jobvacanciesapp.util.javase.LogicalUtils;
-import com.aliuken.jobvacanciesapp.util.javase.StringUtils;
 
 import jakarta.validation.constraints.NotNull;
 
 public enum TableField implements Serializable, Internationalizable {
-	ID("id", "id", "abstractEntity.id", false, false),
-	USER_EMAIL("email", "email", "abstractEntityWithAuthUser.email", true, false),
-	USER_NAME("name", "name", "abstractEntityWithAuthUser.name", true, false),
-	USER_SURNAMES("surnames", "surnames", "abstractEntityWithAuthUser.surnames", true, false),
-	FIRST_REGISTRATION_DATE_TIME("firstRegistrationDateTime", "firstRegistrationDateTime", "abstractEntity.firstRegistrationDateTime", false, false),
-	FIRST_REGISTRATION_AUTH_USER_EMAIL("firstRegistrationAuthUserEmail", "firstRegistrationAuthUser.email", "abstractEntity.firstRegistrationAuthUserEmail", false, false),
-	LAST_MODIFICATION_DATE_TIME("lastModificationDateTime", "lastModificationDateTime", "abstractEntity.lastModificationDateTime", false, true),
-	LAST_MODIFICATION_AUTH_USER_EMAIL("lastModificationAuthUserEmail", "lastModificationAuthUser.email", "abstractEntity.lastModificationAuthUserEmail", false, true);
+	ID("id", "id", null, "abstractEntity.id", false),
+	USER_EMAIL("email", "email", "authUser.email", "abstractEntityWithAuthUser.email", false),
+	USER_NAME("name", "name", "authUser.name", "abstractEntityWithAuthUser.name", false),
+	USER_SURNAMES("surnames", "surnames", "authUser.surnames", "abstractEntityWithAuthUser.surnames", false),
+	FIRST_REGISTRATION_DATE_TIME("firstRegistrationDateTime", "firstRegistrationDateTime", null, "abstractEntity.firstRegistrationDateTime", false),
+	FIRST_REGISTRATION_AUTH_USER_EMAIL("firstRegistrationAuthUserEmail", "firstRegistrationAuthUser.email", null, "abstractEntity.firstRegistrationAuthUserEmail", false),
+	LAST_MODIFICATION_DATE_TIME("lastModificationDateTime", "lastModificationDateTime", null, "abstractEntity.lastModificationDateTime", true),
+	LAST_MODIFICATION_AUTH_USER_EMAIL("lastModificationAuthUserEmail", "lastModificationAuthUser.email", null, "abstractEntity.lastModificationAuthUserEmail", true);
 
 	private final static Predicate<TableField> VALUES_PREDICATE = (tableField -> true);
-	private final static Predicate<TableField> VALUES_WITHOUT_AUTH_USER_PREDICATE = (tableField -> !tableField.isAuthUserField);
+	private final static Predicate<TableField> VALUES_WITHOUT_AUTH_USER_PREDICATE = (tableField -> tableField.isNotAuthUserField());
 	private final static Predicate<TableField> VALUES_WITHOUT_LAST_MODIFICATION_PREDICATE = (tableField -> !tableField.isLastModificationField);
-	private final static Predicate<TableField> VALUES_WITHOUT_AUTH_USER_AND_LAST_MODIFICATION_PREDICATE = (tableField -> (!tableField.isAuthUserField && !tableField.isLastModificationField));
+	private final static Predicate<TableField> VALUES_WITHOUT_AUTH_USER_AND_LAST_MODIFICATION_PREDICATE = (tableField -> (tableField.isNotAuthUserField() && !tableField.isLastModificationField));
 
 	@NotNull
 	private final String code;
@@ -31,25 +30,18 @@ public enum TableField implements Serializable, Internationalizable {
 	@NotNull
 	private final String fieldPath;
 
+	private final String authUserFieldPath;
+
 	@NotNull
 	private final String messageName;
 
-	private final boolean isAuthUserField;
-
-	private final String authUserFieldPath;
-
 	private final boolean isLastModificationField;
 
-	private TableField(final String code, final String fieldPath, final String messageName, final boolean isAuthUserField, final boolean isLastModificationField) {
+	private TableField(final String code, final String fieldPath, final String authUserFieldPath, final String messageName, final boolean isLastModificationField) {
 		this.code = code;
 		this.fieldPath = fieldPath;
 		this.messageName = messageName;
-		this.isAuthUserField = isAuthUserField;
-		if(isAuthUserField) {
-			this.authUserFieldPath = StringUtils.getStringJoined("authUser.", fieldPath);
-		} else {
-			this.authUserFieldPath = null;
-		}
+		this.authUserFieldPath = authUserFieldPath;
 		this.isLastModificationField = isLastModificationField;
 	}
 
@@ -61,17 +53,17 @@ public enum TableField implements Serializable, Internationalizable {
 		return fieldPath;
 	}
 
+	public String getAuthUserFieldPath() {
+		return authUserFieldPath;
+	}
+
+	public boolean isNotAuthUserField() {
+		return (authUserFieldPath == null);
+	}
+
 	@Override
 	public String getMessageName() {
 		return messageName;
-	}
-
-	public boolean isAuthUserField() {
-		return isAuthUserField;
-	}
-
-	public String getAuthUserFieldPath() {
-		return authUserFieldPath;
 	}
 
 	public boolean isLastModificationField() {
