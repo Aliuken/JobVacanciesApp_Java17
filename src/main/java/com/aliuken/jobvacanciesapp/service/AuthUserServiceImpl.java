@@ -33,19 +33,19 @@ public class AuthUserServiceImpl extends AuthUserService {
 	protected Example<AuthUser> getDefaultEntityPageExample(final TableField filterTableField, final String filterValue) {
 		final Example<AuthUser> example;
 		switch(filterTableField) {
-			case EMAIL -> {
+			case USER_EMAIL -> {
 				final AuthUser authUserSearch = new AuthUser();
 				authUserSearch.setEmail(filterValue);
 				example = Example.of(authUserSearch, EMAIL_EXAMPLE_MATCHER);
 				break;
 			}
-			case NAME -> {
+			case USER_NAME -> {
 				final AuthUser authUserSearch = new AuthUser();
 				authUserSearch.setName(filterValue);
 				example = Example.of(authUserSearch, NAME_EXAMPLE_MATCHER);
 				break;
 			}
-			case SURNAMES -> {
+			case USER_SURNAMES -> {
 				final AuthUser authUserSearch = new AuthUser();
 				authUserSearch.setSurnames(filterValue);
 				example = Example.of(authUserSearch, SURNAMES_EXAMPLE_MATCHER);

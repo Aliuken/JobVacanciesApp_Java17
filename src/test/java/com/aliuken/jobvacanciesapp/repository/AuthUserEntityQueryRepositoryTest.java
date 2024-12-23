@@ -145,7 +145,7 @@ public class AuthUserEntityQueryRepositoryTest extends AbstractTransactionalJUni
 		authUserEntityQuery.setInitialPdfDocumentPageFormat(PdfDocumentPageFormat.A4_VERTICAL);
 		authUserEntityQuery.setFinalPdfDocumentPageFormat(PdfDocumentPageFormat.A3_HORIZONTAL);
 		authUserEntityQuery.setLanguage(Language.ENGLISH);
-		authUserEntityQuery.setTableSortingField(TableField.EMAIL);
+		authUserEntityQuery.setTableSortingField(TableField.USER_EMAIL);
 		authUserEntityQuery.setTableSortingDirection(TableSortingDirection.DESC);
 		authUserEntityQuery.setTablePageSize(TablePageSize.SIZE_100);
 		authUserEntityQuery.setPageNumber(4);
@@ -160,7 +160,7 @@ public class AuthUserEntityQueryRepositoryTest extends AbstractTransactionalJUni
 		Assertions.assertEquals(PdfDocumentPageFormat.A4_VERTICAL, authUserEntityQuery.getInitialPdfDocumentPageFormat());
 		Assertions.assertEquals(PdfDocumentPageFormat.A3_HORIZONTAL, authUserEntityQuery.getFinalPdfDocumentPageFormat());
 		Assertions.assertEquals(Language.ENGLISH, authUserEntityQuery.getLanguage());
-		Assertions.assertEquals(TableField.EMAIL, authUserEntityQuery.getTableSortingField());
+		Assertions.assertEquals(TableField.USER_EMAIL, authUserEntityQuery.getTableSortingField());
 		Assertions.assertEquals(TableSortingDirection.DESC, authUserEntityQuery.getTableSortingDirection());
 		Assertions.assertEquals(TablePageSize.SIZE_100, authUserEntityQuery.getTablePageSize());
 		Assertions.assertEquals(4, authUserEntityQuery.getPageNumber());

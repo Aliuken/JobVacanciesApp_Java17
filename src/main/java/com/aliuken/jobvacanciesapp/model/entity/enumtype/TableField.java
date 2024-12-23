@@ -12,9 +12,9 @@ import jakarta.validation.constraints.NotNull;
 
 public enum TableField implements Serializable, Internationalizable {
 	ID("id", "id", "abstractEntity.id", false, false),
-	EMAIL("email", "email", "abstractEntityWithAuthUser.email", true, false),
-	NAME("name", "name", "abstractEntityWithAuthUser.name", true, false),
-	SURNAMES("surnames", "surnames", "abstractEntityWithAuthUser.surnames", true, false),
+	USER_EMAIL("email", "email", "abstractEntityWithAuthUser.email", true, false),
+	USER_NAME("name", "name", "abstractEntityWithAuthUser.name", true, false),
+	USER_SURNAMES("surnames", "surnames", "abstractEntityWithAuthUser.surnames", true, false),
 	FIRST_REGISTRATION_DATE_TIME("firstRegistrationDateTime", "firstRegistrationDateTime", "abstractEntity.firstRegistrationDateTime", false, false),
 	FIRST_REGISTRATION_AUTH_USER_EMAIL("firstRegistrationAuthUserEmail", "firstRegistrationAuthUser.email", "abstractEntity.firstRegistrationAuthUserEmail", false, false),
 	LAST_MODIFICATION_DATE_TIME("lastModificationDateTime", "lastModificationDateTime", "abstractEntity.lastModificationDateTime", false, true),
