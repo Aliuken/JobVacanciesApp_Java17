@@ -121,19 +121,19 @@ public abstract class AbstractEntityWithAuthUserServiceSuperclass<T extends Abst
 					page = this.findAll(example, pageable, tableSortingField, tableSortingDirection);
 					break;
 				}
-				case USER_EMAIL -> {
+				case AUTH_USER_EMAIL -> {
 					final T abstractEntitySearch = this.getNewEntityWithAuthUserEmail(filterValue);
 					final Example<T> example = Example.of(abstractEntitySearch, AUTH_USER_EMAIL_EXAMPLE_MATCHER);
 					page = this.findAll(example, pageable, tableSortingField, tableSortingDirection);
 					break;
 				}
-				case USER_NAME -> {
+				case AUTH_USER_NAME -> {
 					final T abstractEntitySearch = this.getNewEntityWithAuthUserName(filterValue);
 					final Example<T> example = Example.of(abstractEntitySearch, AUTH_USER_NAME_EXAMPLE_MATCHER);
 					page = this.findAll(example, pageable, tableSortingField, tableSortingDirection);
 					break;
 				}
-				case USER_SURNAMES -> {
+				case AUTH_USER_SURNAMES -> {
 					final T abstractEntitySearch = this.getNewEntityWithAuthUserSurnames(filterValue);
 					final Example<T> example = Example.of(abstractEntitySearch, AUTH_USER_SURNAMES_EXAMPLE_MATCHER);
 					page = this.findAll(example, pageable, tableSortingField, tableSortingDirection);

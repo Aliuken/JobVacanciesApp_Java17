@@ -6,42 +6,53 @@ import java.util.function.Predicate;
 import com.aliuken.jobvacanciesapp.Constants;
 import com.aliuken.jobvacanciesapp.superinterface.Internationalizable;
 import com.aliuken.jobvacanciesapp.util.javase.LogicalUtils;
+import com.aliuken.jobvacanciesapp.util.javase.StringUtils;
 
 import jakarta.validation.constraints.NotNull;
 
 public enum TableField implements Serializable, Internationalizable {
-	ID("id", "id", null, "abstractEntity.id", false),
-	USER_EMAIL("userEmail", "email", "authUser.email", "abstractEntityWithAuthUser.email", false),
-	USER_NAME("userName", "name", "authUser.name", "abstractEntityWithAuthUser.name", false),
-	USER_SURNAMES("userSurnames", "surnames", "authUser.surnames", "abstractEntityWithAuthUser.surnames", false),
-	FIRST_REGISTRATION_DATE_TIME("firstRegistrationDateTime", "firstRegistrationDateTime", null, "abstractEntity.firstRegistrationDateTime", false),
-	FIRST_REGISTRATION_AUTH_USER_EMAIL("firstRegistrationAuthUserEmail", "firstRegistrationAuthUser.email", null, "abstractEntity.firstRegistrationAuthUserEmail", false),
-	LAST_MODIFICATION_DATE_TIME("lastModificationDateTime", "lastModificationDateTime", null, "abstractEntity.lastModificationDateTime", true),
-	LAST_MODIFICATION_AUTH_USER_EMAIL("lastModificationAuthUserEmail", "lastModificationAuthUser.email", null, "abstractEntity.lastModificationAuthUserEmail", true);
+	ID("id", null, "id", "abstractEntity.id", false),
+	AUTH_USER_EMAIL("authUserEmail", "authUser", "email", "abstractEntityWithAuthUser.email", false),
+	AUTH_USER_NAME("authUserName", "authUser", "name", "abstractEntityWithAuthUser.name", false),
+	AUTH_USER_SURNAMES("authUserSurnames", "authUser", "surnames", "abstractEntityWithAuthUser.surnames", false),
+	FIRST_REGISTRATION_DATE_TIME("firstRegistrationDateTime", null, "firstRegistrationDateTime", "abstractEntity.firstRegistrationDateTime", false),
+	FIRST_REGISTRATION_AUTH_USER_EMAIL("firstRegistrationAuthUserEmail", null, "firstRegistrationAuthUser.email", "abstractEntity.firstRegistrationAuthUserEmail", false),
+	LAST_MODIFICATION_DATE_TIME("lastModificationDateTime", null, "lastModificationDateTime", "abstractEntity.lastModificationDateTime", true),
+	LAST_MODIFICATION_AUTH_USER_EMAIL("lastModificationAuthUserEmail", null, "lastModificationAuthUser.email", "abstractEntity.lastModificationAuthUserEmail", true);
 
 	private final static Predicate<TableField> VALUES_PREDICATE = (tableField -> true);
-	private final static Predicate<TableField> VALUES_WITHOUT_AUTH_USER_PREDICATE = (tableField -> tableField.isNotAuthUserField());
+	private final static Predicate<TableField> VALUES_WITHOUT_AUTH_USER_PREDICATE = (tableField -> !tableField.isAuthUserField());
 	private final static Predicate<TableField> VALUES_WITHOUT_LAST_MODIFICATION_PREDICATE = (tableField -> !tableField.isLastModificationField);
-	private final static Predicate<TableField> VALUES_WITHOUT_AUTH_USER_AND_LAST_MODIFICATION_PREDICATE = (tableField -> (tableField.isNotAuthUserField() && !tableField.isLastModificationField));
+	private final static Predicate<TableField> VALUES_WITHOUT_AUTH_USER_AND_LAST_MODIFICATION_PREDICATE = (tableField -> (!tableField.isAuthUserField() && !tableField.isLastModificationField));
 
 	@NotNull
 	private final String code;
 
-	@NotNull
-	private final String fieldPath;
+	private final String entityName;
 
-	private final String authUserFieldPath;
+	@NotNull
+	private final String partialFieldPath;
+
+	@NotNull
+	private final String finalFieldPath;
 
 	@NotNull
 	private final String messageName;
 
 	private final boolean isLastModificationField;
 
-	private TableField(final String code, final String fieldPath, final String authUserFieldPath, final String messageName, final boolean isLastModificationField) {
+	private TableField(final String code, final String entityName, final String partialFieldPath, final String messageName, final boolean isLastModificationField) {
 		this.code = code;
-		this.fieldPath = fieldPath;
+		this.entityName = entityName;
+		this.partialFieldPath = partialFieldPath;
+
+		if(entityName != null) {
+			this.finalFieldPath = StringUtils.getStringJoined(entityName, Constants.DOT, partialFieldPath);
+		} else {
+			this.finalFieldPath = partialFieldPath;
+		}
+
 		this.messageName = messageName;
-		this.authUserFieldPath = authUserFieldPath;
 		this.isLastModificationField = isLastModificationField;
 	}
 
@@ -49,16 +60,16 @@ public enum TableField implements Serializable, Internationalizable {
 		return code;
 	}
 
-	public String getFieldPath() {
-		return fieldPath;
+	public String getEntityName() {
+		return entityName;
 	}
 
-	public String getAuthUserFieldPath() {
-		return authUserFieldPath;
+	public String getPartialFieldPath() {
+		return partialFieldPath;
 	}
 
-	public boolean isNotAuthUserField() {
-		return (authUserFieldPath == null);
+	public String getFinalFieldPath() {
+		return finalFieldPath;
 	}
 
 	@Override
@@ -68,6 +79,10 @@ public enum TableField implements Serializable, Internationalizable {
 
 	public boolean isLastModificationField() {
 		return isLastModificationField;
+	}
+
+	public boolean isAuthUserField() {
+		return "authUser".equals(entityName);
 	}
 
 	public static TableField findByCode(final String code) {
