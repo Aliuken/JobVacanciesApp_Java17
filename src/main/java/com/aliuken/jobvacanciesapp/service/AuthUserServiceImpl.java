@@ -37,19 +37,16 @@ public class AuthUserServiceImpl extends AuthUserService {
 				final AuthUser authUserSearch = new AuthUser();
 				authUserSearch.setEmail(filterValue);
 				example = Example.of(authUserSearch, EMAIL_EXAMPLE_MATCHER);
-				break;
 			}
 			case AUTH_USER_NAME -> {
 				final AuthUser authUserSearch = new AuthUser();
 				authUserSearch.setName(filterValue);
 				example = Example.of(authUserSearch, NAME_EXAMPLE_MATCHER);
-				break;
 			}
 			case AUTH_USER_SURNAMES -> {
 				final AuthUser authUserSearch = new AuthUser();
 				authUserSearch.setSurnames(filterValue);
 				example = Example.of(authUserSearch, SURNAMES_EXAMPLE_MATCHER);
-				break;
 			}
 			default -> {
 				throw new IllegalArgumentException(StringUtils.getStringJoined("TableField '", filterTableField.name(), "' not supported"));

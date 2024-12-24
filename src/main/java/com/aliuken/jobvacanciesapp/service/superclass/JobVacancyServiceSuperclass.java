@@ -96,12 +96,10 @@ public abstract class JobVacancyServiceSuperclass extends AbstractEntityServiceS
 
 					final Example<JobVacancy> example = Example.of(jobVacancySearch, JOB_CATEGORY_ID_AND_ID_EXAMPLE_MATCHER);
 					page = this.findAll(example, pageable, tableSortingField, tableSortingDirection);
-					break;
 				}
 				case FIRST_REGISTRATION_DATE_TIME -> {
 					final Specification<JobVacancy> specification = this.equalsJobCategoryIdAndFirstRegistrationDateTime(jobCategoryId, filterValue);
 					page = this.findAll(pageable, tableSortingField, tableSortingDirection, specification);
-					break;
 				}
 				case FIRST_REGISTRATION_AUTH_USER_EMAIL -> {
 					final AuthUser firstRegistrationAuthUser = new AuthUser();
@@ -116,12 +114,10 @@ public abstract class JobVacancyServiceSuperclass extends AbstractEntityServiceS
 
 					final Example<JobVacancy> example = Example.of(jobVacancySearch, JOB_CATEGORY_ID_AND_FIRST_REGISTRATION_AUTH_USER_EMAIL_EXAMPLE_MATCHER);
 					page = this.findAll(example, pageable, tableSortingField, tableSortingDirection);
-					break;
 				}
 				case LAST_MODIFICATION_DATE_TIME -> {
 					final Specification<JobVacancy> specification = this.equalsJobCategoryIdAndLastModificationDateTime(jobCategoryId, filterValue);
 					page = this.findAll(pageable, tableSortingField, tableSortingDirection, specification);
-					break;
 				}
 				case LAST_MODIFICATION_AUTH_USER_EMAIL -> {
 					final AuthUser lastModificationAuthUser = new AuthUser();
@@ -136,7 +132,6 @@ public abstract class JobVacancyServiceSuperclass extends AbstractEntityServiceS
 
 					final Example<JobVacancy> example = Example.of(jobVacancySearch, JOB_CATEGORY_ID_AND_LAST_MODIFICATION_AUTH_USER_EMAIL_EXAMPLE_MATCHER);
 					page = this.findAll(example, pageable, tableSortingField, tableSortingDirection);
-					break;
 				}
 				default -> {
 					throw new IllegalArgumentException(StringUtils.getStringJoined("TableField '", filterTableField.name(), "' not supported"));
@@ -205,12 +200,10 @@ public abstract class JobVacancyServiceSuperclass extends AbstractEntityServiceS
 
 					final Example<JobVacancy> example = Example.of(jobVacancySearch, JOB_COMPANY_ID_AND_ID_EXAMPLE_MATCHER);
 					page = this.findAll(example, pageable, tableSortingField, tableSortingDirection);
-					break;
 				}
 				case FIRST_REGISTRATION_DATE_TIME -> {
 					final Specification<JobVacancy> specification = this.equalsJobCompanyIdAndFirstRegistrationDateTime(jobCompanyId, filterValue);
 					page = this.findAll(pageable, tableSortingField, tableSortingDirection, specification);
-					break;
 				}
 				case FIRST_REGISTRATION_AUTH_USER_EMAIL -> {
 					final AuthUser firstRegistrationAuthUser = new AuthUser();
@@ -225,12 +218,10 @@ public abstract class JobVacancyServiceSuperclass extends AbstractEntityServiceS
 
 					final Example<JobVacancy> example = Example.of(jobVacancySearch, JOB_COMPANY_ID_AND_FIRST_REGISTRATION_AUTH_USER_EMAIL_EXAMPLE_MATCHER);
 					page = this.findAll(example, pageable, tableSortingField, tableSortingDirection);
-					break;
 				}
 				case LAST_MODIFICATION_DATE_TIME -> {
 					final Specification<JobVacancy> specification = this.equalsJobCompanyIdAndLastModificationDateTime(jobCompanyId, filterValue);
 					page = this.findAll(pageable, tableSortingField, tableSortingDirection, specification);
-					break;
 				}
 				case LAST_MODIFICATION_AUTH_USER_EMAIL -> {
 					final AuthUser lastModificationAuthUser = new AuthUser();
@@ -245,7 +236,6 @@ public abstract class JobVacancyServiceSuperclass extends AbstractEntityServiceS
 
 					final Example<JobVacancy> example = Example.of(jobVacancySearch, JOB_COMPANY_ID_AND_LAST_MODIFICATION_AUTH_USER_EMAIL_EXAMPLE_MATCHER);
 					page = this.findAll(example, pageable, tableSortingField, tableSortingDirection);
-					break;
 				}
 				default -> {
 					throw new IllegalArgumentException(StringUtils.getStringJoined("TableField '", filterTableField.name(), "' not supported"));

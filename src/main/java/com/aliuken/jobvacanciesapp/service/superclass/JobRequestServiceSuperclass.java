@@ -34,6 +34,9 @@ public abstract class JobRequestServiceSuperclass extends AbstractEntityWithAuth
 	private static final ExampleMatcher JOB_VACANCY_ID_AND_ID_EXAMPLE_MATCHER = DatabaseUtils.getExampleMatcherWithExactTwoFields("jobVacancy.id", "id");
 	private static final ExampleMatcher JOB_VACANCY_ID_AND_FIRST_REGISTRATION_AUTH_USER_EMAIL_EXAMPLE_MATCHER = DatabaseUtils.getExampleMatcherWithContainsTwoFields("jobVacancy.id", "firstRegistrationAuthUser.email");
 	private static final ExampleMatcher JOB_VACANCY_ID_AND_LAST_MODIFICATION_AUTH_USER_EMAIL_EXAMPLE_MATCHER = DatabaseUtils.getExampleMatcherWithContainsTwoFields("jobVacancy.id", "lastModificationAuthUser.email");
+	private static final ExampleMatcher JOB_VACANCY_ID_AND_AUTH_USER_EMAIL_EXAMPLE_MATCHER = DatabaseUtils.getExampleMatcherWithContainsTwoFields("jobVacancy.id", "authUser.email");
+	private static final ExampleMatcher JOB_VACANCY_ID_AND_AUTH_USER_NAME_EXAMPLE_MATCHER = DatabaseUtils.getExampleMatcherWithContainsTwoFields("jobVacancy.id", "authUser.name");
+	private static final ExampleMatcher JOB_VACANCY_ID_AND_AUTH_USER_SURNAMES_EXAMPLE_MATCHER = DatabaseUtils.getExampleMatcherWithContainsTwoFields("jobVacancy.id", "authUser.surnames");
 
 	@ServiceMethod
 	public AbstractEntityPageWithExceptionDTO<JobRequest> getJobVacancyJobRequestsPage(final Long jobVacancyId, final TableSearchDTO tableSearchDTO, final Pageable pageable) {
@@ -90,12 +93,10 @@ public abstract class JobRequestServiceSuperclass extends AbstractEntityWithAuth
 
 					final Example<JobRequest> example = Example.of(jobRequestSearch, JOB_VACANCY_ID_AND_ID_EXAMPLE_MATCHER);
 					page = this.findAll(example, pageable, tableSortingField, tableSortingDirection);
-					break;
 				}
 				case FIRST_REGISTRATION_DATE_TIME -> {
 					final Specification<JobRequest> specification = this.equalsJobVacancyIdAndFirstRegistrationDateTime(jobVacancyId, filterValue);
 					page = this.findAll(pageable, tableSortingField, tableSortingDirection, specification);
-					break;
 				}
 				case FIRST_REGISTRATION_AUTH_USER_EMAIL -> {
 					final AuthUser firstRegistrationAuthUser = new AuthUser();
@@ -110,12 +111,10 @@ public abstract class JobRequestServiceSuperclass extends AbstractEntityWithAuth
 
 					final Example<JobRequest> example = Example.of(jobRequestSearch, JOB_VACANCY_ID_AND_FIRST_REGISTRATION_AUTH_USER_EMAIL_EXAMPLE_MATCHER);
 					page = this.findAll(example, pageable, tableSortingField, tableSortingDirection);
-					break;
 				}
 				case LAST_MODIFICATION_DATE_TIME -> {
 					final Specification<JobRequest> specification = this.equalsJobVacancyIdAndLastModificationDateTime(jobVacancyId, filterValue);
 					page = this.findAll(pageable, tableSortingField, tableSortingDirection, specification);
-					break;
 				}
 				case LAST_MODIFICATION_AUTH_USER_EMAIL -> {
 					final AuthUser lastModificationAuthUser = new AuthUser();
@@ -130,7 +129,48 @@ public abstract class JobRequestServiceSuperclass extends AbstractEntityWithAuth
 
 					final Example<JobRequest> example = Example.of(jobRequestSearch, JOB_VACANCY_ID_AND_LAST_MODIFICATION_AUTH_USER_EMAIL_EXAMPLE_MATCHER);
 					page = this.findAll(example, pageable, tableSortingField, tableSortingDirection);
-					break;
+				}
+				case AUTH_USER_EMAIL -> {
+					final AuthUser authUser = new AuthUser();
+					authUser.setEmail(filterValue);
+
+					final JobVacancy jobVacancy = new JobVacancy();
+					jobVacancy.setId(jobVacancyId);
+
+					final JobRequest jobRequestSearch = new JobRequest();
+					jobRequestSearch.setAuthUser(authUser);
+					jobRequestSearch.setJobVacancy(jobVacancy);
+
+					final Example<JobRequest> example = Example.of(jobRequestSearch, JOB_VACANCY_ID_AND_AUTH_USER_EMAIL_EXAMPLE_MATCHER);
+					page = this.findAll(example, pageable, tableSortingField, tableSortingDirection);
+				}
+				case AUTH_USER_NAME -> {
+					final AuthUser authUser = new AuthUser();
+					authUser.setName(filterValue);
+
+					final JobVacancy jobVacancy = new JobVacancy();
+					jobVacancy.setId(jobVacancyId);
+
+					final JobRequest jobRequestSearch = new JobRequest();
+					jobRequestSearch.setAuthUser(authUser);
+					jobRequestSearch.setJobVacancy(jobVacancy);
+
+					final Example<JobRequest> example = Example.of(jobRequestSearch, JOB_VACANCY_ID_AND_AUTH_USER_NAME_EXAMPLE_MATCHER);
+					page = this.findAll(example, pageable, tableSortingField, tableSortingDirection);
+				}
+				case AUTH_USER_SURNAMES -> {
+					final AuthUser authUser = new AuthUser();
+					authUser.setSurnames(filterValue);
+
+					final JobVacancy jobVacancy = new JobVacancy();
+					jobVacancy.setId(jobVacancyId);
+
+					final JobRequest jobRequestSearch = new JobRequest();
+					jobRequestSearch.setAuthUser(authUser);
+					jobRequestSearch.setJobVacancy(jobVacancy);
+
+					final Example<JobRequest> example = Example.of(jobRequestSearch, JOB_VACANCY_ID_AND_AUTH_USER_SURNAMES_EXAMPLE_MATCHER);
+					page = this.findAll(example, pageable, tableSortingField, tableSortingDirection);
 				}
 				default -> {
 					throw new IllegalArgumentException(StringUtils.getStringJoined("TableField '", filterTableField.name(), "' not supported"));

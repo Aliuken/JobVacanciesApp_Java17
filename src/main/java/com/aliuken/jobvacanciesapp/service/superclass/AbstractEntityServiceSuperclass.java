@@ -216,12 +216,10 @@ public abstract class AbstractEntityServiceSuperclass<T extends AbstractEntity> 
 					final T abstractEntitySearch = this.getNewEntityForSearchByExample(entityId, null, null);
 					final Example<T> example = Example.of(abstractEntitySearch, ID_EXAMPLE_MATCHER);
 					page = this.findAll(example, pageable, tableSortingField, tableSortingDirection);
-					break;
 				}
 				case FIRST_REGISTRATION_DATE_TIME -> {
 					final Specification<T> specification = this.equalsFirstRegistrationDateTime(filterValue);
 					page = this.findAll(pageable, tableSortingField, tableSortingDirection, specification);
-					break;
 				}
 				case FIRST_REGISTRATION_AUTH_USER_EMAIL -> {
 					final AuthUser authUserSearch = new AuthUser();
@@ -230,12 +228,10 @@ public abstract class AbstractEntityServiceSuperclass<T extends AbstractEntity> 
 					final T abstractEntitySearch = this.getNewEntityForSearchByExample(null, authUserSearch, null);
 					final Example<T> example = Example.of(abstractEntitySearch, FIRST_REGISTRATION_AUTH_USER_EMAIL_EXAMPLE_MATCHER);
 					page = this.findAll(example, pageable, tableSortingField, tableSortingDirection);
-					break;
 				}
 				case LAST_MODIFICATION_DATE_TIME -> {
 					final Specification<T> specification = this.equalsLastModificationDateTime(filterValue);
 					page = this.findAll(pageable, tableSortingField, tableSortingDirection, specification);
-					break;
 				}
 				case LAST_MODIFICATION_AUTH_USER_EMAIL -> {
 					final AuthUser authUserSearch = new AuthUser();
@@ -244,12 +240,10 @@ public abstract class AbstractEntityServiceSuperclass<T extends AbstractEntity> 
 					final T abstractEntitySearch = this.getNewEntityForSearchByExample(null, null, authUserSearch);
 					final Example<T> example = Example.of(abstractEntitySearch, LAST_MODIFICATION_AUTH_USER_EMAIL_EXAMPLE_MATCHER);
 					page = this.findAll(example, pageable, tableSortingField, tableSortingDirection);
-					break;
 				}
 				default -> {
 					final Example<T> example = this.getDefaultEntityPageExample(filterTableField, filterValue);
 					page = this.findAll(example, pageable, tableSortingField, tableSortingDirection);
-					break;
 				}
 			}
 		} else {

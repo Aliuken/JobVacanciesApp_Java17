@@ -91,12 +91,10 @@ public abstract class AbstractEntityWithAuthUserServiceSuperclass<T extends Abst
 					final T abstractEntitySearch = this.getNewEntityForSearchByExample(entityId, null, null);
 					final Example<T> example = Example.of(abstractEntitySearch, ID_EXAMPLE_MATCHER);
 					page = this.findAll(example, pageable, tableSortingField, tableSortingDirection);
-					break;
 				}
 				case FIRST_REGISTRATION_DATE_TIME -> {
 					final Specification<T> specification = this.equalsFirstRegistrationDateTime(filterValue);
 					page = this.findAll(pageable, tableSortingField, tableSortingDirection, specification);
-					break;
 				}
 				case FIRST_REGISTRATION_AUTH_USER_EMAIL -> {
 					final AuthUser authUserSearch = new AuthUser();
@@ -105,12 +103,10 @@ public abstract class AbstractEntityWithAuthUserServiceSuperclass<T extends Abst
 					final T abstractEntitySearch = this.getNewEntityForSearchByExample(null, authUserSearch, null);
 					final Example<T> example = Example.of(abstractEntitySearch, FIRST_REGISTRATION_AUTH_USER_EMAIL_EXAMPLE_MATCHER);
 					page = this.findAll(example, pageable, tableSortingField, tableSortingDirection);
-					break;
 				}
 				case LAST_MODIFICATION_DATE_TIME -> {
 					final Specification<T> specification = this.equalsLastModificationDateTime(filterValue);
 					page = this.findAll(pageable, tableSortingField, tableSortingDirection, specification);
-					break;
 				}
 				case LAST_MODIFICATION_AUTH_USER_EMAIL -> {
 					final AuthUser authUserSearch = new AuthUser();
@@ -119,25 +115,21 @@ public abstract class AbstractEntityWithAuthUserServiceSuperclass<T extends Abst
 					final T abstractEntitySearch = this.getNewEntityForSearchByExample(null, null, authUserSearch);
 					final Example<T> example = Example.of(abstractEntitySearch, LAST_MODIFICATION_AUTH_USER_EMAIL_EXAMPLE_MATCHER);
 					page = this.findAll(example, pageable, tableSortingField, tableSortingDirection);
-					break;
 				}
 				case AUTH_USER_EMAIL -> {
 					final T abstractEntitySearch = this.getNewEntityWithAuthUserEmail(filterValue);
 					final Example<T> example = Example.of(abstractEntitySearch, AUTH_USER_EMAIL_EXAMPLE_MATCHER);
 					page = this.findAll(example, pageable, tableSortingField, tableSortingDirection);
-					break;
 				}
 				case AUTH_USER_NAME -> {
 					final T abstractEntitySearch = this.getNewEntityWithAuthUserName(filterValue);
 					final Example<T> example = Example.of(abstractEntitySearch, AUTH_USER_NAME_EXAMPLE_MATCHER);
 					page = this.findAll(example, pageable, tableSortingField, tableSortingDirection);
-					break;
 				}
 				case AUTH_USER_SURNAMES -> {
 					final T abstractEntitySearch = this.getNewEntityWithAuthUserSurnames(filterValue);
 					final Example<T> example = Example.of(abstractEntitySearch, AUTH_USER_SURNAMES_EXAMPLE_MATCHER);
 					page = this.findAll(example, pageable, tableSortingField, tableSortingDirection);
-					break;
 				}
 				default -> {
 					throw new IllegalArgumentException(StringUtils.getStringJoined("TableField '", filterTableField.name(), "' not supported"));
@@ -204,12 +196,10 @@ public abstract class AbstractEntityWithAuthUserServiceSuperclass<T extends Abst
 
 					final Example<T> example = Example.of(abstractEntitySearch, AUTH_USER_ID_AND_ID_EXAMPLE_MATCHER);
 					page = this.findAll(example, pageable, tableSortingField, tableSortingDirection);
-					break;
 				}
 				case FIRST_REGISTRATION_DATE_TIME -> {
 					final Specification<T> specification = this.equalsAuthUserIdAndFirstRegistrationDateTime(authUserId, filterValue);
 					page = this.findAll(pageable, tableSortingField, tableSortingDirection, specification);
-					break;
 				}
 				case FIRST_REGISTRATION_AUTH_USER_EMAIL -> {
 					final AuthUser firstRegistrationAuthUser = new AuthUser();
@@ -223,12 +213,10 @@ public abstract class AbstractEntityWithAuthUserServiceSuperclass<T extends Abst
 
 					final Example<T> example = Example.of(abstractEntitySearch, AUTH_USER_ID_AND_FIRST_REGISTRATION_AUTH_USER_EMAIL_EXAMPLE_MATCHER);
 					page = this.findAll(example, pageable, tableSortingField, tableSortingDirection);
-					break;
 				}
 				case LAST_MODIFICATION_DATE_TIME -> {
 					final Specification<T> specification = this.equalsAuthUserIdAndLastModificationDateTime(authUserId, filterValue);
 					page = this.findAll(pageable, tableSortingField, tableSortingDirection, specification);
-					break;
 				}
 				case LAST_MODIFICATION_AUTH_USER_EMAIL -> {
 					final AuthUser lastModificationAuthUser = new AuthUser();
@@ -242,7 +230,6 @@ public abstract class AbstractEntityWithAuthUserServiceSuperclass<T extends Abst
 
 					final Example<T> example = Example.of(abstractEntitySearch, AUTH_USER_ID_AND_LAST_MODIFICATION_AUTH_USER_EMAIL_EXAMPLE_MATCHER);
 					page = this.findAll(example, pageable, tableSortingField, tableSortingDirection);
-					break;
 				}
 				default -> {
 					throw new IllegalArgumentException(StringUtils.getStringJoined("TableField '", filterTableField.name(), "' not supported"));
