@@ -12,9 +12,9 @@ import jakarta.validation.constraints.NotNull;
 
 public enum TableField implements Serializable, Internationalizable {
 	ID("id", null, "id", "abstractEntity.id", false),
-	AUTH_USER_EMAIL("authUserEmail", "authUser", "email", "abstractEntityWithAuthUser.email", false),
-	AUTH_USER_NAME("authUserName", "authUser", "name", "abstractEntityWithAuthUser.name", false),
-	AUTH_USER_SURNAMES("authUserSurnames", "authUser", "surnames", "abstractEntityWithAuthUser.surnames", false),
+	AUTH_USER_EMAIL("authUserEmail", TableFieldEntity.AUTH_USER, "email", "abstractEntityWithAuthUser.email", false),
+	AUTH_USER_NAME("authUserName", TableFieldEntity.AUTH_USER, "name", "abstractEntityWithAuthUser.name", false),
+	AUTH_USER_SURNAMES("authUserSurnames", TableFieldEntity.AUTH_USER, "surnames", "abstractEntityWithAuthUser.surnames", false),
 	FIRST_REGISTRATION_DATE_TIME("firstRegistrationDateTime", null, "firstRegistrationDateTime", "abstractEntity.firstRegistrationDateTime", false),
 	FIRST_REGISTRATION_AUTH_USER_EMAIL("firstRegistrationAuthUserEmail", null, "firstRegistrationAuthUser.email", "abstractEntity.firstRegistrationAuthUserEmail", false),
 	LAST_MODIFICATION_DATE_TIME("lastModificationDateTime", null, "lastModificationDateTime", "abstractEntity.lastModificationDateTime", true),
@@ -28,7 +28,7 @@ public enum TableField implements Serializable, Internationalizable {
 	@NotNull
 	private final String code;
 
-	private final String entityName;
+	private final TableFieldEntity entity;
 
 	@NotNull
 	private final String partialFieldPath;
@@ -41,12 +41,13 @@ public enum TableField implements Serializable, Internationalizable {
 
 	private final boolean isLastModificationField;
 
-	private TableField(final String code, final String entityName, final String partialFieldPath, final String messageName, final boolean isLastModificationField) {
+	private TableField(final String code, final TableFieldEntity entity, final String partialFieldPath, final String messageName, final boolean isLastModificationField) {
 		this.code = code;
-		this.entityName = entityName;
+		this.entity = entity;
 		this.partialFieldPath = partialFieldPath;
 
-		if(entityName != null) {
+		if(entity != null) {
+			final String entityName = entity.getLowerCasedEntityName();
 			this.finalFieldPath = StringUtils.getStringJoined(entityName, Constants.DOT, partialFieldPath);
 		} else {
 			this.finalFieldPath = partialFieldPath;
@@ -60,8 +61,8 @@ public enum TableField implements Serializable, Internationalizable {
 		return code;
 	}
 
-	public String getEntityName() {
-		return entityName;
+	public TableFieldEntity getEntity() {
+		return entity;
 	}
 
 	public String getPartialFieldPath() {
@@ -82,7 +83,7 @@ public enum TableField implements Serializable, Internationalizable {
 	}
 
 	public boolean isAuthUserField() {
-		return "authUser".equals(entityName);
+		return (TableFieldEntity.AUTH_USER == entity);
 	}
 
 	public static TableField findByCode(final String code) {
