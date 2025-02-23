@@ -5,9 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="811e674b-8575-4c23-be2a-462e8dd9b0fd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/build-context-elk-linux/.dockerignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build-context-elk-windows/.dockerignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build-context-elk-windows/docker-compose.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build-context-app-windows/Dockerfile-start.bat" beforeDir="false" afterPath="$PROJECT_DIR$/build-context-app-windows/Dockerfile-start.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build-context-app-windows/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/build-context-app-windows/docker-compose.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build-context-elk/docker-compose-start.bat" beforeDir="false" afterPath="$PROJECT_DIR$/build-context-elk-windows/docker-compose-start.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build-context-elk/docker-compose-start.sh" beforeDir="false" afterPath="$PROJECT_DIR$/build-context-elk-linux/docker-compose-start.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build-context-elk/docker-compose-stop.bat" beforeDir="false" afterPath="$PROJECT_DIR$/build-context-elk-windows/docker-compose-stop.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build-context-elk/docker-compose-stop.sh" beforeDir="false" afterPath="$PROJECT_DIR$/build-context-elk-linux/docker-compose-stop.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build-context-elk/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/build-context-elk-linux/docker-compose.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-linux/docker-compose-elk-start.sh" beforeDir="false" afterPath="$PROJECT_DIR$/docker-linux/docker-compose-elk-start.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-linux/docker-stop.sh" beforeDir="false" afterPath="$PROJECT_DIR$/docker-linux/docker-stop.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-windows/docker-compose-elk-start.bat" beforeDir="false" afterPath="$PROJECT_DIR$/docker-windows/docker-compose-elk-start.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-windows/docker-stop.bat" beforeDir="false" afterPath="$PROJECT_DIR$/docker-windows/docker-stop.bat" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,34 +47,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.App17.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Run App J17.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.All in jobvacanciesapp (1).executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.All in jobvacanciesapp (2).executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.All in jobvacanciesapp.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.Run Tests J17.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.Maven [clean,install] J17.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.jobvacanciesapp [clean,install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.jobvacanciesapp [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.jobvacanciesapp [install].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Programacion/git/JobVacanciesApp_Java17/build-context-app-windows&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.App17.executor": "Run",
+    "Application.Run App J17.executor": "Run",
+    "JUnit.All in jobvacanciesapp (1).executor": "Run",
+    "JUnit.All in jobvacanciesapp (2).executor": "Run",
+    "JUnit.All in jobvacanciesapp.executor": "Run",
+    "JUnit.Run Tests J17.executor": "Run",
+    "Maven.Maven [clean,install] J17.executor": "Run",
+    "Maven.jobvacanciesapp [clean,install].executor": "Run",
+    "Maven.jobvacanciesapp [clean].executor": "Run",
+    "Maven.jobvacanciesapp [install].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Programacion/git/JobVacanciesApp_Java17/build-context-elk-windows",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "MavenSettings"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Programacion\git\JobVacanciesApp_Java17\build-context-app-windows" />
+      <recent name="C:\Programacion\git\JobVacanciesApp_Java17\build-context-elk-windows" />
+      <recent name="C:\Programacion\git\JobVacanciesApp_Java17\build-context-elk-linux" />
       <recent name="C:\Programacion\git\JobVacanciesApp_Java17" />
+      <recent name="C:\Programacion\git\JobVacanciesApp_Java17\build-context-app-windows" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Run App J17">
