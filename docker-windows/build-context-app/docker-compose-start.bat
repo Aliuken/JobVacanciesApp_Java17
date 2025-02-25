@@ -1,4 +1,4 @@
-cd C:\Programacion\git\JobVacanciesApp_Java17\build-context-app-windows
+cd C:\Programacion\git\JobVacanciesApp_Java17\docker-windows\build-context-app
 
 docker volume prune -f
 docker network create "external-net-app"

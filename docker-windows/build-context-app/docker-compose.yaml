@@ -16,7 +16,7 @@ services:
     restart: on-failure
     volumes:
       - mysql-data:/var/lib/mysql
-      - ../src/main/resources/db_dumps:/docker-entrypoint-initdb.d
+      - ../../src/main/resources/db_dumps:/docker-entrypoint-initdb.d
 #      - mysql-logs:/var/log/mysql
     cap_add:
       - SYS_NICE
@@ -47,7 +47,7 @@ services:
       - EXTERNAL_FILES_PATH=/AppData_Java17/JobVacanciesApp
     restart: on-failure
     volumes:
-      - /AppData_Java17/JobVacanciesApp:/AppData_Java17/JobVacanciesApp
+      - //c/AppData_Java17/JobVacanciesApp:/AppData_Java17/JobVacanciesApp
     build:
       context: .
       dockerfile: Dockerfile

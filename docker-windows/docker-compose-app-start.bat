@@ -1,3 +1,3 @@
 clear
 
-runas /user:Usuario "C:\Programacion\git\JobVacanciesApp_Java17\build-context-app-windows\docker-compose-start.bat"
+runas /user:Usuario "C:\Programacion\git\JobVacanciesApp_Java17\docker-windows\build-context-app\docker-compose-start.bat"
