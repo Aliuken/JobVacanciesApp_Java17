@@ -392,25 +392,25 @@ Steps:
 2. The following step depends on whether you want to run the app or the ELK:
 
    a) To run the app with Docker Compose:
-  * Execute this command in your terminal:
-    ```shell
-    sudo ./docker-compose-app-start.sh
-    ```
-  * Open the JobVacanciesApp URL in a web browser: <http://localhost:9080>
+      * Execute this command in your terminal:
+        ```shell
+        sudo ./docker-compose-app-start.sh
+        ```
+      * Open the JobVacanciesApp URL in a web browser: <http://localhost:9080>
 
    b) To run the ELK with Docker Compose:
-  * Execute this command in your terminal:
-    ```shell
-    sudo ./docker-compose-elk-start.sh
-    ```
-  * Open the Kibana URL in a web browser: <http://localhost:5601>
+      * Execute this command in your terminal:
+        ```shell
+        sudo ./docker-compose-elk-start.sh
+        ```
+      * Open the Kibana URL in a web browser: <http://localhost:5601>
 
 3. Stop everything with Docker again by doing the following:
-  * Press in your terminal: Ctrl + C
-  * Execute this command in your terminal:
-    ```shell
-    sudo ./docker-stop.sh
-    ```
+   * Press in your terminal: Ctrl + C
+   * Execute this command in your terminal:
+     ```shell
+     sudo ./docker-stop.sh
+     ```
 
 #### 4.2.2. Steps for Windows:
 
@@ -423,25 +423,25 @@ Steps:
 2. The following step depends on whether you want to run the app or the ELK:
 
    a) To run the app with Docker Compose:
-  * Execute this command in your terminal:
-    ```shell
-    .\docker-compose-app-start.bat
-    ```
-  * Open the JobVacanciesApp URL in a web browser: <http://localhost:9080>
+      * Execute this command in your terminal:
+        ```shell
+        .\docker-compose-app-start.bat
+        ```
+      * Open the JobVacanciesApp URL in a web browser: <http://localhost:9080>
 
    b) To run the ELK with Docker Compose:
-  * Execute this command in your terminal:
-    ```shell
-    .\docker-compose-elk-start.bat
-    ```
-  * Open the Kibana URL in a web browser: <http://localhost:5601>
+      * Execute this command in your terminal:
+        ```shell
+        .\docker-compose-elk-start.bat
+        ```
+      * Open the Kibana URL in a web browser: <http://localhost:5601>
 
 3. Stop everything with Docker again by doing the following:
-  * Press in your terminal: Ctrl + C
-  * Execute this command in your terminal:
-    ```shell
-    .\docker-stop.bat
-    ```
+   * Press in your terminal: Ctrl + C
+   * Execute this command in your terminal:
+     ```shell
+     .\docker-stop.bat
+     ```
 
 ## 5. Explanation of the docker-compose.yaml files
 
