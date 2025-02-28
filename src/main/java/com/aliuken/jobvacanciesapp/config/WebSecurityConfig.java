@@ -182,7 +182,7 @@ public class WebSecurityConfig extends GlobalAuthenticationConfigurerAdapter {
 			new AntPathRequestMatcher("/jquery-timepicker-addon-1.6.3-dist/**"),
 			new AntPathRequestMatcher("/jquery-ui-1.14.1/**"),
 			new AntPathRequestMatcher("/MDB5-STANDARD-UI-KIT-Free-8.2.0/**"),
-			new AntPathRequestMatcher("/tinymce-7.6.1/**")
+			new AntPathRequestMatcher("/tinymce-7.7.0/**")
 		};
 	}
 }
