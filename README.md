@@ -609,7 +609,7 @@ The configuration of the application is defined in 3 ways:
 >
 > The environment variable `EXTERNAL_FILES_PATH` is used to configure the external file paths.
 >
-> The properties that have file paths in the **application.properties** files contain `${EXTERNAL_FILES_PATH:C:/AppData_Java17/JobVacanciesApp}`, so that the Windows path is the default if the environment variable `EXTERNAL_FILES_PATH` is not set.
+> The properties that have file paths in the **application.properties** files contain `${EXTERNAL_FILES_PATH:C:/AppData_Java17/JobVacanciesApp}`, so that the Windows path `C:/AppData_Java17/JobVacanciesApp` is the default if the environment variable `EXTERNAL_FILES_PATH` is not set.
 
 ### 7.2. ConfigPropertiesBean
 
