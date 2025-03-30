@@ -358,7 +358,7 @@ public class JobVacancyRepositoryTest extends AbstractTransactionalJUnit4SpringC
 		Assertions.assertEquals(jobCompanyDTO.id(), jobVacancyDTO.jobCompanyId());
 		Assertions.assertEquals(JobVacancyStatus.APPROVED.name(), jobVacancyDTO.status());
 		Assertions.assertNotNull(jobVacancyDTO.publicationDateTime());
-		Assertions.assertEquals(new BigDecimal("20000.00"), jobVacancyDTO.salary());
+		Assertions.assertEquals(new BigDecimal("20000.00"), jobVacancyDTO.getSalary());
 		Assertions.assertEquals(Boolean.FALSE, jobVacancyDTO.highlighted());
 		Assertions.assertNotNull(jobVacancyDTO.details());
 	}

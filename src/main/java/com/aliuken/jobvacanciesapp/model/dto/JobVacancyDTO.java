@@ -120,7 +120,7 @@ public record JobVacancyDTO(
 		return jobVacancyDTO;
 	}
 
-	public Function<Language, String> conversionErrorFunction() {
+	public Function<Language, String> getConversionErrorFunction() {
 		final Function<Language, String> conversionErrorFunction;
 		if(salaryConversionResult != null) {
 			conversionErrorFunction = salaryConversionResult.conversionErrorFunction();
@@ -130,7 +130,7 @@ public record JobVacancyDTO(
 		return conversionErrorFunction;
 	}
 
-	public BigDecimal salary() {
+	public BigDecimal getSalary() {
 		final BigDecimal salary;
 		if(salaryConversionResult != null) {
 			salary = salaryConversionResult.conversionResult();
