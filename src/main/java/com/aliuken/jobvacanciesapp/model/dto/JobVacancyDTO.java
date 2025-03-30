@@ -4,9 +4,12 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Objects;
+import java.util.function.Function;
 
 import com.aliuken.jobvacanciesapp.Constants;
 import com.aliuken.jobvacanciesapp.model.dto.superinterface.AbstractEntityDTO;
+import com.aliuken.jobvacanciesapp.model.entity.enumtype.Language;
+import com.aliuken.jobvacanciesapp.util.javase.NumericUtils;
 import com.aliuken.jobvacanciesapp.util.javase.StringUtils;
 
 import jakarta.validation.constraints.NotEmpty;
@@ -43,7 +46,9 @@ public record JobVacancyDTO(
 	@NotNull(message="{publicationDateTime.notNull}")
 	LocalDateTime publicationDateTime,
 
-	BigDecimal salary,
+	String salaryString,
+
+	BigDecimalFromStringConversionResult salaryConversionResult,
 
 	@NotNull(message="{highlighted.notNull}")
 	Boolean highlighted,
@@ -53,7 +58,7 @@ public record JobVacancyDTO(
 	String details
 ) implements AbstractEntityDTO, Serializable {
 
-	private static final JobVacancyDTO NO_ARGS_INSTANCE = new JobVacancyDTO(null, null, null, null, null, null, null, null, null, null, null, null);
+	private static final JobVacancyDTO NO_ARGS_INSTANCE = new JobVacancyDTO(null, null, null, null, null, null, null, null, null, null, null, null, null);
 
 	public JobVacancyDTO {
 		if(jobCategory == null) {
@@ -66,6 +71,7 @@ public record JobVacancyDTO(
 		} else if(jobCompanyId == null) {
 			jobCompanyId = jobCompany.id();
 		}
+		salaryConversionResult = NumericUtils.getBigDecimalFromStringConversionResult("salary", salaryString, 10, 2);
 	}
 
 	public static JobVacancyDTO getNewInstance() {
@@ -73,7 +79,7 @@ public record JobVacancyDTO(
 	}
 
 	public static JobVacancyDTO getNewInstance(final Long jobVacancyId) {
-		final JobVacancyDTO jobVacancyDTO = new JobVacancyDTO(jobVacancyId, null, null, null, null, null, null, null, null, null, null, null);
+		final JobVacancyDTO jobVacancyDTO = new JobVacancyDTO(jobVacancyId, null, null, null, null, null, null, null, null, null, null, null, null);
 		return jobVacancyDTO;
 	}
 
@@ -89,7 +95,8 @@ public record JobVacancyDTO(
 				(jobCompanyDTO != null) ? jobCompanyDTO.id() : null,
 				jobVacancyDTO.status(),
 				jobVacancyDTO.publicationDateTime(),
-				jobVacancyDTO.salary(),
+				jobVacancyDTO.salaryString(),
+				jobVacancyDTO.salaryConversionResult(),
 				jobVacancyDTO.highlighted(),
 				jobVacancyDTO.details()
 			);
@@ -106,10 +113,31 @@ public record JobVacancyDTO(
 				null,
 				null,
 				null,
+				null,
 				null
 			);
 		}
 		return jobVacancyDTO;
+	}
+
+	public Function<Language, String> conversionErrorFunction() {
+		final Function<Language, String> conversionErrorFunction;
+		if(salaryConversionResult != null) {
+			conversionErrorFunction = salaryConversionResult.conversionErrorFunction();
+		} else {
+			conversionErrorFunction = null;
+		}
+		return conversionErrorFunction;
+	}
+
+	public BigDecimal salary() {
+		final BigDecimal salary;
+		if(salaryConversionResult != null) {
+			salary = salaryConversionResult.conversionResult();
+		} else {
+			salary = null;
+		}
+		return salary;
 	}
 
 	@Override
@@ -118,11 +146,11 @@ public record JobVacancyDTO(
 		final String jobCategoryIdString = (jobCategory != null) ? Objects.toString(jobCategory.id()) : null;
 		final String jobCompanyIdString = (jobCompany != null) ? Objects.toString(jobCompany.id()) : null;
 		final String publicationDateTimeString = Constants.DATE_TIME_UTILS.convertToString(publicationDateTime);
-		final String salaryString = Objects.toString(salary);
+		final String salaryConversionResultString  = Objects.toString(salaryConversionResult);
 		final String highlightedString = highlighted.toString();
 
 		final String result = StringUtils.getStringJoined("JobVacancyDTO [id=", idString, ", name=", name, ", description=", description,
-			", jobCategory=", jobCategoryIdString, ", jobCompany=", jobCompanyIdString, ", status=", status, ", publicationDateTime=", publicationDateTimeString, ", salary=", salaryString, ", highlighted=", highlightedString, ", details=", details, "]");
+			", jobCategory=", jobCategoryIdString, ", jobCompany=", jobCompanyIdString, ", status=", status, ", publicationDateTime=", publicationDateTimeString, ", salary=", salaryString, ", salaryConversionResult=", salaryConversionResultString, ", highlighted=", highlightedString, ", details=", details, "]");
 		return result;
 	}
 }

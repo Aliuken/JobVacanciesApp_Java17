@@ -6,7 +6,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.function.Function;
 
+import com.aliuken.jobvacanciesapp.model.dto.*;
+import com.aliuken.jobvacanciesapp.model.entity.enumtype.Language;
+import com.aliuken.jobvacanciesapp.util.javase.NumericUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -26,12 +30,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.aliuken.jobvacanciesapp.Constants;
 import com.aliuken.jobvacanciesapp.config.ConfigPropertiesBean;
 import com.aliuken.jobvacanciesapp.controller.superclass.AbstractEntityControllerWithoutPredefinedFilter;
-import com.aliuken.jobvacanciesapp.model.dto.AbstractEntityPageWithExceptionDTO;
-import com.aliuken.jobvacanciesapp.model.dto.JobCategoryDTO;
-import com.aliuken.jobvacanciesapp.model.dto.JobCompanyDTO;
-import com.aliuken.jobvacanciesapp.model.dto.JobVacancyDTO;
-import com.aliuken.jobvacanciesapp.model.dto.PredefinedFilterDTO;
-import com.aliuken.jobvacanciesapp.model.dto.TableSearchDTO;
 import com.aliuken.jobvacanciesapp.model.dto.converter.JobCompanyConverter;
 import com.aliuken.jobvacanciesapp.model.dto.converter.JobVacancyConverter;
 import com.aliuken.jobvacanciesapp.model.entity.AuthUser;
@@ -224,6 +222,13 @@ public class JobVacancyController extends AbstractEntityControllerWithoutPredefi
 
 		jobVacancyDTO = JobVacancyDTO.getNewInstance(jobVacancyDTO, jobCompanyDTO);
 
+		final Function<Language, String> conversionErrorFunction = jobVacancyDTO.conversionErrorFunction();
+		if(conversionErrorFunction != null) {
+			final Language language = Language.findByCode(languageCode);
+			final String conversionError = conversionErrorFunction.apply(language);
+			model.addAttribute("errorMsg", conversionError);
+		}
+
 		model.addAttribute("jobVacancyDTO", jobVacancyDTO);
 		model.addAttribute("jobCompanyLogo", jobVacancyDTO.jobCompany().selectedLogoId());
 		model.addAttribute("useAjaxToRefreshJobCompanyLogos", useAjaxToRefreshJobCompanyLogos);
@@ -261,6 +266,13 @@ public class JobVacancyController extends AbstractEntityControllerWithoutPredefi
 		}
 
 		jobVacancyDTO = JobVacancyDTO.getNewInstance(jobVacancyDTO, jobCompanyDTO);
+
+		final Function<Language, String> conversionErrorFunction = jobVacancyDTO.conversionErrorFunction();
+		if(conversionErrorFunction != null) {
+			final Language language = Language.findByCode(languageCode);
+			final String conversionError = conversionErrorFunction.apply(language);
+			model.addAttribute("errorMsg", conversionError);
+		}
 
 		model.addAttribute("jobVacancyDTO", jobVacancyDTO);
 		model.addAttribute("jobCompanyLogo", jobVacancyDTO.jobCompany().selectedLogoId());
@@ -309,6 +321,19 @@ public class JobVacancyController extends AbstractEntityControllerWithoutPredefi
 				redirectAttributes.addFlashAttribute("jobVacancyDTO", jobVacancyDTO);
 				//redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.jobVacancyDTO", bindingResult);
 				redirectAttributes.addFlashAttribute("errorMsg", firstBindingErrorString);
+
+				if(id == null) {
+					return ControllerNavigationUtils.getNextRedirect("/job-vacancies/create", languageCode);
+				} else {
+					return ControllerNavigationUtils.getNextRedirect("/job-vacancies/edit/" + id, languageCode);
+				}
+			}
+
+			final Function<Language, String> conversionErrorFunction = jobVacancyDTO.conversionErrorFunction();
+			if(conversionErrorFunction != null) {
+				final Language language = Language.findByCode(languageCode);
+				final String conversionError = conversionErrorFunction.apply(language);
+				redirectAttributes.addFlashAttribute("errorMsg", conversionError);
 
 				if(id == null) {
 					return ControllerNavigationUtils.getNextRedirect("/job-vacancies/create", languageCode);
