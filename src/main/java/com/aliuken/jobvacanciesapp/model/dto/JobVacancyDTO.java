@@ -71,7 +71,7 @@ public record JobVacancyDTO(
 		} else if(jobCompanyId == null) {
 			jobCompanyId = jobCompany.id();
 		}
-		salaryConversionResult = NumericUtils.getBigDecimalFromStringConversionResult("salary", salaryString, 10, 2);
+		salaryConversionResult = NumericUtils.getBigDecimalFromStringConversionResult("jobVacancy.salary", salaryString, 10, 2);
 	}
 
 	public static JobVacancyDTO getNewInstance() {
