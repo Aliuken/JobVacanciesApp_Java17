@@ -20,13 +20,13 @@ public class NumericUtils {
         if(strippedFieldNameProperty.isEmpty()) {
             return new BigDecimalFromStringConversionResult(FIELD_NAME_BLANK_ERROR_FUNCTION, null);
         } else if(fieldValue == null) {
-            final Function<Language, String> conversionErrorFunction = (language) -> NumericUtils.getInternationalizedMessage(language, "fieldValue.isNull", new Object[]{strippedFieldNameProperty});
+            final Function<Language, String> conversionErrorFunction = (language) -> I18nUtils.getInternationalizedMessageWithFieldNamePropertyParameter(language, "fieldValue.isNull", new Object[]{strippedFieldNameProperty});
             return new BigDecimalFromStringConversionResult(conversionErrorFunction, null);
         } else if(integerPartSize <= 0) {
-            final Function<Language, String> conversionErrorFunction = (language) -> NumericUtils.getInternationalizedMessage(language, "decimalFieldValue.integerPartLength.notValid", new Object[]{strippedFieldNameProperty});
+            final Function<Language, String> conversionErrorFunction = (language) -> I18nUtils.getInternationalizedMessageWithFieldNamePropertyParameter(language, "decimalFieldValue.integerPartLength.notValid", new Object[]{strippedFieldNameProperty});
             return new BigDecimalFromStringConversionResult(conversionErrorFunction, null);
         } else if(fractionalPartSize < 0) {
-            final Function<Language, String> conversionErrorFunction = (language) -> NumericUtils.getInternationalizedMessage(language, "decimalFieldValue.fractionalPartLength.notValid", new Object[]{strippedFieldNameProperty});
+            final Function<Language, String> conversionErrorFunction = (language) -> I18nUtils.getInternationalizedMessageWithFieldNamePropertyParameter(language, "decimalFieldValue.fractionalPartLength.notValid", new Object[]{strippedFieldNameProperty});
             return new BigDecimalFromStringConversionResult(conversionErrorFunction, null);
         }
 
@@ -47,47 +47,20 @@ public class NumericUtils {
         }
 
         if(!fieldValue.matches(decimalNumberRegex)) {
-            final Function<Language, String> conversionErrorFunction = (language) -> NumericUtils.getInternationalizedMessage(language, "decimalFieldValue.notValid", new Object[]{strippedFieldNameProperty, minimumNumberString, maximumNumberString});
+            final Function<Language, String> conversionErrorFunction = (language) -> I18nUtils.getInternationalizedMessageWithFieldNamePropertyParameter(language, "decimalFieldValue.notValid", new Object[]{strippedFieldNameProperty, minimumNumberString, maximumNumberString});
             return new BigDecimalFromStringConversionResult(conversionErrorFunction, null);
         } else if(fieldValue.startsWith("00")) {
-            final Function<Language, String> conversionErrorFunction = (language) -> NumericUtils.getInternationalizedMessage(language, "decimalFieldValue.leftZerosError", new Object[]{strippedFieldNameProperty});
+            final Function<Language, String> conversionErrorFunction = (language) -> I18nUtils.getInternationalizedMessageWithFieldNamePropertyParameter(language, "decimalFieldValue.leftZerosError", new Object[]{strippedFieldNameProperty});
             return new BigDecimalFromStringConversionResult(conversionErrorFunction, null);
         }
 
         final BigDecimal decimal = new BigDecimal(fieldValue);
         final BigDecimal minimumNumber = new BigDecimal(minimumNumberString);
         if(decimal.compareTo(minimumNumber) < 0) {
-            final Function<Language, String> conversionErrorFunction = (language) -> NumericUtils.getInternationalizedMessage(language, "decimalFieldValue.tooSmall", new Object[]{strippedFieldNameProperty, minimumNumberString});
+            final Function<Language, String> conversionErrorFunction = (language) -> I18nUtils.getInternationalizedMessageWithFieldNamePropertyParameter(language, "decimalFieldValue.tooSmall", new Object[]{strippedFieldNameProperty, minimumNumberString});
             return new BigDecimalFromStringConversionResult(conversionErrorFunction, null);
         }
 
         return new BigDecimalFromStringConversionResult(null, decimal);
-    }
-
-    private static String getInternationalizedMessage(final Language language, final String messageName, Object[]  messageParameters) {
-        if(LogicalUtils.isNullOrEmpty(messageParameters)) {
-            final String result = I18nUtils.getInternationalizedMessage(language, messageName, messageParameters);
-            return result;
-        }
-
-        final String strippedFieldNameProperty = (String) messageParameters[0];
-        final String fieldName = I18nUtils.getInternationalizedMessage(language, strippedFieldNameProperty, null);
-
-        final String finalFieldName;
-        if(fieldName == null) {
-            finalFieldName = strippedFieldNameProperty;
-        } else {
-            final String strippedFieldName = fieldName.strip();
-            if (strippedFieldName.isEmpty()) {
-                finalFieldName = strippedFieldNameProperty;
-            } else {
-                finalFieldName = strippedFieldName;
-            }
-        }
-
-        messageParameters[0] = finalFieldName;
-
-        final String result = I18nUtils.getInternationalizedMessage(language, messageName, messageParameters);
-        return result;
     }
 }
