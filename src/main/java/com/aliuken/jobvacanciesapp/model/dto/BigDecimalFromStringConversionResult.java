@@ -22,6 +22,14 @@ public record BigDecimalFromStringConversionResult(
         return NO_ARGS_INSTANCE;
     }
 
+    public static BigDecimalFromStringConversionResult getNewInstanceWithError(Function<Language, String> conversionErrorFunction) {
+        return new BigDecimalFromStringConversionResult(conversionErrorFunction, null);
+    }
+
+    public static BigDecimalFromStringConversionResult getNewInstanceWithoutError(BigDecimal conversionResult) {
+        return new BigDecimalFromStringConversionResult(null, conversionResult);
+    }
+
     @Override
     public String toString() {
         final String conversionErrorFunctionString = Objects.toString(conversionErrorFunction);
