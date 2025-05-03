@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="811e674b-8575-4c23-be2a-462e8dd9b0fd" name="Changes" comment="" />
+    <list default="true" id="811e674b-8575-4c23-be2a-462e8dd9b0fd" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,8 +26,7 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="customMavenHome" value="C:\apache-maven-3.9.9" />
-        <option name="mavenHomeTypeForPersistence" value="CUSTOM" />
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
       </MavenGeneralSettings>
     </option>
   </component>
@@ -50,6 +52,7 @@
     &quot;JUnit.All in jobvacanciesapp (1).executor&quot;: &quot;Run&quot;,
     &quot;JUnit.All in jobvacanciesapp (2).executor&quot;: &quot;Run&quot;,
     &quot;JUnit.All in jobvacanciesapp.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AuthUserControllerTest.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.Run Tests J17.executor&quot;: &quot;Run&quot;,
     &quot;Maven.Maven [clean,install] J17.executor&quot;: &quot;Run&quot;,
     &quot;Maven.jobvacanciesapp [clean,install].executor&quot;: &quot;Run&quot;,
@@ -79,13 +82,31 @@
       <recent name="C:\Programacion\git\JobVacanciesApp_Java17\docker-windows" />
       <recent name="C:\Programacion\git\JobVacanciesApp_Java17\docker-linux" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.aliuken.jobvacanciesapp.controller" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.Run App J17">
+  <component name="RunManager" selected="JUnit.AuthUserControllerTest">
     <configuration name="Run App J17" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="17" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.aliuken.jobvacanciesapp.MainClass" />
       <module name="jobvacanciesapp" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AuthUserControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="jobvacanciesapp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.aliuken.jobvacanciesapp.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.aliuken.jobvacanciesapp.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.aliuken.jobvacanciesapp.controller.AuthUserControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -170,10 +191,12 @@
     <list>
       <item itemvalue="Application.Run App J17" />
       <item itemvalue="JUnit.Run Tests J17" />
+      <item itemvalue="JUnit.AuthUserControllerTest" />
       <item itemvalue="Maven.Maven [clean,install] J17" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AuthUserControllerTest" />
         <item itemvalue="JUnit.Run Tests J17" />
       </list>
     </recent_temporary>
