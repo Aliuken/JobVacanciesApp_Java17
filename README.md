@@ -37,7 +37,7 @@
 
 ## 1. About JobVacanciesApp_Java17
 
-**JobVacanciesApp_Java17** is an open-source web application made with **OpenJDK 17** and **Spring Boot 3.4** to learn how to make a website to manage job vacancies using state-of-the-art Spring-related technologies.
+**JobVacanciesApp_Java17** is an open-source web application made with **OpenJDK 17** and **Spring Boot 3.5** to learn how to make a website to manage job vacancies using state-of-the-art Spring-related technologies.
 
 The code was created under the [Apache License 2.0](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/LICENSE) using the **SOLID principles** in a **monolithic architecture**.
 
@@ -87,7 +87,7 @@ The core technologies currently used are:
 * **Jakarta EE** classes (detailed in section **[3.3. Jakarta EE technologies](https://github.com/Aliuken/JobVacanciesApp_Java17#33-jakarta-ee-technologies)**), including:
     * **@PostConstruct** and **Bean Validation** annotations (@NotNull, @NotEmpty, @Size, @Digits, @Email).
     * **Servlet** API, **Jakarta Persistence API** (**JPA**) and **Mail** API.
-* **Spring Boot 3.4.4**: Starting in the class [MainClass](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/src/main/java/com/aliuken/jobvacanciesapp/MainClass.java), which is restartable through the method "MainClass.restartApp(...)". More details in section **[3.4. Spring core technologies](https://github.com/Aliuken/JobVacanciesApp_Java17#34-spring-core-technologies)**.
+* **Spring Boot 3.5.0**: Starting in the class [MainClass](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/src/main/java/com/aliuken/jobvacanciesapp/MainClass.java), which is restartable through the method "MainClass.restartApp(...)". More details in section **[3.4. Spring core technologies](https://github.com/Aliuken/JobVacanciesApp_Java17#34-spring-core-technologies)**.
 * **Maven**: As the dependency manager and for building the application.
 * **Git**: As the version control system.
 * **GitHub**: As the hosting service for the project (in <https://github.com/Aliuken/JobVacanciesApp_Java17>).
@@ -182,11 +182,11 @@ The web technologies currently used are:
     * The decorator [template.html](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/src/main/resources/templates/fragments/mandatory/template.html) (which uses **thymeleaf-layout-dialect** to create the layout template).
     * Other fragments in [src/main/resources/templates/fragments](https://github.com/Aliuken/JobVacanciesApp_Java17/tree/main/src/main/resources/templates/fragments). More info about fragments at <https://www.thymeleaf.org/doc/articles/layouts.html>.
 * **JavaScript** (**ES2020**) compiled from **TypeScript** using the [TypeScript Playground](https://www.typescriptlang.org/play/) (so that we didn't need to install "Node.js", "npm" and "TypeScript"). In particular, the TS file [jobvacanciesapp.ts](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/src/main/resources/static/jobvacanciesapp-utils/ts/jobvacanciesapp.ts) was compiled to the following JS files: [ajax-utils.js](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/src/main/resources/static/jobvacanciesapp-utils/js/ajax-utils.js) and [page-url-and-dom-utils.js](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/src/main/resources/static/jobvacanciesapp-utils/js/page-url-and-dom-utils.js).
-* **Bootstrap 5.3.5** and **Material Design for Bootstrap 9.0.0**: For the look-and-feel.
+* **Bootstrap 5.3.6** and **Material Design for Bootstrap 9.0.0**: For the look-and-feel.
 * **Font Awesome Free For The Web 6.7.2**: For the application icons.
 * **jQuery 3.7.1**: To make an easier use of **JavaScript**.
 * **jQuery UI 1.14.1** and **jQuery Timepicker Addon 1.6.3**: For the calendar UI-input element.
-* **TinyMCE Community 7.8.0**: For the rich text editor.
+* **TinyMCE Community 7.9.0**: For the rich text editor.
 * The **static resources** (like image/TS/JS/CSS files) are located in [src/main/resources/static](https://github.com/Aliuken/JobVacanciesApp_Java17/tree/main/src/main/resources/static). The following **ad-hoc static files** (created by ourselves) are located in [src/main/resources/static/jobvacanciesapp-utils](https://github.com/Aliuken/JobVacanciesApp_Java17/tree/main/src/main/resources/static/jobvacanciesapp-utils):
     * **calendar-ui-input.css** [[&#10138;]](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/src/main/resources/static/jobvacanciesapp-utils/css/calendar-ui-input.css) and **calendar-ui-input.js** [[&#10138;]](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/src/main/resources/static/jobvacanciesapp-utils/js/calendar-ui-input.js): For the calendar UI-input element.
     * **rich-text-editor.css** [[&#10138;]](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/src/main/resources/static/jobvacanciesapp-utils/css/rich-text-editor.css) and **rich-text-editor.js** [[&#10138;]](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/src/main/resources/static/jobvacanciesapp-utils/js/rich-text-editor.js): For the rich text editor. The TinyMCE "[Full featured demo: Non-Premium Plugins only](https://www.tiny.cloud/docs/tinymce/latest/full-featured-open-source-demo)" CSS and JS code was copied in those files.
@@ -327,19 +327,19 @@ In Windows, to run the Docker containers, **Docker Desktop** and **WSL 2** are n
 
 The following Docker technologies (contained in [docker-linux](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/docker-linux) are used for GNU/Linux:
 * **Docker Compose for the app** (in [build-context-app/docker-compose.yaml](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/docker-linux/build-context-app/docker-compose.yaml)). It uses:
-  * In **app-db-service**: The latest MySQL 8.0 Docker image ("mysql:8.0").
+  * In **app-db-service**: The latest MySQL Docker image ("mysql:latest").
   * In **app-service**: The file [Dockerfile](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/docker-linux/build-context-app/Dockerfile), which uses "amazoncorretto:17-alpine-jdk" (a Docker image with JDK 17 for Alpine Linux).
 * **Docker Compose for the Elastic Stack** (in [build-context-elk/docker-compose.yaml](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/docker-linux/build-context-elk/docker-compose.yaml)). It uses:
-  * The **Elastic Stack 8.17.4** Docker images (url: <https://www.docker.elastic.co>): For analyzing the app log files, which pass through the stack in the next order: "Filebeat **&rArr;** Logstash **&rArr;** Elasticsearch **&rArr;** Kibana".
+  * The **Elastic Stack 9.0.1** Docker images (url: <https://www.docker.elastic.co>): For analyzing the app log files, which pass through the stack in the next order: "Filebeat **&rArr;** Logstash **&rArr;** Elasticsearch **&rArr;** Kibana".
 
 #### 3.9.2. Docker technologies for Windows
 
 The following Docker technologies (contained in [docker-windows](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/docker-windows) are used for Windows:
 * **Docker Compose for the app** (in [build-context-app/docker-compose.yaml](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/docker-windows/build-context-app/docker-compose.yaml)). It uses:
-  * In **app-db-service**: The latest MySQL 8.0 Docker image ("mysql:8.0").
+  * In **app-db-service**: The latest MySQL Docker image ("mysql:latest").
   * In **app-service**: The file [Dockerfile](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/docker-windows/build-context-app/Dockerfile), which uses "amazoncorretto:17-alpine-jdk" (a Docker image with JDK 17 for Alpine Linux).
 * **Docker Compose for the Elastic Stack** (in [build-context-elk/docker-compose.yaml](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/docker-windows/build-context-elk/docker-compose.yaml)). It uses:
-  * The **Elastic Stack 8.17.4** Docker images (url: <https://www.docker.elastic.co>): For analyzing the app log files, which pass through the stack in the next order: "Filebeat **&rArr;** Logstash **&rArr;** Elasticsearch **&rArr;** Kibana".
+  * The **Elastic Stack 9.0.1** Docker images (url: <https://www.docker.elastic.co>): For analyzing the app log files, which pass through the stack in the next order: "Filebeat **&rArr;** Logstash **&rArr;** Elasticsearch **&rArr;** Kibana".
 
 ### 3.10. Other technologies
 
@@ -554,9 +554,9 @@ where:
 > [!NOTE]
 > The password of the user **guti@aliuken.com** can be changed by accessing, with a web browser, the link <http://localhost:8080/reset-password?email=guti@aliuken.com&uuid=a0396f47-50e8-470d-94ba-16f981cdfad6&languageParam=en>.
 >
-> The password of the user **raul@aliuken.com** can be changed by accessing, with a web browser, the link <http://localhost:8080/reset-password?email=raul@aliuken.com&uuid=a0396f47-50e8-470d-94ba-16f981cdfad7&languageParam=en>.
+> The password of the user **raul@aliuken.com** can be changed by accessing, with a web browser, the link <http://localhost:8080/reset-password?email=raul@aliuken.com&uuid=9088793d-3e0e-4e5e-94a3-9c0267dc2dc5&languageParam=en>.
 >
-> The user **antonio@aliuken.com** cannot be used until it is confirmed via email (by accessing, with a web browser, the link <http://localhost:8080/signup-confirmed?email=antonio@aliuken.com&uuid=cd939918-565d-41f1-a100-992594729dc4&languageParam=en>).
+> The user **antonio@aliuken.com** cannot be used until it is confirmed via email (by accessing, with a web browser, the link <http://localhost:8080/signup-confirmed?email=antonio@aliuken.com&uuid=21d27fe6-4b57-413b-8361-2757c45294e3&languageParam=en>).
 >
 > The user **pai.mei@aliuken.com** cannot be used until it is confirmed via email (by accessing, with a web browser, the link <http://localhost:8080/signup-confirmed?email=pai.mei@aliuken.com&uuid=a0396f47-50e8-470d-94ba-16f981cdfad8&languageParam=en>).
 >

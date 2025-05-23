@@ -174,7 +174,7 @@ public class WebSecurityConfig extends GlobalAuthenticationConfigurerAdapter {
 			new AntPathRequestMatcher("/auth-user-curriculum-files/**"),
 			new AntPathRequestMatcher("/auth-user-entity-query-files/**"),
 			new AntPathRequestMatcher("/job-company-logos/**"),
-			new AntPathRequestMatcher("/bootstrap-5.3.5-dist/**"),
+			new AntPathRequestMatcher("/bootstrap-5.3.6-dist/**"),
 			new AntPathRequestMatcher("/fontawesome-free-6.7.2-web/**"),
 			new AntPathRequestMatcher("/images/**"),
 			new AntPathRequestMatcher("/jobvacanciesapp-utils/**"),
@@ -182,7 +182,7 @@ public class WebSecurityConfig extends GlobalAuthenticationConfigurerAdapter {
 			new AntPathRequestMatcher("/jquery-timepicker-addon-1.6.3-dist/**"),
 			new AntPathRequestMatcher("/jquery-ui-1.14.1/**"),
 			new AntPathRequestMatcher("/MDB5-STANDARD-UI-KIT-Free-9.0.0/**"),
-			new AntPathRequestMatcher("/tinymce-7.8.0/**")
+			new AntPathRequestMatcher("/tinymce-7.9.0/**")
 		};
 	}
 }
