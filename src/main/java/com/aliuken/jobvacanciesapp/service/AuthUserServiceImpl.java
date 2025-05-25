@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.aliuken.jobvacanciesapp.annotation.ServiceMethod;
 import com.aliuken.jobvacanciesapp.model.entity.AuthUser;
 import com.aliuken.jobvacanciesapp.model.entity.enumtype.TableField;
+import com.aliuken.jobvacanciesapp.model.entity.factory.AuthUserFactory;
 import com.aliuken.jobvacanciesapp.repository.AuthUserRepository;
 import com.aliuken.jobvacanciesapp.repository.superinterface.UpgradedJpaRepository;
 import com.aliuken.jobvacanciesapp.util.javase.StringUtils;
@@ -66,22 +67,26 @@ public class AuthUserServiceImpl extends AuthUserService {
 	@Override
 	@ServiceMethod
 	public void lock(final Long authUserId) {
-		authUserRepository.lock(authUserId);
+		final AuthUser authUser = authUserRepository.findByIdNotOptional(authUserId);
+		if(authUser != null) {
+			authUser.lock();
+			authUserRepository.save(authUser);
+		}
 	}
 
 	@Override
 	@ServiceMethod
 	public void unlock(final Long authUserId) {
-		authUserRepository.unlock(authUserId);
+		final AuthUser authUser = authUserRepository.findByIdNotOptional(authUserId);
+		if(authUser != null) {
+			authUser.unlock();
+			authUserRepository.save(authUser);
+		}
 	}
 
 	@Override
 	public AuthUser getNewEntityForSearchByExample(final Long id, final AuthUser firstRegistrationAuthUser, final AuthUser lastModificationAuthUser) {
-		final AuthUser authUser = new AuthUser();
-		authUser.setId(id);
-		authUser.setFirstRegistrationAuthUser(firstRegistrationAuthUser);
-		authUser.setLastModificationAuthUser(lastModificationAuthUser);
-
+		final AuthUser authUser = AuthUserFactory.createForSearchByExample(id, firstRegistrationAuthUser, lastModificationAuthUser);
 		return authUser;
 	}
 }

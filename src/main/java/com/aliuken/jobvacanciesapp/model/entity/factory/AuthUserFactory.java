@@ -12,4 +12,12 @@ public class AuthUserFactory extends AbstractEntityFactory<AuthUser> {
 	protected AuthUser createInstance() {
 		return new AuthUser();
 	}
+
+	public static AuthUser createForSearchByExample(final Long id, final AuthUser firstRegistrationAuthUser, final AuthUser lastModificationAuthUser) {
+		final AuthUser authUser = new AuthUser();
+		authUser.setId(id);
+		authUser.setFirstRegistrationAuthUser(firstRegistrationAuthUser);
+		authUser.setLastModificationAuthUser(lastModificationAuthUser);
+		return authUser;
+	}
 }

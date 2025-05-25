@@ -11,6 +11,7 @@ import com.aliuken.jobvacanciesapp.model.entity.AuthUser;
 import com.aliuken.jobvacanciesapp.model.entity.JobCompany;
 import com.aliuken.jobvacanciesapp.model.entity.JobVacancy;
 import com.aliuken.jobvacanciesapp.model.entity.enumtype.JobVacancyStatus;
+import com.aliuken.jobvacanciesapp.model.entity.factory.JobVacancyFactory;
 import com.aliuken.jobvacanciesapp.repository.JobVacancyRepository;
 import com.aliuken.jobvacanciesapp.repository.superinterface.UpgradedJpaRepository;
 
@@ -42,22 +43,13 @@ public class JobVacancyServiceImpl extends JobVacancyService {
 
 	@Override
 	public JobVacancy getNewEntityForSearchByExample(final Long id, final AuthUser firstRegistrationAuthUser, final AuthUser lastModificationAuthUser) {
-		final JobVacancy jobVacancy = new JobVacancy();
-		jobVacancy.setId(id);
-		jobVacancy.setFirstRegistrationAuthUser(firstRegistrationAuthUser);
-		jobVacancy.setLastModificationAuthUser(lastModificationAuthUser);
-
+		final JobVacancy jobVacancy = JobVacancyFactory.createForSearchByExample(id, firstRegistrationAuthUser, lastModificationAuthUser);
 		return jobVacancy;
 	}
 
 	@Override
 	public JobVacancy getNewEntityWithJobCompanyName(String jobCompanyName) {
-		final JobCompany jobCompany = new JobCompany();
-		jobCompany.setName(jobCompanyName);
-
-		final JobVacancy jobVacancy = new JobVacancy();
-		jobVacancy.setJobCompany(jobCompany);
-
+		final JobVacancy jobVacancy = JobVacancyFactory.createWithJobCompanyName(jobCompanyName);
 		return jobVacancy;
 	}
 }

@@ -43,14 +43,6 @@ public interface AuthUserRepository extends UpgradedJpaRepository<AuthUser> {
 		return authUser;
 	}
 
-	@RepositoryMethod
-	public default void lock(final Long authUserId) {
-		final AuthUser authUser = this.findByIdNotOptional(authUserId);
-		if(authUser != null) {
-			authUser.setEnabled(Boolean.FALSE);
-		}
-	}
-
 //	@RepositoryMethod
 //	public default int lock(final Long authUserId) {
 //		final Map<String, Object> parameterMap = new HashMap<>();
@@ -59,14 +51,6 @@ public interface AuthUserRepository extends UpgradedJpaRepository<AuthUser> {
 //		final int rows = this.executeUpdate("UPDATE AuthUser au SET au.enabled=0 WHERE au.id = :authUserId", parameterMap);
 //		return rows;
 //	}
-
-	@RepositoryMethod
-	public default void unlock(final Long authUserId) {
-		final AuthUser authUser = this.findByIdNotOptional(authUserId);
-		if(authUser != null) {
-			authUser.setEnabled(Boolean.TRUE);
-		}
-	}
 
 //	@RepositoryMethod
 //	public default int unlock(final Long authUserId) {

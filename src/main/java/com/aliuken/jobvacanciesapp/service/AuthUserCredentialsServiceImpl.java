@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.aliuken.jobvacanciesapp.annotation.ServiceMethod;
 import com.aliuken.jobvacanciesapp.model.entity.AuthUser;
 import com.aliuken.jobvacanciesapp.model.entity.AuthUserCredentials;
+import com.aliuken.jobvacanciesapp.model.entity.factory.AuthUserCredentialsFactory;
 import com.aliuken.jobvacanciesapp.repository.AuthUserCredentialsRepository;
 import com.aliuken.jobvacanciesapp.repository.superinterface.UpgradedJpaRepository;
 
@@ -38,11 +39,7 @@ public class AuthUserCredentialsServiceImpl extends AuthUserCredentialsService {
 
 	@Override
 	public AuthUserCredentials getNewEntityForSearchByExample(final Long id, final AuthUser firstRegistrationAuthUser, final AuthUser lastModificationAuthUser) {
-		final AuthUserCredentials authUserCredentials = new AuthUserCredentials();
-		authUserCredentials.setId(id);
-		authUserCredentials.setFirstRegistrationAuthUser(firstRegistrationAuthUser);
-		authUserCredentials.setLastModificationAuthUser(lastModificationAuthUser);
-
+		final AuthUserCredentials authUserCredentials = AuthUserCredentialsFactory.createForSearchByExample(id, firstRegistrationAuthUser, lastModificationAuthUser);
 		return authUserCredentials;
 	}
 }
