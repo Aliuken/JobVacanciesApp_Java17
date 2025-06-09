@@ -651,7 +651,7 @@ The properties read in [ConfigPropertiesBean](https://github.com/Aliuken/JobVaca
 > 6. **In loginForm.html** [[&#10138;]](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/src/main/resources/templates/loginForm.html): T(com.aliuken.jobvacanciesapp.MainClass).restartApp(...)
 > 7. **In MainClass** [[&#10138;]](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/src/main/java/com/aliuken/jobvacanciesapp/MainClass.java): MainClass.restartApp(...) **&rArr;** restartExecutorService.submit **&rArr;** MainClass.springApplication.run(MainClass.args)
 > 
-> > However, there is a [ConfigurableEnum](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/src/main/java/com/aliuken/jobvacanciesapp/enumtype/superinterface/ConfigurableEnum.java) implementation ([Currency](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/src/main/java/com/aliuken/jobvacanciesapp/model/entity/enumtype/Currency.java)) that cannot be overwritten and whose default value is always the same (US_DOLLAR).
+> However, there is a [ConfigurableEnum](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/src/main/java/com/aliuken/jobvacanciesapp/enumtype/superinterface/ConfigurableEnum.java) implementation ([Currency](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/src/main/java/com/aliuken/jobvacanciesapp/model/entity/enumtype/Currency.java)) that cannot be overwritten and whose default value is always the same (US_DOLLAR).
 
 ### 7.3. Ad-hoc non-overwritable properties
 
