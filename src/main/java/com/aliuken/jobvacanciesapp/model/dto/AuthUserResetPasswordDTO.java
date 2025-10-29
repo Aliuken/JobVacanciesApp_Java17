@@ -1,15 +1,14 @@
 package com.aliuken.jobvacanciesapp.model.dto;
 
-import java.io.Serializable;
-import java.util.Objects;
-
 import com.aliuken.jobvacanciesapp.model.dto.superinterface.AbstractEntityDTO;
 import com.aliuken.jobvacanciesapp.util.javase.StringUtils;
-
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
+
+import java.io.Serializable;
+import java.util.Objects;
 
 @Data
 public class AuthUserResetPasswordDTO implements AbstractEntityDTO, Serializable {

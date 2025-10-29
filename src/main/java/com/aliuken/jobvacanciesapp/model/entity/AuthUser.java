@@ -1,5 +1,24 @@
 package com.aliuken.jobvacanciesapp.model.entity;
 
+import com.aliuken.jobvacanciesapp.Constants;
+import com.aliuken.jobvacanciesapp.annotation.LazyEntityRelationGetter;
+import com.aliuken.jobvacanciesapp.model.comparator.AuthUserRoleAuthRolePriorityComparator;
+import com.aliuken.jobvacanciesapp.model.comparator.JobRequestJobVacancyPublicationDateTimeComparator;
+import com.aliuken.jobvacanciesapp.model.entity.enumtype.*;
+import com.aliuken.jobvacanciesapp.model.entity.superclass.AbstractEntity;
+import com.aliuken.jobvacanciesapp.util.javase.LogicalUtils;
+import com.aliuken.jobvacanciesapp.util.javase.StringUtils;
+import com.aliuken.jobvacanciesapp.util.persistence.pdf.util.StyleApplier;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.SortComparator;
+
 import java.io.Externalizable;
 import java.io.IOException;
 import java.io.ObjectInput;
@@ -9,39 +28,14 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import com.aliuken.jobvacanciesapp.model.entity.enumtype.*;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-import org.hibernate.annotations.SortComparator;
-
-import com.aliuken.jobvacanciesapp.Constants;
-import com.aliuken.jobvacanciesapp.annotation.LazyEntityRelationGetter;
-import com.aliuken.jobvacanciesapp.model.comparator.AuthUserRoleAuthRolePriorityComparator;
-import com.aliuken.jobvacanciesapp.model.comparator.JobRequestJobVacancyPublicationDateTimeComparator;
-import com.aliuken.jobvacanciesapp.model.entity.superclass.AbstractEntity;
-import com.aliuken.jobvacanciesapp.util.javase.LogicalUtils;
-import com.aliuken.jobvacanciesapp.util.javase.StringUtils;
-import com.aliuken.jobvacanciesapp.util.persistence.pdf.util.StyleApplier;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.Index;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OrderBy;
-import jakarta.persistence.Table;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
-import lombok.Data;
-
 @Entity
 @Table(name="auth_user", indexes={
 		@Index(name="auth_user_unique_key_1", columnList="email", unique=true),
 		@Index(name="auth_user_key_1", columnList="first_registration_auth_user_id"),
 		@Index(name="auth_user_key_2", columnList="last_modification_auth_user_id"),
 		@Index(name="auth_user_key_3", columnList="enabled")})
-@Data
+@Getter
+@Setter
 public class AuthUser extends AbstractEntity implements Externalizable {
 	private static final long serialVersionUID = -2992782217868515621L;
 
@@ -374,27 +368,6 @@ public class AuthUser extends AbstractEntity implements Externalizable {
 			", authRoles=", authRoles, ", jobVacancies=", jobVacancies, "]");
 
 		return result;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(email, name, surnames, language, enabled, colorMode, initialCurrency, initialTablePageSize, pdfDocumentPageFormat);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if(!super.equals(obj)) {
-			return false;
-		}
-		AuthUser other = (AuthUser) obj;
-		return Objects.equals(email, other.email) && Objects.equals(name, other.name)
-			&& Objects.equals(surnames, other.surnames) && Objects.equals(language, other.language)
-			&& Objects.equals(enabled, other.enabled) && Objects.equals(colorMode, other.colorMode)
-			&& Objects.equals(initialCurrency, other.initialCurrency) && Objects.equals(initialTablePageSize, other.initialTablePageSize)
-			&& Objects.equals(pdfDocumentPageFormat, other.pdfDocumentPageFormat);
 	}
 
 	@Override

@@ -1,21 +1,14 @@
 package com.aliuken.jobvacanciesapp.model.entity;
 
-import java.util.Objects;
-
 import com.aliuken.jobvacanciesapp.Constants;
 import com.aliuken.jobvacanciesapp.model.entity.superclass.AbstractEntityWithJobCompany;
 import com.aliuken.jobvacanciesapp.util.javase.StringUtils;
 import com.aliuken.jobvacanciesapp.util.persistence.pdf.util.StyleApplier;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Index;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name="job_company_logo", indexes={
@@ -23,7 +16,8 @@ import lombok.Data;
 		@Index(name="job_company_logo_key_1", columnList="first_registration_auth_user_id"),
 		@Index(name="job_company_logo_key_2", columnList="last_modification_auth_user_id"),
 		@Index(name="job_company_logo_key_3", columnList="job_company_id")})
-@Data
+@Getter
+@Setter
 public class JobCompanyLogo extends AbstractEntityWithJobCompany {
 	private static final long serialVersionUID = 3937298767687586305L;
 
@@ -104,22 +98,5 @@ public class JobCompanyLogo extends AbstractEntityWithJobCompany {
 			", firstRegistrationDateTime=", firstRegistrationDateTimeString, ", firstRegistrationAuthUser=", firstRegistrationAuthUserEmail, ", lastModificationDateTime=", lastModificationDateTimeString, ", lastModificationAuthUser=", lastModificationAuthUserEmail, "]");
 
 		return result;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(jobCompany, fileName);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if(!super.equals(obj)) {
-			return false;
-		}
-		JobCompanyLogo other = (JobCompanyLogo) obj;
-		return Objects.equals(jobCompany, other.jobCompany) && Objects.equals(fileName, other.fileName);
 	}
 }

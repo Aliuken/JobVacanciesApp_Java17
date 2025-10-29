@@ -1,14 +1,13 @@
 package com.aliuken.jobvacanciesapp.model.dto;
 
-import java.io.Serializable;
-import java.util.Objects;
-
 import com.aliuken.jobvacanciesapp.model.dto.superinterface.AbstractEntityDTO;
 import com.aliuken.jobvacanciesapp.util.javase.StringUtils;
-
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+
+import java.io.Serializable;
+import java.util.Objects;
 
 public record JobRequestDTO(
 	Long id,

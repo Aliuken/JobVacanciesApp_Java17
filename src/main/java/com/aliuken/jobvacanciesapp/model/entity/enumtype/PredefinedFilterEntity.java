@@ -1,11 +1,10 @@
 package com.aliuken.jobvacanciesapp.model.entity.enumtype;
 
-import java.io.Serializable;
-
 import com.aliuken.jobvacanciesapp.Constants;
 import com.aliuken.jobvacanciesapp.util.javase.StringUtils;
-
 import jakarta.validation.constraints.NotNull;
+
+import java.io.Serializable;
 
 public enum PredefinedFilterEntity implements Serializable {
 	AUTH_USER   ("AuthUser"),

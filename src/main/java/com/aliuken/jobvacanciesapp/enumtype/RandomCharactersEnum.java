@@ -1,8 +1,8 @@
 package com.aliuken.jobvacanciesapp.enumtype;
 
-import java.io.Serializable;
-
 import jakarta.validation.constraints.NotEmpty;
+
+import java.io.Serializable;
 
 public enum RandomCharactersEnum implements Serializable {
 	ALPHANUMERIC_CHARACTERS("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"),

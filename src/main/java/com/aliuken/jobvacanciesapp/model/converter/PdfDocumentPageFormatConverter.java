@@ -1,7 +1,6 @@
 package com.aliuken.jobvacanciesapp.model.converter;
 
 import com.aliuken.jobvacanciesapp.model.entity.enumtype.PdfDocumentPageFormat;
-
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 

@@ -1,16 +1,15 @@
 package com.aliuken.jobvacanciesapp.model.dto;
 
-import java.io.Serializable;
-import java.util.Objects;
-import java.util.Set;
-
 import com.aliuken.jobvacanciesapp.model.dto.superinterface.AbstractEntityDTO;
 import com.aliuken.jobvacanciesapp.util.javase.StringUtils;
-
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+
+import java.io.Serializable;
+import java.util.Objects;
+import java.util.Set;
 
 public record AuthUserDTO(
 	@NotNull(message="{id.notNull}")

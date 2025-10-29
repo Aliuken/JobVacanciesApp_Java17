@@ -1,9 +1,5 @@
 package com.aliuken.jobvacanciesapp.model.entity.superclass;
 
-import java.io.Serializable;
-import java.time.LocalDateTime;
-import java.util.Objects;
-
 import com.aliuken.jobvacanciesapp.Constants;
 import com.aliuken.jobvacanciesapp.model.entity.AuthUser;
 import com.aliuken.jobvacanciesapp.model.entity.superinterface.AbstractEntityFieldsPrintable;
@@ -12,22 +8,19 @@ import com.aliuken.jobvacanciesapp.util.javase.StringUtils;
 import com.aliuken.jobvacanciesapp.util.javase.ThrowableUtils;
 import com.aliuken.jobvacanciesapp.util.persistence.pdf.util.StyleApplier;
 import com.aliuken.jobvacanciesapp.util.security.SessionUtils;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.MappedSuperclass;
-import jakarta.persistence.PrePersist;
-import jakarta.persistence.PreUpdate;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
+import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.util.Objects;
+
 @MappedSuperclass
-@Data
+@Getter
+@Setter
 @Slf4j
 public abstract class AbstractEntity implements Serializable, Comparable<AbstractEntity>, AbstractEntityFieldsPrintable {
 	private static final long serialVersionUID = -1146558230499546161L;
@@ -209,9 +202,14 @@ public abstract class AbstractEntity implements Serializable, Comparable<Abstrac
 
 	@Override
 	public int hashCode() {
-		final String firstRegistrationAuthUserEmail = this.getFirstRegistrationAuthUserEmail();
-		final String lastModificationAuthUserEmail = this.getLastModificationAuthUserEmail();
-		return Objects.hash(id, firstRegistrationDateTime, firstRegistrationAuthUserEmail, lastModificationDateTime, lastModificationAuthUserEmail);
+		final int result;
+		if(id != null) {
+			final Class<? extends AbstractEntity> entityClass = this.getClass();
+			result = Objects.hash(entityClass, id);
+		} else {
+			result = System.identityHashCode(this);
+		}
+		return result;
 	}
 
 	@Override
@@ -222,16 +220,18 @@ public abstract class AbstractEntity implements Serializable, Comparable<Abstrac
 		if(obj == null) {
 			return false;
 		}
-		if(getClass() != obj.getClass()) {
+		if(this.getClass() != obj.getClass()) {
 			return false;
 		}
 
 		final AbstractEntity other = (AbstractEntity) obj;
 
-		return Objects.equals(id, other.id)
-			&& Objects.equals(firstRegistrationDateTime, other.firstRegistrationDateTime)
-			&& Objects.equals(this.getFirstRegistrationAuthUserEmail(), other.getFirstRegistrationAuthUserEmail())
-			&& Objects.equals(lastModificationDateTime, other.lastModificationDateTime)
-			&& Objects.equals(this.getLastModificationAuthUserEmail(), other.getLastModificationAuthUserEmail());
+		final boolean result;
+		if (id != null && other.id != null) {
+			result = id.equals(other.id);
+		} else {
+			result = false;
+		}
+		return result;
 	}
 }

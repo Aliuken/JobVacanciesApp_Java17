@@ -1,13 +1,12 @@
 package com.aliuken.jobvacanciesapp.model.dto;
 
-import java.io.Serializable;
-import java.util.List;
-
 import com.aliuken.jobvacanciesapp.model.entity.enumtype.Language;
 import com.aliuken.jobvacanciesapp.util.javase.StringUtils;
-
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+
+import java.io.Serializable;
+import java.util.List;
 
 public record EmailDataDTO(
 	@NotEmpty(message="{destinationEmailAddress.notEmpty}")

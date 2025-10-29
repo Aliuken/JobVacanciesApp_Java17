@@ -1,17 +1,16 @@
 package com.aliuken.jobvacanciesapp.model.dto;
 
-import java.io.Serializable;
-import java.util.Objects;
-
 import com.aliuken.jobvacanciesapp.model.entity.enumtype.Language;
 import com.aliuken.jobvacanciesapp.model.entity.enumtype.TableField;
 import com.aliuken.jobvacanciesapp.model.entity.enumtype.TableSortingDirection;
 import com.aliuken.jobvacanciesapp.util.javase.LogicalUtils;
 import com.aliuken.jobvacanciesapp.util.javase.StringUtils;
-
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+
+import java.io.Serializable;
+import java.util.Objects;
 
 public record TableSearchDTO(
 	@NotEmpty(message="{language.notEmpty}")

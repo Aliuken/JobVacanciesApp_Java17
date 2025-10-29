@@ -1,5 +1,11 @@
 package com.aliuken.jobvacanciesapp.config;
 
+import com.aliuken.jobvacanciesapp.Constants;
+import com.aliuken.jobvacanciesapp.util.security.SpringSecurityUtils;
+import com.aliuken.jobvacanciesapp.util.spring.di.BeanFactoryUtils;
+import jakarta.servlet.ServletContext;
+import nz.net.ultraq.thymeleaf.layoutdialect.LayoutDialect;
+import nz.net.ultraq.thymeleaf.layoutdialect.decorators.strategies.GroupingStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -17,14 +23,6 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 import org.thymeleaf.templateresolver.UrlTemplateResolver;
 import org.thymeleaf.templateresolver.WebApplicationTemplateResolver;
 import org.thymeleaf.web.servlet.JakartaServletWebApplication;
-
-import com.aliuken.jobvacanciesapp.Constants;
-import com.aliuken.jobvacanciesapp.util.security.SpringSecurityUtils;
-import com.aliuken.jobvacanciesapp.util.spring.di.BeanFactoryUtils;
-
-import jakarta.servlet.ServletContext;
-import nz.net.ultraq.thymeleaf.layoutdialect.LayoutDialect;
-import nz.net.ultraq.thymeleaf.layoutdialect.decorators.strategies.GroupingStrategy;
 
 @Configuration
 public class WebTemplateConfig {

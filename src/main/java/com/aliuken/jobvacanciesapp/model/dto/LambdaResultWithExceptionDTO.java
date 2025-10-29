@@ -1,10 +1,10 @@
 package com.aliuken.jobvacanciesapp.model.dto;
 
-import java.io.Serializable;
-import java.util.Objects;
-
 import com.aliuken.jobvacanciesapp.util.javase.StringUtils;
 import com.aliuken.jobvacanciesapp.util.javase.ThrowableUtils;
+
+import java.io.Serializable;
+import java.util.Objects;
 
 public record LambdaResultWithExceptionDTO<T>(
 	T returnedValue,

@@ -1,7 +1,6 @@
 package com.aliuken.jobvacanciesapp.service;
 
 import com.aliuken.jobvacanciesapp.model.entity.enumtype.Language;
-
 import jakarta.mail.MessagingException;
 
 public interface EmailService {

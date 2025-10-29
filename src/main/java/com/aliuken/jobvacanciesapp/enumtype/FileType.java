@@ -1,5 +1,11 @@
 package com.aliuken.jobvacanciesapp.enumtype;
 
+import com.aliuken.jobvacanciesapp.util.javase.LogicalUtils;
+import com.aliuken.jobvacanciesapp.util.javase.StringUtils;
+import com.aliuken.jobvacanciesapp.util.persistence.file.FileNameUtils;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+
 import java.io.IOException;
 import java.io.Serializable;
 import java.nio.file.DirectoryStream;
@@ -8,13 +14,6 @@ import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.aliuken.jobvacanciesapp.util.javase.LogicalUtils;
-import com.aliuken.jobvacanciesapp.util.javase.StringUtils;
-import com.aliuken.jobvacanciesapp.util.persistence.file.FileNameUtils;
-
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 
 public enum FileType implements Serializable, DirectoryStream.Filter<Path> {
 	COMPANY_LOGO("jpg", "jpeg", "png"),

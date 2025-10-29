@@ -1,10 +1,10 @@
 package com.aliuken.jobvacanciesapp.model.converter;
 
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
-
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
+
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Converter(autoApply=true)
 public class LocalDateTimeAttributeConverter implements AttributeConverter<LocalDateTime, Timestamp> {

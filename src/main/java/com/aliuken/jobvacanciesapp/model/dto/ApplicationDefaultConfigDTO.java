@@ -1,8 +1,5 @@
 package com.aliuken.jobvacanciesapp.model.dto;
 
-import java.io.Serializable;
-import java.util.Objects;
-
 import com.aliuken.jobvacanciesapp.enumtype.AnonymousAccessPermission;
 import com.aliuken.jobvacanciesapp.enumtype.UserInterfaceFramework;
 import com.aliuken.jobvacanciesapp.model.entity.enumtype.ColorMode;
@@ -10,6 +7,9 @@ import com.aliuken.jobvacanciesapp.model.entity.enumtype.Language;
 import com.aliuken.jobvacanciesapp.model.entity.enumtype.PdfDocumentPageFormat;
 import com.aliuken.jobvacanciesapp.model.entity.enumtype.TablePageSize;
 import com.aliuken.jobvacanciesapp.util.javase.StringUtils;
+
+import java.io.Serializable;
+import java.util.Objects;
 
 public record ApplicationDefaultConfigDTO(
 	//Non-overwritable properties

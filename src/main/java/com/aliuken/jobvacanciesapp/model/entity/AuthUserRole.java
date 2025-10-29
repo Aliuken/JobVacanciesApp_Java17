@@ -1,19 +1,13 @@
 package com.aliuken.jobvacanciesapp.model.entity;
 
-import java.util.Objects;
-
 import com.aliuken.jobvacanciesapp.Constants;
 import com.aliuken.jobvacanciesapp.model.entity.superclass.AbstractEntityWithAuthUser;
 import com.aliuken.jobvacanciesapp.util.javase.StringUtils;
 import com.aliuken.jobvacanciesapp.util.persistence.pdf.util.StyleApplier;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.Index;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name="auth_user_role", indexes={
@@ -22,7 +16,8 @@ import lombok.Data;
 		@Index(name="auth_user_role_key_2", columnList="last_modification_auth_user_id"),
 		@Index(name="auth_user_role_key_3", columnList="auth_user_id"),
 		@Index(name="auth_user_role_key_4", columnList="auth_role_id")})
-@Data
+@Getter
+@Setter
 public class AuthUserRole extends AbstractEntityWithAuthUser {
 	private static final long serialVersionUID = -7984070191950848318L;
 
@@ -85,22 +80,5 @@ public class AuthUserRole extends AbstractEntityWithAuthUser {
 			", firstRegistrationDateTime=", firstRegistrationDateTimeString, ", firstRegistrationAuthUser=", firstRegistrationAuthUserEmail, ", lastModificationDateTime=", lastModificationDateTimeString, ", lastModificationAuthUser=", lastModificationAuthUserEmail, "]");
 
 		return result;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(authRole);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if(!super.equals(obj)) {
-			return false;
-		}
-		AuthUserRole other = (AuthUserRole) obj;
-		return Objects.equals(authRole, other.authRole);
 	}
 }

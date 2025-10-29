@@ -1,16 +1,14 @@
 package com.aliuken.jobvacanciesapp.enumtype;
 
+import com.aliuken.jobvacanciesapp.Constants;
+import jakarta.validation.constraints.NotEmpty;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
-
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-
-import com.aliuken.jobvacanciesapp.Constants;
-
-import jakarta.validation.constraints.NotEmpty;
 
 public enum AllowedViewsEnum implements Serializable {
 	ANONYMOUS_ACCESS_BY_DEFAULT (AnonymousAccessPermission.BY_DEFAULT),

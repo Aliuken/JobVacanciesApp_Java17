@@ -1,13 +1,12 @@
 package com.aliuken.jobvacanciesapp.model.dto;
 
-import java.io.Serializable;
-
 import com.aliuken.jobvacanciesapp.model.dto.superinterface.AbstractEntityDTO;
 import com.aliuken.jobvacanciesapp.util.javase.StringUtils;
-
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
+
+import java.io.Serializable;
 
 public record AuthUserForSignupDTO(
 	@NotEmpty(message="{email.notEmpty}")

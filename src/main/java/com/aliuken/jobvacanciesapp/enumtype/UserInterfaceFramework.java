@@ -3,7 +3,6 @@ package com.aliuken.jobvacanciesapp.enumtype;
 import com.aliuken.jobvacanciesapp.Constants;
 import com.aliuken.jobvacanciesapp.config.ConfigPropertiesBean;
 import com.aliuken.jobvacanciesapp.enumtype.superinterface.ConfigurableEnum;
-
 import jakarta.validation.constraints.NotNull;
 
 public enum UserInterfaceFramework implements ConfigurableEnum<UserInterfaceFramework> {

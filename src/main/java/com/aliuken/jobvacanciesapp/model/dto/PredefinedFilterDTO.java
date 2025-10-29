@@ -1,10 +1,10 @@
 package com.aliuken.jobvacanciesapp.model.dto;
 
-import java.io.Serializable;
-import java.util.Objects;
-
 import com.aliuken.jobvacanciesapp.model.entity.enumtype.PredefinedFilterEntity;
 import com.aliuken.jobvacanciesapp.util.javase.StringUtils;
+
+import java.io.Serializable;
+import java.util.Objects;
 
 public record PredefinedFilterDTO(
 	String predefinedFilterName,

@@ -1,9 +1,9 @@
 package com.aliuken.jobvacanciesapp.util.persistence.pdf.dto;
 
-import java.io.Serializable;
-
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
+
+import java.io.Serializable;
 
 public record GenericTableContentDTO(
 	int cellHorizontalAlignment,

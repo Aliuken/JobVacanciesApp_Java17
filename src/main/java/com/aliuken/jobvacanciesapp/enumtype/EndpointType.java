@@ -1,7 +1,11 @@
 package com.aliuken.jobvacanciesapp.enumtype;
 
-import static org.springframework.http.HttpMethod.GET;
-import static org.springframework.http.HttpMethod.POST;
+import com.aliuken.jobvacanciesapp.Constants;
+import com.aliuken.jobvacanciesapp.model.dto.EndpointRegexPatternDTO;
+import com.aliuken.jobvacanciesapp.util.javase.StringUtils;
+import jakarta.validation.constraints.NotNull;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpMethod;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -9,14 +13,8 @@ import java.util.Map;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
 
-import org.springframework.http.HttpMethod;
-
-import com.aliuken.jobvacanciesapp.Constants;
-import com.aliuken.jobvacanciesapp.model.dto.EndpointRegexPatternDTO;
-import com.aliuken.jobvacanciesapp.util.javase.StringUtils;
-
-import jakarta.validation.constraints.NotNull;
-import lombok.extern.slf4j.Slf4j;
+import static org.springframework.http.HttpMethod.GET;
+import static org.springframework.http.HttpMethod.POST;
 
 //NOTE: the regular expression "([^/]+)" matches with a path parameter (formed by consecutive characters without the "/" character)
 @Slf4j

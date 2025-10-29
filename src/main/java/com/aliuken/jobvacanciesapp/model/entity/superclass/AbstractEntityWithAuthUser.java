@@ -1,16 +1,14 @@
 package com.aliuken.jobvacanciesapp.model.entity.superclass;
 
-import java.util.Objects;
-
-import com.aliuken.jobvacanciesapp.model.entity.AuthUser;
 import com.aliuken.jobvacanciesapp.model.entity.superinterface.AbstractEntityWithAuthUserInterface;
 import com.aliuken.jobvacanciesapp.util.javase.StringUtils;
-
 import jakarta.persistence.MappedSuperclass;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @MappedSuperclass
-@Data
+@Getter
+@Setter
 public abstract class AbstractEntityWithAuthUser extends AbstractEntity implements AbstractEntityWithAuthUserInterface {
 	private static final long serialVersionUID = 2906355999654036448L;
 
@@ -31,25 +29,5 @@ public abstract class AbstractEntityWithAuthUser extends AbstractEntity implemen
 			", firstRegistrationDateTime=", firstRegistrationDateTimeString, ", firstRegistrationAuthUser=", firstRegistrationAuthUserEmail, ", lastModificationDateTime=", lastModificationDateTimeString, ", lastModificationAuthUser=", lastModificationAuthUserEmail, "]");
 
 		return result;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		final AuthUser authUser = this.getAuthUser();
-
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(authUser);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if(!super.equals(obj)) {
-			return false;
-		}
-		final AuthUser authUser = this.getAuthUser();
-		final AbstractEntityWithAuthUser other = (AbstractEntityWithAuthUser) obj;
-		return Objects.equals(authUser, other.getAuthUser());
 	}
 }

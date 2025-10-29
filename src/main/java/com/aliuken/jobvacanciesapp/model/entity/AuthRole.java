@@ -1,14 +1,5 @@
 package com.aliuken.jobvacanciesapp.model.entity;
 
-import java.util.LinkedHashSet;
-import java.util.Objects;
-import java.util.Set;
-import java.util.stream.Collectors;
-
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-import org.hibernate.annotations.SortComparator;
-
 import com.aliuken.jobvacanciesapp.Constants;
 import com.aliuken.jobvacanciesapp.annotation.LazyEntityRelationGetter;
 import com.aliuken.jobvacanciesapp.model.comparator.AuthUserRoleAuthUserFullNameComparator;
@@ -16,16 +7,19 @@ import com.aliuken.jobvacanciesapp.model.entity.superclass.AbstractEntity;
 import com.aliuken.jobvacanciesapp.superinterface.Internationalizable;
 import com.aliuken.jobvacanciesapp.util.javase.StringUtils;
 import com.aliuken.jobvacanciesapp.util.persistence.pdf.util.StyleApplier;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.Index;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.SortComparator;
+
+import java.util.LinkedHashSet;
+import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name="auth_role", indexes={
@@ -34,7 +28,8 @@ import lombok.Data;
 		@Index(name="auth_role_unique_key_3", columnList="priority", unique=true),
 		@Index(name="auth_role_key_1", columnList="first_registration_auth_user_id"),
 		@Index(name="auth_role_key_2", columnList="last_modification_auth_user_id")})
-@Data
+@Getter
+@Setter
 public class AuthRole extends AbstractEntity implements Internationalizable {
 	private static final long serialVersionUID = -3571531666008146592L;
 
@@ -156,22 +151,5 @@ public class AuthRole extends AbstractEntity implements Internationalizable {
 			", users=", authUserEmails, "]");
 
 		return result;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(name, messageName, priority);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if(!super.equals(obj)) {
-			return false;
-		}
-		AuthRole other = (AuthRole) obj;
-		return Objects.equals(name, other.name) && Objects.equals(messageName, other.messageName) && Objects.equals(priority, other.priority);
 	}
 }

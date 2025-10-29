@@ -1,14 +1,12 @@
 package com.aliuken.jobvacanciesapp.model.dto;
 
-import java.io.Serializable;
-
-import org.springframework.data.domain.Page;
-
 import com.aliuken.jobvacanciesapp.model.entity.superclass.AbstractEntity;
 import com.aliuken.jobvacanciesapp.util.javase.StringUtils;
 import com.aliuken.jobvacanciesapp.util.javase.ThrowableUtils;
-
 import jakarta.validation.constraints.NotNull;
+import org.springframework.data.domain.Page;
+
+import java.io.Serializable;
 
 public record AbstractEntityPageWithExceptionDTO<T extends AbstractEntity>(
 	@NotNull

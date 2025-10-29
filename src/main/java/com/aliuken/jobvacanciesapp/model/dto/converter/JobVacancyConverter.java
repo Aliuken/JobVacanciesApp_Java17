@@ -6,7 +6,6 @@ import com.aliuken.jobvacanciesapp.model.dto.JobCompanyDTO;
 import com.aliuken.jobvacanciesapp.model.dto.JobVacancyDTO;
 import com.aliuken.jobvacanciesapp.model.dto.converter.superclass.EntityToDtoConverter;
 import com.aliuken.jobvacanciesapp.model.entity.JobVacancy;
-import com.aliuken.jobvacanciesapp.util.javase.NumericUtils;
 
 import java.util.Objects;
 
