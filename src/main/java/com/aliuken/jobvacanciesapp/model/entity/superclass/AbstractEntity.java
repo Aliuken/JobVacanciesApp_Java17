@@ -209,7 +209,7 @@ public abstract class AbstractEntity<T extends AbstractEntity<T>> implements Ser
 	 *   <li>ID value (ascending or descending)</li>
 	 * </ul>
 	 */
-	private final int compareTo(AbstractEntity other, boolean descending) {
+	private final int compareTo(T other, boolean descending) {
 		final int direction = descending ? -1 : 1;
 
 		if (other == null) {
@@ -218,8 +218,8 @@ public abstract class AbstractEntity<T extends AbstractEntity<T>> implements Ser
 			return nullCompareResult;
 		}
 
-		final Class<? extends AbstractEntity> thisClass = this.getClass();
-		final Class<? extends AbstractEntity> otherClass = other.getClass();
+		final Class<?> thisClass = this.getClass();
+		final Class<?> otherClass = other.getClass();
 		if (thisClass != otherClass) {
 			// Different classes are sorted by their names (including packages).
 			final int classCompareResult = direction * thisClass.getName().compareTo(otherClass.getName());
@@ -228,14 +228,14 @@ public abstract class AbstractEntity<T extends AbstractEntity<T>> implements Ser
 
 		// In ascending order, entities with null ids are sorted last; in descending, first.
 		final int idCompareResult;
-		if (this.id == null && other.id == null) {
+		if (this.id == null && other.getId() == null) {
 			idCompareResult = 0;
 		} else if (this.id == null) {
 			idCompareResult = descending ? THIS_FIRST : OTHER_FIRST;
-		} else if (other.id == null) {
+		} else if (other.getId() == null) {
 			idCompareResult = descending ? OTHER_FIRST : THIS_FIRST;
 		} else {
-			idCompareResult = direction * Long.compare(this.id, other.id);
+			idCompareResult = direction * Long.compare(this.id, other.getId());
 		}
 		return idCompareResult;
 	}
@@ -258,9 +258,9 @@ public abstract class AbstractEntity<T extends AbstractEntity<T>> implements Ser
 			return false;
 		}
 
-		final AbstractEntity other = (AbstractEntity) obj;
+		final T other = GenericsUtils.cast(obj);
 
-		final boolean result = Objects.equals(this.id, other.id);
+		final boolean result = Objects.equals(this.id, other.getId());
 		return result;
 	}
 }
