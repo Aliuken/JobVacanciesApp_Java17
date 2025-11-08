@@ -9,7 +9,7 @@ import lombok.Setter;
 @MappedSuperclass
 @Getter
 @Setter
-public abstract class AbstractEntityWithJobCompany extends AbstractEntity implements AbstractEntityWithJobCompanyInterface {
+public abstract class AbstractEntityWithJobCompany<T extends AbstractEntity<T>> extends AbstractEntity<T> implements AbstractEntityWithJobCompanyInterface {
 	private static final long serialVersionUID = -4031746176102479533L;
 
 	public AbstractEntityWithJobCompany() {

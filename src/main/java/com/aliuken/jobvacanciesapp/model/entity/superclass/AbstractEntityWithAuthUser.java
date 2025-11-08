@@ -9,7 +9,7 @@ import lombok.Setter;
 @MappedSuperclass
 @Getter
 @Setter
-public abstract class AbstractEntityWithAuthUser extends AbstractEntity implements AbstractEntityWithAuthUserInterface {
+public abstract class AbstractEntityWithAuthUser<T extends AbstractEntity<T>> extends AbstractEntity<T> implements AbstractEntityWithAuthUserInterface {
 	private static final long serialVersionUID = 2906355999654036448L;
 
 	public AbstractEntityWithAuthUser() {

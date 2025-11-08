@@ -26,7 +26,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
 @Slf4j
-public abstract class AbstractEntityWithAuthUserAndJobCompanyServiceSuperclass<T extends AbstractEntityWithAuthUserAndJobCompany> extends AbstractEntityServiceSuperclass<T> {
+public abstract class AbstractEntityWithAuthUserAndJobCompanyServiceSuperclass<T extends AbstractEntityWithAuthUserAndJobCompany<T>> extends AbstractEntityServiceSuperclass<T> {
 
 	private static final ExampleMatcher AUTH_USER_EMAIL_EXAMPLE_MATCHER = DatabaseUtils.getExampleMatcherWithContainsOneField("authUser.email");
 	private static final ExampleMatcher AUTH_USER_NAME_EXAMPLE_MATCHER = DatabaseUtils.getExampleMatcherWithContainsOneField("authUser.name");

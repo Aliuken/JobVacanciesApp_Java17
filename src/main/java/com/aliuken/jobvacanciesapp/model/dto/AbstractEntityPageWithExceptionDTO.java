@@ -8,21 +8,15 @@ import org.springframework.data.domain.Page;
 
 import java.io.Serializable;
 
-public record AbstractEntityPageWithExceptionDTO<T extends AbstractEntity>(
+public record AbstractEntityPageWithExceptionDTO<T extends AbstractEntity<T>>(
 	@NotNull
 	Page<T> page,
 
 	Throwable throwable
 ) implements Serializable {
 
-	private static final AbstractEntityPageWithExceptionDTO<? extends AbstractEntity> NO_ARGS_INSTANCE = new AbstractEntityPageWithExceptionDTO<>(Page.empty(), null);
-
 	public AbstractEntityPageWithExceptionDTO {
 
-	}
-
-	public static AbstractEntityPageWithExceptionDTO<? extends AbstractEntity> getNewInstance() {
-		return NO_ARGS_INSTANCE;
 	}
 
 	public boolean hasException() {

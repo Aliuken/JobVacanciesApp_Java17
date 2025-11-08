@@ -4,6 +4,7 @@ import com.aliuken.jobvacanciesapp.Constants;
 import com.aliuken.jobvacanciesapp.model.entity.AuthUser;
 import com.aliuken.jobvacanciesapp.model.entity.superinterface.AbstractEntityFieldsPrintable;
 import com.aliuken.jobvacanciesapp.repository.superinterface.UpgradedJpaRepository;
+import com.aliuken.jobvacanciesapp.util.javase.GenericsUtils;
 import com.aliuken.jobvacanciesapp.util.javase.StringUtils;
 import com.aliuken.jobvacanciesapp.util.javase.ThrowableUtils;
 import com.aliuken.jobvacanciesapp.util.persistence.pdf.util.StyleApplier;
@@ -22,7 +23,7 @@ import java.util.Objects;
 @Getter
 @Setter
 @Slf4j
-public abstract class AbstractEntity implements Serializable, Comparable<AbstractEntity>, AbstractEntityFieldsPrintable {
+public abstract class AbstractEntity<T extends AbstractEntity<T>> implements Serializable, Comparable<T>, AbstractEntityFieldsPrintable {
 	private static final long serialVersionUID = -1146558230499546161L;
 	private static final int THIS_FIRST = -1;
 	private static final int OTHER_FIRST = 1;
@@ -62,7 +63,9 @@ public abstract class AbstractEntity implements Serializable, Comparable<Abstrac
 
 	@PreUpdate
 	private void preUpdate() {
-		final AbstractEntity currentEntity = UpgradedJpaRepository.getEntityStatically(id, this.getClass());
+		final Class<?> initialEntityClass = this.getClass();
+		final Class<T> entityClass = GenericsUtils.cast(initialEntityClass);
+		final T currentEntity = UpgradedJpaRepository.getEntityStatically(id, entityClass);
 		if(currentEntity != null) {
 			firstRegistrationDateTime = currentEntity.getFirstRegistrationDateTime();
 			firstRegistrationAuthUser = currentEntity.getFirstRegistrationAuthUser();
@@ -192,7 +195,7 @@ public abstract class AbstractEntity implements Serializable, Comparable<Abstrac
 	}
 
 	@Override
-	public final int compareTo(AbstractEntity other) {
+	public final int compareTo(T other) {
 		final int compareResult = this.compareTo(other, false);
 		return compareResult;
 	}
