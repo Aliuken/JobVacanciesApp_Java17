@@ -48,7 +48,7 @@ public abstract class AbstractEntitySpecificComparator<T extends AbstractEntity<
 	}
 
 	// Ascending order where null entities are sorted last.
-	private final Integer getNullCompareResult(final T entity1, final T entity2) {
+	private Integer getNullCompareResult(final T entity1, final T entity2) {
 		final Integer nullCompareResult;
 		if (entity1 == null && entity2 == null) {
 			nullCompareResult = ENTITIES_EQUAL;
@@ -63,12 +63,12 @@ public abstract class AbstractEntitySpecificComparator<T extends AbstractEntity<
 	}
 
 	// Ascending order where different classes are sorted by their names (including packages).
-	private final Integer getClassCompareResult(final T entity1, final T entity2) {
+	private Integer getClassCompareResult(final T entity1, final T entity2) {
 		final Class<?> abstractEntityClass1 = entity1.getClass();
 		final Class<?> abstractEntityClass2 = entity2.getClass();
 
 		final Integer classCompareResult;
-		if (abstractEntityClass1 != abstractEntityClass2) {
+		if (!abstractEntityClass1.equals(abstractEntityClass2)) {
 			classCompareResult = abstractEntityClass1.getName().compareTo(abstractEntityClass2.getName());
 		} else {
 			classCompareResult = null;
@@ -77,7 +77,7 @@ public abstract class AbstractEntitySpecificComparator<T extends AbstractEntity<
 	}
 
 	// Ascending order where different classes are sorted by their names (including packages).
-	private final Integer getFirstCompareFieldResult(final T entity1, final T entity2) {
+	private Integer getFirstCompareFieldResult(final T entity1, final T entity2) {
 		final Function<T, U> firstCompareFieldFunction = this.getFirstCompareFieldFunction();
 
 		final Integer firstCompareFieldResult;
@@ -101,7 +101,7 @@ public abstract class AbstractEntitySpecificComparator<T extends AbstractEntity<
 	}
 
 	// Ascending order where entities with null ids are sorted last.
-	private final int getIdCompareResult(final T entity1, final T entity2) {
+	private int getIdCompareResult(final T entity1, final T entity2) {
 		final Long abstractEntityId1 = entity1.getId();
 		final Long abstractEntityId2 = entity2.getId();
 
