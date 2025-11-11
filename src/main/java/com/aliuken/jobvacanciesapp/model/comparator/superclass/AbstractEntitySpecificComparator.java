@@ -8,8 +8,8 @@ import java.util.function.Function;
 
 public abstract class AbstractEntitySpecificComparator<T extends AbstractEntity<T>, U extends Comparable<U>> implements Comparator<AbstractEntity<T>> {
 	public static final Integer ENTITIES_EQUAL = 0;
-	public static final int ENTITY1_FIRST = -1;
-	public static final int ENTITY2_FIRST = 1;
+	public static final Integer ENTITY1_FIRST = -1;
+	public static final Integer ENTITY2_FIRST = 1;
 
 	public abstract Function<T, U> getFirstCompareFieldFunction();
 
