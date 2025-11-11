@@ -50,7 +50,7 @@ public abstract class AbstractEntitySpecificComparator<T extends AbstractEntity<
 	private final Integer getNullCompareResult(final T entity1, final T entity2) {
 		final Integer nullCompareResult;
 		if (entity1 == null && entity2 == null) {
-			nullCompareResult = 0;
+			nullCompareResult = ENTITIES_EQUAL;
 		} else if (entity1 == null) {
 			nullCompareResult = ENTITY2_FIRST;
 		} else if (entity2 == null) {
@@ -85,7 +85,7 @@ public abstract class AbstractEntitySpecificComparator<T extends AbstractEntity<
 			final U firstCompareFieldValue2 = firstCompareFieldFunction.apply(entity2);
 
 			if (firstCompareFieldValue1 == null && firstCompareFieldValue2 == null) {
-				firstCompareFieldResult = 0;
+				firstCompareFieldResult = ENTITIES_EQUAL;
 			} else if (firstCompareFieldValue1 == null) {
 				firstCompareFieldResult = ENTITY2_FIRST;
 			} else if (firstCompareFieldValue2 == null) {
@@ -106,7 +106,7 @@ public abstract class AbstractEntitySpecificComparator<T extends AbstractEntity<
 
 		final int idCompareResult;
 		if (abstractEntityId1 == null && abstractEntityId2 == null) {
-			idCompareResult = 0;
+			idCompareResult = ENTITIES_EQUAL;
 		} else if (abstractEntityId1 == null) {
 			idCompareResult = ENTITY2_FIRST;
 		} else if (abstractEntityId2 == null) {

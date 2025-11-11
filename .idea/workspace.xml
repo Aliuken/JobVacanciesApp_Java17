@@ -193,8 +193,8 @@
     </configuration>
     <list>
       <item itemvalue="Application.Run App J17" />
-      <item itemvalue="JUnit.Run Tests J17" />
       <item itemvalue="JUnit.AuthRoleRepositoryTest" />
+      <item itemvalue="JUnit.Run Tests J17" />
       <item itemvalue="Maven.Maven [clean,install] J17" />
     </list>
     <recent_temporary>
