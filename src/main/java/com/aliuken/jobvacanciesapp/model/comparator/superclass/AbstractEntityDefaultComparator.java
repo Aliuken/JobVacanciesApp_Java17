@@ -48,7 +48,7 @@ public class AbstractEntityDefaultComparator<T extends AbstractEntity<T>> implem
 		} else if (entity2 == null) {
 			nullCompareResult = ENTITY1_FIRST;
 		} else {
-			nullCompareResult = null;
+			nullCompareResult = null; //CONTINUE
 		}
 		return nullCompareResult;
 	}
@@ -62,7 +62,7 @@ public class AbstractEntityDefaultComparator<T extends AbstractEntity<T>> implem
 		if (!abstractEntityClass1.equals(abstractEntityClass2)) {
 			classCompareResult = abstractEntityClass1.getName().compareTo(abstractEntityClass2.getName());
 		} else {
-			classCompareResult = null;
+			classCompareResult = null; //CONTINUE
 		}
 		return classCompareResult;
 	}

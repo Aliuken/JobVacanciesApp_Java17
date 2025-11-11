@@ -57,7 +57,7 @@ public abstract class AbstractEntitySpecificComparator<T extends AbstractEntity<
 		} else if (entity2 == null) {
 			nullCompareResult = ENTITY1_FIRST;
 		} else {
-			nullCompareResult = null;
+			nullCompareResult = null; //CONTINUE
 		}
 		return nullCompareResult;
 	}
@@ -71,7 +71,7 @@ public abstract class AbstractEntitySpecificComparator<T extends AbstractEntity<
 		if (!abstractEntityClass1.equals(abstractEntityClass2)) {
 			classCompareResult = abstractEntityClass1.getName().compareTo(abstractEntityClass2.getName());
 		} else {
-			classCompareResult = null;
+			classCompareResult = null; //CONTINUE
 		}
 		return classCompareResult;
 	}
@@ -86,16 +86,16 @@ public abstract class AbstractEntitySpecificComparator<T extends AbstractEntity<
 			final U firstCompareFieldValue2 = firstCompareFieldFunction.apply(entity2);
 
 			if (firstCompareFieldValue1 == null && firstCompareFieldValue2 == null) {
-				firstCompareFieldResult = ENTITIES_EQUAL;
+				firstCompareFieldResult = ENTITIES_EQUAL; //CONTINUE
 			} else if (firstCompareFieldValue1 == null) {
 				firstCompareFieldResult = ENTITY2_FIRST;
 			} else if (firstCompareFieldValue2 == null) {
 				firstCompareFieldResult = ENTITY1_FIRST;
 			} else {
-				firstCompareFieldResult = firstCompareFieldValue1.compareTo(firstCompareFieldValue2);
+				firstCompareFieldResult = firstCompareFieldValue1.compareTo(firstCompareFieldValue2); //CONTINUE IF ZERO
 			}
 		} else {
-			firstCompareFieldResult = null;
+			firstCompareFieldResult = null; //CONTINUE
 		}
 		return firstCompareFieldResult;
 	}
