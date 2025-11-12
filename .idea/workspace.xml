@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="811e674b-8575-4c23-be2a-462e8dd9b0fd" name="Changes" comment="" />
+    <list default="true" id="811e674b-8575-4c23-be2a-462e8dd9b0fd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/aliuken/jobvacanciesapp/model/comparator/superclass/AbstractEntityComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/aliuken/jobvacanciesapp/model/comparator/superclass/AbstractEntityDefaultComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aliuken/jobvacanciesapp/model/comparator/superclass/AbstractEntityDefaultComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/aliuken/jobvacanciesapp/model/comparator/superclass/AbstractEntitySpecificComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aliuken/jobvacanciesapp/model/comparator/superclass/AbstractEntitySpecificComparator.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -61,7 +66,7 @@
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Programacion/git/JobVacanciesApp_Java17/src/main/resources/static&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Programacion/git/JobVacanciesApp_Java17/src/main/java/com/aliuken/jobvacanciesapp/model&quot;,
     &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
@@ -70,11 +75,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Programacion\git\JobVacanciesApp_Java17\src\main\java\com\aliuken\jobvacanciesapp\model" />
       <recent name="C:\Programacion\git\JobVacanciesApp_Java17\src\main\resources\static" />
       <recent name="C:\Programacion\git\JobVacanciesApp_Java17\src\main\java\com\aliuken\jobvacanciesapp\model\entity\enumtype" />
       <recent name="C:\Programacion\git\JobVacanciesApp_Java17\src\main\java\com\aliuken\jobvacanciesapp\model\converter" />
       <recent name="C:\Programacion\git\JobVacanciesApp_Java17\build-context-elk-windows" />
-      <recent name="C:\Programacion\git\JobVacanciesApp_Java17\build-context-elk-linux" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Programacion\git\JobVacanciesApp_Java17\docker-windows" />
