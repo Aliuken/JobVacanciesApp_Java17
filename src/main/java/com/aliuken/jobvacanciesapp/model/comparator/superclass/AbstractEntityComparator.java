@@ -1,7 +1,6 @@
 package com.aliuken.jobvacanciesapp.model.comparator.superclass;
 
 import com.aliuken.jobvacanciesapp.model.entity.superclass.AbstractEntity;
-import com.aliuken.jobvacanciesapp.util.javase.GenericsUtils;
 
 import java.util.Comparator;
 

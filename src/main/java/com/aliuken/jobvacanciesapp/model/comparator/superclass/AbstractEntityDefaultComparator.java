@@ -3,12 +3,7 @@ package com.aliuken.jobvacanciesapp.model.comparator.superclass;
 import com.aliuken.jobvacanciesapp.model.entity.superclass.AbstractEntity;
 import com.aliuken.jobvacanciesapp.util.javase.GenericsUtils;
 
-import java.util.Comparator;
-
 public class AbstractEntityDefaultComparator<T extends AbstractEntity<T>> extends AbstractEntityComparator<T> {
-	public static final Integer ENTITIES_EQUAL = 0;
-	public static final Integer ENTITY1_FIRST = -1;
-	public static final Integer ENTITY2_FIRST = 1;
 
 	/**
 	 * Defines an ordering among entities.
