@@ -34,7 +34,7 @@ public abstract class AbstractEntitySpecificComparator<T extends AbstractEntity<
 		}
 
 		final Integer firstCompareFieldResult = this.getFirstCompareFieldResult(entity1, entity2);
-		if(firstCompareFieldResult != null && !ENTITIES_EQUAL.equals(firstCompareFieldResult)) {
+		if(firstCompareFieldResult != null && firstCompareFieldResult != ENTITIES_EQUAL) {
 			return firstCompareFieldResult;
 		}
 
@@ -50,7 +50,7 @@ public abstract class AbstractEntitySpecificComparator<T extends AbstractEntity<
 		if(firstCompareFieldFunction != null) {
 			final U firstCompareFieldValue1 = firstCompareFieldFunction.apply(entity1);
 			final U firstCompareFieldValue2 = firstCompareFieldFunction.apply(entity2);
-			firstCompareFieldResult = this.getCompareResult(firstCompareFieldValue1, firstCompareFieldValue2);
+			firstCompareFieldResult = this.getCompareResult(firstCompareFieldValue1, firstCompareFieldValue2); //CONTINUE IF ZERO
 		} else {
 			firstCompareFieldResult = null; //CONTINUE
 		}
