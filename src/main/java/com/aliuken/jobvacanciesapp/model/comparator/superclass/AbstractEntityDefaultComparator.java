@@ -12,7 +12,7 @@ public class AbstractEntityDefaultComparator<T extends AbstractEntity<T>> extend
 	private static final Map<Class<?>, EntityComparators<?>> ENTITY_COMPARATORS_MAP = new ConcurrentHashMap<>();
 
 	@Getter
-    public static class EntityComparators<U extends AbstractEntity<U>> {
+	public static class EntityComparators<U extends AbstractEntity<U>> {
 		private final AbstractEntityDefaultComparator<U> ascComparator;
 		private final AbstractEntityDefaultComparator<U> descComparator;
 		private final BiFunction<U, U, Integer> compareToAscFunction;
@@ -24,7 +24,7 @@ public class AbstractEntityDefaultComparator<T extends AbstractEntity<T>> extend
 			this.compareToAscFunction = (entity1, entity2) -> ascComparator.compare(entity1, entity2);
 			this.compareToDescFunction = (entity1, entity2) -> descComparator.compare(entity1, entity2);
 		}
-    }
+	}
 
 	private final int direction;
 
@@ -42,10 +42,7 @@ public class AbstractEntityDefaultComparator<T extends AbstractEntity<T>> extend
 	 * </ul>
 	 */
 	@Override
-	public final int compare(final AbstractEntity<T> abstractEntity1, final AbstractEntity<T> abstractEntity2) {
-		final T entity1 = GenericsUtils.cast(abstractEntity1);
-		final T entity2 = GenericsUtils.cast(abstractEntity2);
-
+	public final int compare(final T entity1, final T entity2) {
 		final Integer nullCompareResult = this.getNullCompareResult(entity1, entity2);
 		if(nullCompareResult != null) {
 			return direction * nullCompareResult;
