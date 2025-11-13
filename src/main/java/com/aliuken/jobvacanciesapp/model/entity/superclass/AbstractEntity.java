@@ -19,6 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
+import java.util.function.BiFunction;
 
 @MappedSuperclass
 @Getter
@@ -222,7 +223,9 @@ public abstract class AbstractEntity<T extends AbstractEntity<T>> implements Ser
 		final Class<?> initialEntityClass = this.getClass();
 		final Class<T> entityClass = GenericsUtils.cast(initialEntityClass);
 		final T thisEntity = GenericsUtils.cast(this);
-		final int compareResult = AbstractEntityDefaultComparator.getCompareToAscFunction(entityClass).apply(thisEntity, other);
+		final AbstractEntityDefaultComparator.EntityComparators<T> entityComparators = AbstractEntityDefaultComparator.getEntityComparators(entityClass);
+		final BiFunction<T, T, Integer> compareToAscFunction = entityComparators.getCompareToAscFunction();
+		final int compareResult = compareToAscFunction.apply(thisEntity, other);
 		return compareResult;
 	}
 }
