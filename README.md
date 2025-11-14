@@ -39,7 +39,7 @@
 > * One with a **Linux Mint 22** 64-bit OS (**GNU/Linux**).
 > * Another one with a **Windows 11 Home** 64-bit OS.
 > 
-> The main web browser used while developing the application was Mozilla Firefox.
+> The main web browser used while developing the application was **Mozilla Firefox**.
 
 # JobVacanciesApp_Java17
 
