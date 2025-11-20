@@ -2,7 +2,7 @@ package com.aliuken.jobvacanciesapp.enumtype;
 
 import com.aliuken.jobvacanciesapp.Constants;
 import jakarta.validation.constraints.NotEmpty;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.security.web.servlet.util.matcher.PathPatternRequestMatcher;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -15,59 +15,59 @@ public enum AllowedViewsEnum implements Serializable {
 	ANONYMOUS_ACCESS_ALLOWED    (AnonymousAccessPermission.ACCESS_ALLOWED),
 	ANONYMOUS_ACCESS_NOT_ALLOWED(AnonymousAccessPermission.ACCESS_NOT_ALLOWED);
 
-	private final AntPathRequestMatcher[] VARIABLE_VIEWS_ARRAY = new AntPathRequestMatcher[]{
-		new AntPathRequestMatcher("/"),
-		new AntPathRequestMatcher("/search"),
-		new AntPathRequestMatcher("/auth-users/view/**"),
-		new AntPathRequestMatcher("/job-categories/view/**"),
-		new AntPathRequestMatcher("/job-companies/view/**"),
-		new AntPathRequestMatcher("/job-vacancies/view/**")
+	private final PathPatternRequestMatcher[] VARIABLE_VIEWS_ARRAY = new PathPatternRequestMatcher[]{
+		PathPatternRequestMatcher.withDefaults().matcher("/"),
+		PathPatternRequestMatcher.withDefaults().matcher("/search"),
+		PathPatternRequestMatcher.withDefaults().matcher("/auth-users/view/**"),
+		PathPatternRequestMatcher.withDefaults().matcher("/job-categories/view/**"),
+		PathPatternRequestMatcher.withDefaults().matcher("/job-companies/view/**"),
+		PathPatternRequestMatcher.withDefaults().matcher("/job-vacancies/view/**")
 	};
 
-	private final AntPathRequestMatcher[] FIXED_ANONYMOUS_VIEWS_ARRAY = new AntPathRequestMatcher[]{
-		new AntPathRequestMatcher("/login"),
-		new AntPathRequestMatcher("/logout"),
-		new AntPathRequestMatcher("/signup"),
-		new AntPathRequestMatcher("/signup-confirmed"),
-		new AntPathRequestMatcher("/forgotten-password"),
-		new AntPathRequestMatcher("/reset-password"),
-		new AntPathRequestMatcher("/about")
+	private final PathPatternRequestMatcher[] FIXED_ANONYMOUS_VIEWS_ARRAY = new PathPatternRequestMatcher[]{
+		PathPatternRequestMatcher.withDefaults().matcher("/login"),
+		PathPatternRequestMatcher.withDefaults().matcher("/logout"),
+		PathPatternRequestMatcher.withDefaults().matcher("/signup"),
+		PathPatternRequestMatcher.withDefaults().matcher("/signup-confirmed"),
+		PathPatternRequestMatcher.withDefaults().matcher("/forgotten-password"),
+		PathPatternRequestMatcher.withDefaults().matcher("/reset-password"),
+		PathPatternRequestMatcher.withDefaults().matcher("/about")
 	};
 
-	private final AntPathRequestMatcher[] FIXED_USER_VIEWS_ARRAY = new AntPathRequestMatcher[]{
-		new AntPathRequestMatcher("/my-user/**"),
-		new AntPathRequestMatcher("/my-user/auth-user-curriculums/**"),
-		new AntPathRequestMatcher("/my-user/auth-user-entity-queries/**"),
-		new AntPathRequestMatcher("/job-requests/create/**"),
-		new AntPathRequestMatcher("/job-requests/save/**"),
-		new AntPathRequestMatcher("/job-requests/view/**")
+	private final PathPatternRequestMatcher[] FIXED_USER_VIEWS_ARRAY = new PathPatternRequestMatcher[]{
+		PathPatternRequestMatcher.withDefaults().matcher("/my-user/**"),
+		PathPatternRequestMatcher.withDefaults().matcher("/my-user/auth-user-curriculums/**"),
+		PathPatternRequestMatcher.withDefaults().matcher("/my-user/auth-user-entity-queries/**"),
+		PathPatternRequestMatcher.withDefaults().matcher("/job-requests/create/**"),
+		PathPatternRequestMatcher.withDefaults().matcher("/job-requests/save/**"),
+		PathPatternRequestMatcher.withDefaults().matcher("/job-requests/view/**")
 	};
 
-	private final AntPathRequestMatcher[] SUPERVISOR_VIEWS_ARRAY = new AntPathRequestMatcher[]{
-		new AntPathRequestMatcher("/job-requests/**"),
-		new AntPathRequestMatcher("/job-vacancies/**"),
-		new AntPathRequestMatcher("/job-categories/**"),
-		new AntPathRequestMatcher("/job-companies/**")
+	private final PathPatternRequestMatcher[] SUPERVISOR_VIEWS_ARRAY = new PathPatternRequestMatcher[]{
+		PathPatternRequestMatcher.withDefaults().matcher("/job-requests/**"),
+		PathPatternRequestMatcher.withDefaults().matcher("/job-vacancies/**"),
+		PathPatternRequestMatcher.withDefaults().matcher("/job-categories/**"),
+		PathPatternRequestMatcher.withDefaults().matcher("/job-companies/**")
 	};
 
-	private final AntPathRequestMatcher[] ADMINISTRATOR_VIEWS_ARRAY = new AntPathRequestMatcher[]{
-		new AntPathRequestMatcher("/auth-users/**"),
-		new AntPathRequestMatcher("/my-user/app/**")
+	private final PathPatternRequestMatcher[] ADMINISTRATOR_VIEWS_ARRAY = new PathPatternRequestMatcher[]{
+		PathPatternRequestMatcher.withDefaults().matcher("/auth-users/**"),
+		PathPatternRequestMatcher.withDefaults().matcher("/my-user/app/**")
 	};
 
 	private final AnonymousAccessPermission anonymousAccessPermission;
 
 	@NotEmpty
-	private final AntPathRequestMatcher[] anonymousViewsArray;
+	private final PathPatternRequestMatcher[] anonymousViewsArray;
 
 	@NotEmpty
-	private final AntPathRequestMatcher[] userViewsArray;
+	private final PathPatternRequestMatcher[] userViewsArray;
 
 	@NotEmpty
-	private final AntPathRequestMatcher[] supervisorViewsArray;
+	private final PathPatternRequestMatcher[] supervisorViewsArray;
 
 	@NotEmpty
-	private final AntPathRequestMatcher[] administratorViewsArray;
+	private final PathPatternRequestMatcher[] administratorViewsArray;
 
 	private static final Map<AnonymousAccessPermission, AllowedViewsEnum> ALLOWED_VIEWS_MAP = AllowedViewsEnum.getAllowedViewsMap();
 
@@ -75,11 +75,11 @@ public enum AllowedViewsEnum implements Serializable {
 		this.anonymousAccessPermission = Constants.ENUM_UTILS.getFinalEnumElement(anonymousAccessPermission, AnonymousAccessPermission.class);
 
 		if(AnonymousAccessPermission.ACCESS_ALLOWED == this.anonymousAccessPermission) {
-			this.anonymousViewsArray = Constants.PARALLEL_STREAM_UTILS.joinArrays(AntPathRequestMatcher[]::new, FIXED_ANONYMOUS_VIEWS_ARRAY, VARIABLE_VIEWS_ARRAY);
+			this.anonymousViewsArray = Constants.PARALLEL_STREAM_UTILS.joinArrays(PathPatternRequestMatcher[]::new, FIXED_ANONYMOUS_VIEWS_ARRAY, VARIABLE_VIEWS_ARRAY);
 			this.userViewsArray = FIXED_USER_VIEWS_ARRAY;
 		} else {
 			this.anonymousViewsArray = FIXED_ANONYMOUS_VIEWS_ARRAY;
-			this.userViewsArray = Constants.PARALLEL_STREAM_UTILS.joinArrays(AntPathRequestMatcher[]::new, FIXED_USER_VIEWS_ARRAY, VARIABLE_VIEWS_ARRAY);
+			this.userViewsArray = Constants.PARALLEL_STREAM_UTILS.joinArrays(PathPatternRequestMatcher[]::new, FIXED_USER_VIEWS_ARRAY, VARIABLE_VIEWS_ARRAY);
 		}
 
 		this.supervisorViewsArray = SUPERVISOR_VIEWS_ARRAY;
@@ -90,19 +90,19 @@ public enum AllowedViewsEnum implements Serializable {
 		return anonymousAccessPermission;
 	}
 
-	public AntPathRequestMatcher[] getAnonymousViewsArray() {
+	public PathPatternRequestMatcher[] getAnonymousViewsArray() {
 		return anonymousViewsArray;
 	}
 
-	public AntPathRequestMatcher[] getUserViewsArray() {
+	public PathPatternRequestMatcher[] getUserViewsArray() {
 		return userViewsArray;
 	}
 
-	public AntPathRequestMatcher[] getSupervisorViewsArray() {
+	public PathPatternRequestMatcher[] getSupervisorViewsArray() {
 		return supervisorViewsArray;
 	}
 
-	public AntPathRequestMatcher[] getAdministratorViewsArray() {
+	public PathPatternRequestMatcher[] getAdministratorViewsArray() {
 		return administratorViewsArray;
 	}
 

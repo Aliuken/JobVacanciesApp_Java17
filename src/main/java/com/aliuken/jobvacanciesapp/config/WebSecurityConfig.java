@@ -20,7 +20,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.DefaultSecurityFilterChain;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.security.web.servlet.util.matcher.PathPatternRequestMatcher;
+import org.springframework.web.util.pattern.PathPatternParser;
 
 import javax.sql.DataSource;
 import java.util.HashMap;
@@ -31,7 +32,7 @@ import java.util.Map;
 public class WebSecurityConfig extends GlobalAuthenticationConfigurerAdapter {
 	private static final String USERS_BY_USERNAME_QUERY = WebSecurityConfig.getUsersByUsernameQuery();
 	private static final String AUTHORITIES_BY_USERNAME_QUERY = WebSecurityConfig.getAuthoritiesByUsernameQuery();
-	private static final AntPathRequestMatcher[] STATIC_RESOURCES_ARRAY = WebSecurityConfig.getStaticResourcesArray();
+	private static final PathPatternRequestMatcher[] STATIC_RESOURCES_ARRAY = WebSecurityConfig.getStaticResourcesArray();
 	private static final Map<AnonymousAccessPermission, SecurityFilterChain> SECURITY_FILTER_CHAIN_MAP = new HashMap<>();
 
 	@Autowired
@@ -167,20 +168,21 @@ public class WebSecurityConfig extends GlobalAuthenticationConfigurerAdapter {
 //		BeanUtils.refreshBean("springSecurityFilterChain");
 //	}
 
-	private static final AntPathRequestMatcher[] getStaticResourcesArray() {
-		return new AntPathRequestMatcher[]{
-			new AntPathRequestMatcher("/auth-user-curriculum-files/**"),
-			new AntPathRequestMatcher("/auth-user-entity-query-files/**"),
-			new AntPathRequestMatcher("/job-company-logos/**"),
-			new AntPathRequestMatcher("/bootstrap-5.3.6-dist/**"),
-			new AntPathRequestMatcher("/fontawesome-free-6.7.2-web/**"),
-			new AntPathRequestMatcher("/images/**"),
-			new AntPathRequestMatcher("/jobvacanciesapp-utils/**"),
-			new AntPathRequestMatcher("/jquery/**"),
-			new AntPathRequestMatcher("/jquery-timepicker-addon-1.6.3-dist/**"),
-			new AntPathRequestMatcher("/jquery-ui-1.14.1/**"),
-			new AntPathRequestMatcher("/MDB5-STANDARD-UI-KIT-Free-9.0.0/**"),
-			new AntPathRequestMatcher("/tinymce-7.9.0/**")
+	private static PathPatternRequestMatcher[] getStaticResourcesArray() {
+		final PathPatternParser parser = new PathPatternParser();
+		return new PathPatternRequestMatcher[]{
+			PathPatternRequestMatcher.withDefaults().matcher("/auth-user-curriculum-files/**"),
+			PathPatternRequestMatcher.withDefaults().matcher("/auth-user-entity-query-files/**"),
+			PathPatternRequestMatcher.withDefaults().matcher("/job-company-logos/**"),
+			PathPatternRequestMatcher.withDefaults().matcher("/bootstrap-5.3.6-dist/**"),
+			PathPatternRequestMatcher.withDefaults().matcher("/fontawesome-free-6.7.2-web/**"),
+			PathPatternRequestMatcher.withDefaults().matcher("/images/**"),
+			PathPatternRequestMatcher.withDefaults().matcher("/jobvacanciesapp-utils/**"),
+			PathPatternRequestMatcher.withDefaults().matcher("/jquery/**"),
+			PathPatternRequestMatcher.withDefaults().matcher("/jquery-timepicker-addon-1.6.3-dist/**"),
+			PathPatternRequestMatcher.withDefaults().matcher("/jquery-ui-1.14.1/**"),
+			PathPatternRequestMatcher.withDefaults().matcher("/MDB5-STANDARD-UI-KIT-Free-9.0.0/**"),
+			PathPatternRequestMatcher.withDefaults().matcher("/tinymce-7.9.0/**")
 		};
 	}
 }
