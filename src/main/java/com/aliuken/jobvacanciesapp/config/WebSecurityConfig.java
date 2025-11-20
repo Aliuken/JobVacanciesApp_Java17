@@ -21,7 +21,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.DefaultSecurityFilterChain;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.servlet.util.matcher.PathPatternRequestMatcher;
-import org.springframework.web.util.pattern.PathPatternParser;
 
 import javax.sql.DataSource;
 import java.util.HashMap;
@@ -169,7 +168,6 @@ public class WebSecurityConfig extends GlobalAuthenticationConfigurerAdapter {
 //	}
 
 	private static PathPatternRequestMatcher[] getStaticResourcesArray() {
-		final PathPatternParser parser = new PathPatternParser();
 		return new PathPatternRequestMatcher[]{
 			PathPatternRequestMatcher.withDefaults().matcher("/auth-user-curriculum-files/**"),
 			PathPatternRequestMatcher.withDefaults().matcher("/auth-user-entity-query-files/**"),
