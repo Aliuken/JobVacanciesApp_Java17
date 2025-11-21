@@ -67,7 +67,7 @@ public class WebSecurityConfig extends GlobalAuthenticationConfigurerAdapter {
 	 * Configuration of the authentication via JDBC
 	 */
 	@Override
-	public void init(final AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
+	public void init(final AuthenticationManagerBuilder authenticationManagerBuilder) {
 		final JdbcUserDetailsManagerConfigurer<AuthenticationManagerBuilder> jdbcUserDetailsManagerConfigurer = authenticationManagerBuilder.jdbcAuthentication();
 
 		jdbcUserDetailsManagerConfigurer
