@@ -4,26 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="811e674b-8575-4c23-be2a-462e8dd9b0fd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/aliuken/jobvacanciesapp/config/CacheConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aliuken/jobvacanciesapp/config/CacheConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/aliuken/jobvacanciesapp/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aliuken/jobvacanciesapp/config/WebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/aliuken/jobvacanciesapp/config/WebServerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aliuken/jobvacanciesapp/config/WebServerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/aliuken/jobvacanciesapp/repository/AuthRoleRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/aliuken/jobvacanciesapp/repository/AuthRoleRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/aliuken/jobvacanciesapp/repository/AuthUserCredentialsRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/aliuken/jobvacanciesapp/repository/AuthUserCredentialsRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/aliuken/jobvacanciesapp/repository/AuthUserCurriculumRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/aliuken/jobvacanciesapp/repository/AuthUserCurriculumRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/aliuken/jobvacanciesapp/repository/AuthUserEntityQueryRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/aliuken/jobvacanciesapp/repository/AuthUserEntityQueryRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/aliuken/jobvacanciesapp/repository/AuthUserRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/aliuken/jobvacanciesapp/repository/AuthUserRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/aliuken/jobvacanciesapp/repository/AuthUserResetPasswordRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/aliuken/jobvacanciesapp/repository/AuthUserResetPasswordRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/aliuken/jobvacanciesapp/repository/AuthUserRoleRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/aliuken/jobvacanciesapp/repository/AuthUserRoleRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/aliuken/jobvacanciesapp/repository/AuthUserSignUpConfirmationRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/aliuken/jobvacanciesapp/repository/AuthUserSignUpConfirmationRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/aliuken/jobvacanciesapp/repository/JobCategoryRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/aliuken/jobvacanciesapp/repository/JobCategoryRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/aliuken/jobvacanciesapp/repository/JobCompanyLogoRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/aliuken/jobvacanciesapp/repository/JobCompanyLogoRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/aliuken/jobvacanciesapp/repository/JobCompanyRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/aliuken/jobvacanciesapp/repository/JobCompanyRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/aliuken/jobvacanciesapp/repository/JobRequestRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/aliuken/jobvacanciesapp/repository/JobRequestRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/aliuken/jobvacanciesapp/repository/JobVacancyRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/aliuken/jobvacanciesapp/repository/JobVacancyRepositoryTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="811e674b-8575-4c23-be2a-462e8dd9b0fd" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
