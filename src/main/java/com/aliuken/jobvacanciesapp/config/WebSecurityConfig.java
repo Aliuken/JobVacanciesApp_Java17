@@ -179,7 +179,7 @@ public class WebSecurityConfig extends GlobalAuthenticationConfigurerAdapter {
 			PathPatternRequestMatcher.withDefaults().matcher("/jquery/**"),
 			PathPatternRequestMatcher.withDefaults().matcher("/jquery-timepicker-addon-1.6.3-dist/**"),
 			PathPatternRequestMatcher.withDefaults().matcher("/jquery-ui-1.14.1/**"),
-			PathPatternRequestMatcher.withDefaults().matcher("/MDB5-STANDARD-UI-KIT-Free-9.0.0/**"),
+			PathPatternRequestMatcher.withDefaults().matcher("/MDB5-STANDARD-UI-KIT-Free-9.2.0/**"),
 			PathPatternRequestMatcher.withDefaults().matcher("/tinymce-7.9.0/**")
 		};
 	}
