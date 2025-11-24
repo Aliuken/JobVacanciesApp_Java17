@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="811e674b-8575-4c23-be2a-462e8dd9b0fd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/jobvacanciesapp-utils/css/rich-text-editor.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/jobvacanciesapp-utils/css/rich-text-editor.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/jobvacanciesapp-utils/js/rich-text-editor.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/jobvacanciesapp-utils/js/rich-text-editor.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
