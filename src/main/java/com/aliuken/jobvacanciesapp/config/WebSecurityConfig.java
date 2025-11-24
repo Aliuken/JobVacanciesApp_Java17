@@ -172,7 +172,7 @@ public class WebSecurityConfig extends GlobalAuthenticationConfigurerAdapter {
 			PathPatternRequestMatcher.withDefaults().matcher("/auth-user-curriculum-files/**"),
 			PathPatternRequestMatcher.withDefaults().matcher("/auth-user-entity-query-files/**"),
 			PathPatternRequestMatcher.withDefaults().matcher("/job-company-logos/**"),
-			PathPatternRequestMatcher.withDefaults().matcher("/bootstrap-5.3.6-dist/**"),
+			PathPatternRequestMatcher.withDefaults().matcher("/bootstrap-5.3.8-dist/**"),
 			PathPatternRequestMatcher.withDefaults().matcher("/fontawesome-free-6.7.2-web/**"),
 			PathPatternRequestMatcher.withDefaults().matcher("/images/**"),
 			PathPatternRequestMatcher.withDefaults().matcher("/jobvacanciesapp-utils/**"),
