@@ -59,7 +59,7 @@ This repository makes use of the data contained in the repository [JobVacanciesA
 ### 1.2. Other related projects
 
 Other related projects include:
-* [JobVacanciesApp_Java11](https://github.com/Aliuken/JobVacanciesApp_Java11) and [JobVacanciesApp_AppData_Java11](https://github.com/Aliuken/JobVacanciesApp_AppData_Java11), which use **Java 11** and **Spring Boot 2.7**.
+* [JobVacanciesApp_Java11](https://github.com/Aliuken/JobVacanciesApp_Java11) and [JobVacanciesApp_AppData_Java11](https://github.com/Aliuken/JobVacanciesApp_AppData_Java11), which use **Java 11** and **Spring Boot 2.7.18**.
 
 ## 2. Design patterns
 
