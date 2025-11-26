@@ -1,5 +1,6 @@
 package com.aliuken.jobvacanciesapp.util.javase;
 
+import com.aliuken.jobvacanciesapp.Constants;
 import com.aliuken.jobvacanciesapp.model.dto.BigDecimalFromStringConversionResult;
 import com.aliuken.jobvacanciesapp.model.entity.enumtype.Language;
 import com.aliuken.jobvacanciesapp.util.i18n.I18nUtils;
@@ -13,6 +14,11 @@ public class NumericUtils {
 	private static final Function<Language, String> FIELD_NAME_BLANK_ERROR_FUNCTION = (language) -> I18nUtils.getInternationalizedMessage(language, "fieldName.isBlank", null);
 	private static final BigDecimalFromStringConversionResult FIELD_NAME_NULL_CONVERSION_RESULT = BigDecimalFromStringConversionResult.getNewInstanceWithError(FIELD_NAME_NULL_ERROR_FUNCTION);
 	private static final BigDecimalFromStringConversionResult FIELD_NAME_BLANK_CONVERSION_RESULT = BigDecimalFromStringConversionResult.getNewInstanceWithError(FIELD_NAME_BLANK_ERROR_FUNCTION);
+
+	private NumericUtils() throws InstantiationException {
+		final String className = this.getClass().getName();
+		throw new InstantiationException(StringUtils.getStringJoined(Constants.INSTANTIATION_NOT_ALLOWED, className));
+	}
 
 	public static BigDecimalFromStringConversionResult getBigDecimalFromStringConversionResult(final String fieldNameProperty, final String fieldValue, final int integerPartSize, final int fractionalPartSize) {
 		if(fieldNameProperty == null) {
