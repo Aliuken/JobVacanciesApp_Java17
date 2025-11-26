@@ -1,11 +1,10 @@
 package com.aliuken.jobvacanciesapp.util.concurrency;
 
 import com.aliuken.jobvacanciesapp.util.javase.FunctionalUtils;
+import com.aliuken.jobvacanciesapp.util.javase.StringUtils;
+import lombok.extern.slf4j.Slf4j;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -13,6 +12,7 @@ import java.util.concurrent.Future;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
+@Slf4j
 public class ConcurrencyUtils {
 
 	public static <E> void splitAndRunChunksInParallel(final Collection<E> initialElements, final int chunkSize,
@@ -55,22 +55,29 @@ public class ConcurrencyUtils {
 
 	//Execute the chunkTask for every chunk in the chunkList (with the given numberOfThreads)
 	private static <E,R> void runChunksInParallel(final List<List<E>> chunkList, final int numberOfThreads,
-												 final Function<List<E>,R> chunkTask) {
+												  final Function<List<E>,R> chunkTask) {
 		if (chunkList.isEmpty()) {
 			return;
 		}
 
 		final ExecutorService executorService = Executors.newFixedThreadPool(numberOfThreads);
 		try {
-			final ArrayList<Future<R>> futures = new ArrayList<>(chunkList.size());
+			final Map<Future<R>, List<E>> futureToChunkMap = new LinkedHashMap<>(chunkList.size());
 			for (final List<E> chunk : chunkList) {
 				final Callable<R> callable = () -> chunkTask.apply(chunk);
 				final Future<R> future = executorService.submit(callable);
-				futures.add(future);
+				futureToChunkMap.put(future, chunk);
 			}
-			for (final Future<R> future : futures) {
+
+			for (final Map.Entry<Future<R>, List<E>> entry : futureToChunkMap.entrySet()) {
+				final Future<R> future = entry.getKey();
+				final List<E> chunk = entry.getValue();
+
 				try {
-					future.get();
+					final R futureResult = future.get();
+					if (log.isDebugEnabled()) {
+						log.debug(StringUtils.getStringJoined("Future executed with result ", String.valueOf(futureResult), " for the chunk ", String.valueOf(chunk)));
+					}
 				} catch (Exception e) {
 					throw new RuntimeException(e);
 				}
