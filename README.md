@@ -89,7 +89,7 @@ The core technologies currently used are:
 * **Jakarta EE** classes (detailed in section **[3.3. Jakarta EE technologies](https://github.com/Aliuken/JobVacanciesApp_Java17#33-jakarta-ee-technologies)**), including:
     * **@PostConstruct** and **Bean Validation** annotations (@NotNull, @NotEmpty, @Size, @Digits, @Email).
     * **Servlet** API, **Jakarta Persistence API** (**JPA**) and **Mail** API.
-* **Spring Boot 4.0.0**: Starting in the class [MainClass](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/src/main/java/com/aliuken/jobvacanciesapp/MainClass.java), which is restartable through the method "MainClass.restartApp(...)". More details in section **[3.4. Spring core technologies](https://github.com/Aliuken/JobVacanciesApp_Java17#34-spring-core-technologies)**.
+* **Spring Boot 4.0.0** (**Spring Framework 7.0**): Starting in the class [MainClass](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/src/main/java/com/aliuken/jobvacanciesapp/MainClass.java), which is restartable through the method "MainClass.restartApp(...)". More details in section **[3.4. Spring core technologies](https://github.com/Aliuken/JobVacanciesApp_Java17#34-spring-core-technologies)**.
 * **Maven**: As the dependency manager and for building the application.
 * **Git**: As the version control system.
 * **GitHub**: As the hosting service for the project (in <https://github.com/Aliuken/JobVacanciesApp_Java17>).
