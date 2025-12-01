@@ -115,7 +115,7 @@ public class AuthUserEntityQuery extends AbstractEntityWithAuthUser<AuthUserEnti
 		this.filterValue = tableSearchDTO.filterValue();
 		this.tableSortingField = tableSearchDTO.getTableSortingField();
 		this.tableSortingDirection = tableSearchDTO.getTableSortingDirection();
-		this.tablePageSize = TablePageSize.findByValue(tableSearchDTO.pageSize());
+		this.tablePageSize = tableSearchDTO.getTablePageSize();
 		this.pageNumber = tableSearchDTO.pageNumber();
 		this.queryUrl = queryUrl;
 	}

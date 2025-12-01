@@ -25,7 +25,6 @@ public class TablePageSizeConverter implements AttributeConverter<TablePageSize,
 		} else {
 			tablePageSize = TablePageSize.BY_DEFAULT;
 		}
-
 		return tablePageSize;
 	}
 }

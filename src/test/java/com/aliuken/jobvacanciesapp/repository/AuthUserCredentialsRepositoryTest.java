@@ -19,7 +19,6 @@ import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 
 import java.util.List;
 
@@ -28,7 +27,7 @@ import java.util.List;
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @ContextConfiguration(classes = {MainClass.class, BeanFactoryUtils.class, ConfigPropertiesBean.class})
 @Sql("classpath:db_dumps/h2-dump.sql")
-public class AuthUserCredentialsRepositoryTest extends AbstractTransactionalJUnit4SpringContextTests {
+public class AuthUserCredentialsRepositoryTest {
 	@Autowired
 	private AuthUserCredentialsRepository authUserCredentialsRepository;
 

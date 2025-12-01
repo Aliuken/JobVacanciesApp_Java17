@@ -27,7 +27,6 @@ import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -39,7 +38,7 @@ import java.util.Set;
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @ContextConfiguration(classes = {MainClass.class, BeanFactoryUtils.class, ConfigPropertiesBean.class})
 @Sql("classpath:db_dumps/h2-dump.sql")
-public class JobVacancyRepositoryTest extends AbstractTransactionalJUnit4SpringContextTests {
+public class JobVacancyRepositoryTest {
 	@Autowired
 	private JobVacancyRepository jobVacancyRepository;
 

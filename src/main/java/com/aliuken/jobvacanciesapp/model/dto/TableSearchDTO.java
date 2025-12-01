@@ -2,6 +2,7 @@ package com.aliuken.jobvacanciesapp.model.dto;
 
 import com.aliuken.jobvacanciesapp.model.entity.enumtype.Language;
 import com.aliuken.jobvacanciesapp.model.entity.enumtype.TableField;
+import com.aliuken.jobvacanciesapp.model.entity.enumtype.TablePageSize;
 import com.aliuken.jobvacanciesapp.model.entity.enumtype.TableSortingDirection;
 import com.aliuken.jobvacanciesapp.util.javase.LogicalUtils;
 import com.aliuken.jobvacanciesapp.util.javase.StringUtils;
@@ -65,6 +66,11 @@ public record TableSearchDTO(
 		final TableSortingDirection tableSortingDirection = TableSortingDirection.findByCode(sortingDirection);
 		return tableSortingDirection;
 	}
+
+    public TablePageSize getTablePageSize() {
+        final TablePageSize tablePageSize = TablePageSize.findByValue(pageSize);
+        return tablePageSize;
+    }
 
 	//If not all pagination URL parameters -> empty table (in Java)
 	public boolean hasAllParameters() {

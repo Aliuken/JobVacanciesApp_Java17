@@ -41,6 +41,9 @@ public record AuthUserDTO(
 	@NotNull(message="{initialCurrencySymbol.notEmpty}")
 	String initialCurrencySymbol,
 
+    @NotNull(message="{initialTableSortingDirectionCode.notNull}")
+    String initialTableSortingDirectionCode,
+
 	@NotNull(message="{initialTablePageSizeValue.notNull}")
 	Integer initialTablePageSizeValue,
 
@@ -55,7 +58,7 @@ public record AuthUserDTO(
 	Set<String> authRoleNames
 ) implements AbstractEntityDTO, Serializable {
 
-	private static final AuthUserDTO NO_ARGS_INSTANCE = new AuthUserDTO(null, null, null, null, null, null, null, null, null, null, null, null);
+	private static final AuthUserDTO NO_ARGS_INSTANCE = new AuthUserDTO(null, null, null, null, null, null, null, null, null, null, null, null, null);
 
 	public AuthUserDTO {
 
@@ -72,7 +75,8 @@ public record AuthUserDTO(
 		final String initialTablePageSizeValueString = Objects.toString(initialTablePageSizeValue);
 		final String authRoleNamesString = authRoleNames.toString();
 
-		final String result = StringUtils.getStringJoined("AuthUserDTO [id=", idString, ", email=", email, ", name=", name, ", surnames=", surnames, ", languageCode=", languageCode, ", enabled=", enabledString, ", initialTablePageSizeValue=", initialTablePageSizeValueString, ", colorModeCode=", colorModeCode, ", pdfDocumentPageFormatCode=", pdfDocumentPageFormatCode, ", maxPriorityAuthRoleName=", maxPriorityAuthRoleName, ", authRoleNames=", authRoleNamesString, "]");
+		final String result = StringUtils.getStringJoined("AuthUserDTO [id=", idString, ", email=", email, ", name=", name, ", surnames=", surnames, ", languageCode=", languageCode, ", enabled=", enabledString,
+                ", initialTableSortingDirectionCode=", initialTableSortingDirectionCode, ", initialTablePageSizeValue=", initialTablePageSizeValueString, ", colorModeCode=", colorModeCode, ", pdfDocumentPageFormatCode=", pdfDocumentPageFormatCode, ", maxPriorityAuthRoleName=", maxPriorityAuthRoleName, ", authRoleNames=", authRoleNamesString, "]");
 		return result;
 	}
 }

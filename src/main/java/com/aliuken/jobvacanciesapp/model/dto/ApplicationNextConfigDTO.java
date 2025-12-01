@@ -12,6 +12,9 @@ public record ApplicationNextConfigDTO(
 	@NotEmpty(message="{nextDefaultAnonymousAccessPermissionValue.notEmpty}")
 	String nextDefaultAnonymousAccessPermissionValue,
 
+    @NotEmpty(message="{nextDefaultInitialTableSortingDirectionCode.notEmpty}")
+    String nextDefaultInitialTableSortingDirectionCode,
+
 	@NotEmpty(message="{nextDefaultInitialTablePageSizeValue.notEmpty}")
 	String nextDefaultInitialTablePageSizeValue,
 
@@ -25,7 +28,7 @@ public record ApplicationNextConfigDTO(
 	String nextDefaultPdfDocumentPageFormatCode
 ) implements Serializable {
 
-	private static final ApplicationNextConfigDTO NO_ARGS_INSTANCE = new ApplicationNextConfigDTO(null, null, null, null, null, null);
+	private static final ApplicationNextConfigDTO NO_ARGS_INSTANCE = new ApplicationNextConfigDTO(null, null, null, null, null, null, null);
 
 	public ApplicationNextConfigDTO {
 
@@ -40,6 +43,7 @@ public record ApplicationNextConfigDTO(
 		final String result = StringUtils.getStringJoined(
 				"ApplicationNextConfigDTO [nextDefaultLanguageCode=", nextDefaultLanguageCode,
 				", nextDefaultAnonymousAccessPermissionValue=", nextDefaultAnonymousAccessPermissionValue,
+                ", nextDefaultInitialTableSortingDirectionCode=", nextDefaultInitialTableSortingDirectionCode,
 				", nextDefaultInitialTablePageSizeValue=", nextDefaultInitialTablePageSizeValue,
 				", nextDefaultColorModeCode=", nextDefaultColorModeCode,
 				", nextDefaultUserInterfaceFrameworkCode=", nextDefaultUserInterfaceFrameworkCode,

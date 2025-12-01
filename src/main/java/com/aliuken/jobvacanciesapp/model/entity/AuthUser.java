@@ -71,6 +71,10 @@ public class AuthUser extends AbstractEntity<AuthUser> implements Externalizable
 	@Column(name="initial_currency", nullable=false)
 	private Currency initialCurrency;
 
+    @NotNull
+    @Column(name="initial_table_sorting_direction", nullable=false)
+    private TableSortingDirection initialTableSortingDirection;
+
 	@NotNull
 	@Column(name="initial_table_page_size", nullable=false)
 	private TablePageSize initialTablePageSize;
@@ -129,11 +133,15 @@ public class AuthUser extends AbstractEntity<AuthUser> implements Externalizable
 		return initialCurrencySymbol;
 	}
 
+    public String getInitialTableSortingDirectionName() {
+        final String initialTableSortingDirectionName = Objects.toString(initialTableSortingDirection);
+        return initialTableSortingDirectionName;
+    }
+
 	public String getInitialTablePageSizeName() {
 		final String initialTablePageSizeName = Objects.toString(initialTablePageSize);
 		return initialTablePageSizeName;
 	}
-
 
 	public String getPdfDocumentPageFormatName() {
 		final String pdfDocumentPageFormatName = Objects.toString(pdfDocumentPageFormat);
@@ -336,6 +344,7 @@ public class AuthUser extends AbstractEntity<AuthUser> implements Externalizable
 		final String languageName = this.getLanguageName();
 		final String enabledString = this.getEnabledString();
 		final String initialCurencySymbol = this.getInitialCurrencySymbol();
+        final String initialTableSortingDirectionName = this.getInitialTableSortingDirectionName();
 		final String initialTablePageSizeName = this.getInitialTablePageSizeName();
 
 		final String result = StringUtils.getStringJoined(
@@ -343,6 +352,7 @@ public class AuthUser extends AbstractEntity<AuthUser> implements Externalizable
 			StyleApplier.getBoldString("enabled: "), enabledString, Constants.NEWLINE,
 			StyleApplier.getBoldString("colorMode: "), this.getColorModeName(), Constants.NEWLINE,
 			StyleApplier.getBoldString("initialCurrency: "), initialCurencySymbol, Constants.NEWLINE,
+			StyleApplier.getBoldString("initialTableSortingDirection: "), initialTableSortingDirectionName,
 			StyleApplier.getBoldString("initialTablePageSize: "), initialTablePageSizeName);
 		return result;
 	}
@@ -354,6 +364,7 @@ public class AuthUser extends AbstractEntity<AuthUser> implements Externalizable
 		final String enabledString = this.getEnabledString();
 		final String colorModeName = this.getColorModeName();
 		final String initialCurrencySymbol = this.getInitialCurrencySymbol();
+        final String initialTableSortingDirectionName = this.getInitialTableSortingDirectionName();
 		final String initialTablePageSizeName = this.getInitialTablePageSizeName();
 		final String pdfDocumentPageFormatName = this.getPdfDocumentPageFormatName();
 		final String firstRegistrationDateTimeString = this.getFirstRegistrationDateTimeString();
@@ -363,7 +374,8 @@ public class AuthUser extends AbstractEntity<AuthUser> implements Externalizable
 		final String authRoles = this.getAuthRoleNames().toString();
 		final String jobVacancies = this.getJobVacancyNames().toString();
 
-		final String result = StringUtils.getStringJoined("AuthUser [id=", idString, ", email=", email, ", name=", name, ", surnames=", surnames, ", language=", languageName, ", enabled=", enabledString, ", colorMode=", colorModeName, ", initialCurrency=", initialCurrencySymbol, ", initialTablePageSize=", initialTablePageSizeName, ", pdfDocumentPageFormat=", pdfDocumentPageFormatName,
+		final String result = StringUtils.getStringJoined("AuthUser [id=", idString, ", email=", email, ", name=", name, ", surnames=", surnames, ", language=", languageName, ", enabled=", enabledString, ", colorMode=", colorModeName,
+			", initialCurrency=", initialCurrencySymbol, ", initialTableSortingDirection=", initialTableSortingDirectionName, ", initialTablePageSize=", initialTablePageSizeName, ", pdfDocumentPageFormat=", pdfDocumentPageFormatName,
 			", firstRegistrationDateTime=", firstRegistrationDateTimeString, ", firstRegistrationAuthUser=", firstRegistrationAuthUserEmail, ", lastModificationDateTime=", lastModificationDateTimeString, ", lastModificationAuthUser=", lastModificationAuthUserEmail,
 			", authRoles=", authRoles, ", jobVacancies=", jobVacancies, "]");
 
@@ -388,6 +400,9 @@ public class AuthUser extends AbstractEntity<AuthUser> implements Externalizable
 
 		final String initialCurrencySymbol = initialCurrency.getSymbol();
 		objectOutput.writeUTF(initialCurrencySymbol);
+
+        final String initialTableSortingDirectionCode = initialTableSortingDirection.getCode();
+        objectOutput.writeUTF(initialTableSortingDirectionCode);
 
 		final int initialTablePageSizeValue = initialTablePageSize.getValue();
 		objectOutput.writeInt(initialTablePageSizeValue);
@@ -424,6 +439,9 @@ public class AuthUser extends AbstractEntity<AuthUser> implements Externalizable
 
 		final String initialCurrencySymbol = objectInput.readUTF();
 		initialCurrency = Currency.findBySymbol(initialCurrencySymbol);
+
+        final String initialTableSortingDirectionCode = objectInput.readUTF();
+        initialTableSortingDirection = TableSortingDirection.findByCode(initialTableSortingDirectionCode);
 
 		final int initialTablePageSizeValue = objectInput.readInt();
 		initialTablePageSize = TablePageSize.findByValue(initialTablePageSizeValue);
