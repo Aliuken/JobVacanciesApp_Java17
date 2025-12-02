@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="811e674b-8575-4c23-be2a-462e8dd9b0fd" name="Changes" comment="" />
+    <list default="true" id="811e674b-8575-4c23-be2a-462e8dd9b0fd" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/loginForm.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/loginForm.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -46,7 +49,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.App17.executor": "Run",
-    "Application.Run App J17.executor": "Debug",
+    "Application.Run App J17.executor": "Run",
     "JUnit.All in jobvacanciesapp (1).executor": "Run",
     "JUnit.All in jobvacanciesapp (2).executor": "Run",
     "JUnit.All in jobvacanciesapp.executor": "Run",
