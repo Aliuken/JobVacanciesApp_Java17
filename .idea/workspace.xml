@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="811e674b-8575-4c23-be2a-462e8dd9b0fd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/aliuken/jobvacanciesapp/model/comparator/superclass/AbstractEntityDefaultComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aliuken/jobvacanciesapp/model/comparator/superclass/AbstractEntityDefaultComparator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/aliuken/jobvacanciesapp/model/entity/superclass/AbstractEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aliuken/jobvacanciesapp/model/entity/superclass/AbstractEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/optional/tableFilterAndPaginationForm.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/optional/tableFilterAndPaginationForm.html" afterDir="false" />
-    </list>
+    <list default="true" id="811e674b-8575-4c23-be2a-462e8dd9b0fd" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -264,11 +259,6 @@
           <url>file://$PROJECT_DIR$/src/test/java/com/aliuken/jobvacanciesapp/repository/AuthUserRepositoryTest.java</url>
           <line>644</line>
           <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/aliuken/jobvacanciesapp/model/comparator/superclass/AbstractEntityDefaultComparator.java</url>
-          <line>33</line>
-          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
