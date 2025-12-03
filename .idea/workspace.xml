@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="811e674b-8575-4c23-be2a-462e8dd9b0fd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/aliuken/jobvacanciesapp/security/CustomAuthenticationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aliuken/jobvacanciesapp/security/CustomAuthenticationHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/loginForm.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/loginForm.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,35 +47,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.App17.executor": "Run",
-    "Application.Run App J17.executor": "Run",
-    "JUnit.All in jobvacanciesapp (1).executor": "Run",
-    "JUnit.All in jobvacanciesapp (2).executor": "Run",
-    "JUnit.All in jobvacanciesapp.executor": "Run",
-    "JUnit.AuthRoleRepositoryTest.executor": "Run",
-    "JUnit.AuthUserControllerTest.executor": "Run",
-    "JUnit.AuthUserRepositoryTest.executor": "Run",
-    "JUnit.JobVacancyRepositoryTest.executor": "Run",
-    "JUnit.JobVacancyRepositoryTest.testGetEntityClass_Ok.executor": "Debug",
-    "JUnit.Run Tests J17.executor": "Run",
-    "Maven.Maven [clean,install] J17.executor": "Run",
-    "Maven.jobvacanciesapp [clean,install].executor": "Run",
-    "Maven.jobvacanciesapp [clean].executor": "Run",
-    "Maven.jobvacanciesapp [install].executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Programacion/git/JobVacanciesApp_Java17/src/main/resources/static",
-    "project.structure.last.edited": "SDKs",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.editor"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.App17.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Run App J17.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.All in jobvacanciesapp (1).executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.All in jobvacanciesapp (2).executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.All in jobvacanciesapp.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AuthRoleRepositoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AuthUserControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AuthUserRepositoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.JobVacancyRepositoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.JobVacancyRepositoryTest.testGetEntityClass_Ok.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.Run Tests J17.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Maven [clean,install] J17.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.jobvacanciesapp [clean,install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.jobvacanciesapp [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.jobvacanciesapp [install].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Programacion/git/JobVacanciesApp_Java17/src/main/resources/static&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.editor&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Programacion\git\JobVacanciesApp_Java17\src\main\resources\static" />
@@ -92,7 +93,7 @@
       <recent name="com.aliuken.jobvacanciesapp.controller" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Run App J17">
+  <component name="RunManager" selected="Maven.Maven [clean,install] J17">
     <configuration name="Run App J17" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="17" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -222,11 +223,11 @@
     </configuration>
     <list>
       <item itemvalue="Application.Run App J17" />
-      <item itemvalue="JUnit.Run Tests J17" />
       <item itemvalue="JUnit.AuthRoleRepositoryTest" />
       <item itemvalue="JUnit.AuthUserRepositoryTest" />
       <item itemvalue="JUnit.JobVacancyRepositoryTest" />
       <item itemvalue="JUnit.JobVacancyRepositoryTest.testGetEntityClass_Ok" />
+      <item itemvalue="JUnit.Run Tests J17" />
       <item itemvalue="Maven.Maven [clean,install] J17" />
     </list>
     <recent_temporary>
