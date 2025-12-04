@@ -9,7 +9,6 @@ import com.aliuken.jobvacanciesapp.model.entity.AuthRole;
 import com.aliuken.jobvacanciesapp.model.entity.AuthUser;
 import com.aliuken.jobvacanciesapp.model.entity.enumtype.*;
 import com.aliuken.jobvacanciesapp.service.AuthUserService;
-import com.aliuken.jobvacanciesapp.util.javase.ConfigurableEnumUtils;
 import com.aliuken.jobvacanciesapp.util.javase.StringUtils;
 import com.aliuken.jobvacanciesapp.util.javase.ThrowableUtils;
 import com.aliuken.jobvacanciesapp.util.security.SessionUtils;
