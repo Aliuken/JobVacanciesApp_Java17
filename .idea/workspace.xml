@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="811e674b-8575-4c23-be2a-462e8dd9b0fd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/aliuken/jobvacanciesapp/security/CustomAuthenticationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aliuken/jobvacanciesapp/security/CustomAuthenticationHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/aliuken/jobvacanciesapp/util/javase/FunctionalUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aliuken/jobvacanciesapp/util/javase/FunctionalUtils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -223,11 +222,11 @@
     </configuration>
     <list>
       <item itemvalue="Application.Run App J17" />
-      <item itemvalue="JUnit.Run Tests J17" />
       <item itemvalue="JUnit.AuthRoleRepositoryTest" />
       <item itemvalue="JUnit.AuthUserRepositoryTest" />
       <item itemvalue="JUnit.JobVacancyRepositoryTest" />
       <item itemvalue="JUnit.JobVacancyRepositoryTest.testGetEntityClass_Ok" />
+      <item itemvalue="JUnit.Run Tests J17" />
       <item itemvalue="Maven.Maven [clean,install] J17" />
     </list>
     <recent_temporary>

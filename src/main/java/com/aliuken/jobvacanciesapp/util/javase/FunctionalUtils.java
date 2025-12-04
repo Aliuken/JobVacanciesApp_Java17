@@ -25,7 +25,7 @@ public class FunctionalUtils {
 	}
 
 	//------------------------------------------------------------------------------------------------------------------
-	// Conversions to function, identity function or unary operator
+	// Conversions to function, identity function or identity unary operator
 	//------------------------------------------------------------------------------------------------------------------
 
 	//Converts a consumer to a function with Void output
