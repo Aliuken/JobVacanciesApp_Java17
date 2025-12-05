@@ -26,7 +26,7 @@ public record ApplicationDefaultConfigDTO(
 	//Overwritable properties
 	Language defaultLanguage,
 	AnonymousAccessPermission defaultAnonymousAccessPermission,
-    TableSortingDirection defaultInitialTableSortingDirection,
+	TableSortingDirection defaultInitialTableSortingDirection,
 	TablePageSize defaultInitialTablePageSize,
 	ColorMode defaultColorMode,
 	UserInterfaceFramework defaultUserInterfaceFramework,
@@ -52,28 +52,28 @@ public record ApplicationDefaultConfigDTO(
 		final String resetPasswordLinkExpirationHoursString = Objects.toString(resetPasswordLinkExpirationHours);
 		final String defaultLanguageName = Objects.toString(defaultLanguage);
 		final String defaultAnonymousAccessPermissionName = Objects.toString(defaultAnonymousAccessPermission);
-        final String defaultInitialTableSortingDirectionName = Objects.toString(defaultInitialTableSortingDirection);
+		final String defaultInitialTableSortingDirectionName = Objects.toString(defaultInitialTableSortingDirection);
 		final String defaultInitialTablePageSizeName = Objects.toString(defaultInitialTablePageSize);
 		final String defaultColorModeName = Objects.toString(defaultColorMode);
 		final String defaultUserInterfaceFrameworkName = Objects.toString(defaultUserInterfaceFramework);
 		final String defaultPdfDocumentPageFormatName = Objects.toString(defaultPdfDocumentPageFormat);
 
 		final String result = StringUtils.getStringJoined(
-				"ApplicationDefaultConfigDTO [authUserCurriculumFilesPath=", authUserCurriculumFilesPath,
-				", authUserEntityQueryFilesPath=", authUserEntityQueryFilesPath,
-				", jobCompanyLogosPath=", jobCompanyLogosPath,
-				", useAjaxToRefreshJobCompanyLogos=", useAjaxToRefreshJobCompanyLogosString,
-				", useEntityManagerCache=", useEntityManagerCacheString,
-				", useParallelStreams=", useParallelStreamsString,
-				", signupConfirmationLinkExpirationHours=", signupConfirmationLinkExpirationHoursString,
-				", resetPasswordLinkExpirationHours=", resetPasswordLinkExpirationHoursString,
-				", defaultLanguage=", defaultLanguageName,
-				", defaultAnonymousAccessPermission=", defaultAnonymousAccessPermissionName,
-                ", defaultInitialTableSortingDirection=", defaultInitialTableSortingDirectionName,
-				", defaultInitialTablePageSize=", defaultInitialTablePageSizeName,
-				", defaultColorMode=", defaultColorModeName,
-				", defaultUserInterfaceFramework=", defaultUserInterfaceFrameworkName,
-				", defaultPdfDocumentPageFormat=", defaultPdfDocumentPageFormatName, "]");
+			"ApplicationDefaultConfigDTO [authUserCurriculumFilesPath=", authUserCurriculumFilesPath,
+			", authUserEntityQueryFilesPath=", authUserEntityQueryFilesPath,
+			", jobCompanyLogosPath=", jobCompanyLogosPath,
+			", useAjaxToRefreshJobCompanyLogos=", useAjaxToRefreshJobCompanyLogosString,
+			", useEntityManagerCache=", useEntityManagerCacheString,
+			", useParallelStreams=", useParallelStreamsString,
+			", signupConfirmationLinkExpirationHours=", signupConfirmationLinkExpirationHoursString,
+			", resetPasswordLinkExpirationHours=", resetPasswordLinkExpirationHoursString,
+			", defaultLanguage=", defaultLanguageName,
+			", defaultAnonymousAccessPermission=", defaultAnonymousAccessPermissionName,
+			", defaultInitialTableSortingDirection=", defaultInitialTableSortingDirectionName,
+			", defaultInitialTablePageSize=", defaultInitialTablePageSizeName,
+			", defaultColorMode=", defaultColorModeName,
+			", defaultUserInterfaceFramework=", defaultUserInterfaceFrameworkName,
+			", defaultPdfDocumentPageFormat=", defaultPdfDocumentPageFormatName, "]");
 		return result;
 	}
 }
