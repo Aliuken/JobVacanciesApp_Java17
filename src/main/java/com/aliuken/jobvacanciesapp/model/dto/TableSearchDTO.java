@@ -67,10 +67,10 @@ public record TableSearchDTO(
 		return tableSortingDirection;
 	}
 
-    public TablePageSize getTablePageSize() {
-        final TablePageSize tablePageSize = TablePageSize.findByValue(pageSize);
-        return tablePageSize;
-    }
+	public TablePageSize getTablePageSize() {
+		final TablePageSize tablePageSize = TablePageSize.findByValue(pageSize);
+		return tablePageSize;
+	}
 
 	//If not all pagination URL parameters -> empty table (in Java)
 	public boolean hasAllParameters() {
