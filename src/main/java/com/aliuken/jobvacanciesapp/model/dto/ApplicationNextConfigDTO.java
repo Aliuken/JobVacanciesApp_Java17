@@ -12,8 +12,8 @@ public record ApplicationNextConfigDTO(
 	@NotEmpty(message="{nextDefaultAnonymousAccessPermissionValue.notEmpty}")
 	String nextDefaultAnonymousAccessPermissionValue,
 
-    @NotEmpty(message="{nextDefaultInitialTableSortingDirectionCode.notEmpty}")
-    String nextDefaultInitialTableSortingDirectionCode,
+	@NotEmpty(message="{nextDefaultInitialTableSortingDirectionCode.notEmpty}")
+	String nextDefaultInitialTableSortingDirectionCode,
 
 	@NotEmpty(message="{nextDefaultInitialTablePageSizeValue.notEmpty}")
 	String nextDefaultInitialTablePageSizeValue,
@@ -41,13 +41,13 @@ public record ApplicationNextConfigDTO(
 	@Override
 	public String toString() {
 		final String result = StringUtils.getStringJoined(
-				"ApplicationNextConfigDTO [nextDefaultLanguageCode=", nextDefaultLanguageCode,
-				", nextDefaultAnonymousAccessPermissionValue=", nextDefaultAnonymousAccessPermissionValue,
-                ", nextDefaultInitialTableSortingDirectionCode=", nextDefaultInitialTableSortingDirectionCode,
-				", nextDefaultInitialTablePageSizeValue=", nextDefaultInitialTablePageSizeValue,
-				", nextDefaultColorModeCode=", nextDefaultColorModeCode,
-				", nextDefaultUserInterfaceFrameworkCode=", nextDefaultUserInterfaceFrameworkCode,
-				", nextDefaultPdfDocumentPageFormatCode=", nextDefaultPdfDocumentPageFormatCode, "]");
+			"ApplicationNextConfigDTO [nextDefaultLanguageCode=", nextDefaultLanguageCode,
+			", nextDefaultAnonymousAccessPermissionValue=", nextDefaultAnonymousAccessPermissionValue,
+			", nextDefaultInitialTableSortingDirectionCode=", nextDefaultInitialTableSortingDirectionCode,
+			", nextDefaultInitialTablePageSizeValue=", nextDefaultInitialTablePageSizeValue,
+			", nextDefaultColorModeCode=", nextDefaultColorModeCode,
+			", nextDefaultUserInterfaceFrameworkCode=", nextDefaultUserInterfaceFrameworkCode,
+			", nextDefaultPdfDocumentPageFormatCode=", nextDefaultPdfDocumentPageFormatCode, "]");
 		return result;
 	}
 }
