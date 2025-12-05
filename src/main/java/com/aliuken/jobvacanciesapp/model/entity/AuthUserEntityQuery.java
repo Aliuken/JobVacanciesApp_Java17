@@ -319,14 +319,14 @@ public class AuthUserEntityQuery extends AbstractEntityWithAuthUser<AuthUserEnti
 		final String lastModificationAuthUserEmail = this.getLastModificationAuthUserEmail();
 
 		final String result = StringUtils.getStringJoined("AbstractEntityQuery [id=", idString, ", authUser=", authUserEmail,
-				", initialPdfDocumentPageFormat=", initialPdfDocumentPageFormatName, ", finalPdfDocumentPageFormat=", finalPdfDocumentPageFormatName, ", language=", languageName,
-				", predefinedFilterEntity=", predefinedFilterEntityName, ", predefinedFilterValue=", predefinedFilterValue,
-				", filterTableField=", filterTableFieldName, ", filterValue=", filterValue,
-				", tableSortingField=", tableSortingFieldName, ", tableSortingDirection=", tableSortingDirectionName,
-				", tablePageSize=", tablePageSizeName, ", pageNumber=", pageNumberString,
-				", queryUrl=", queryUrl, ", finalResultFileName=", finalResultFileName,
-				", firstRegistrationDateTime=", firstRegistrationDateTimeString, ", firstRegistrationAuthUser=", firstRegistrationAuthUserEmail,
-				", lastModificationDateTime=", lastModificationDateTimeString, ", lastModificationAuthUser=", lastModificationAuthUserEmail, "]");
+			", initialPdfDocumentPageFormat=", initialPdfDocumentPageFormatName, ", finalPdfDocumentPageFormat=", finalPdfDocumentPageFormatName, ", language=", languageName,
+			", predefinedFilterEntity=", predefinedFilterEntityName, ", predefinedFilterValue=", predefinedFilterValue,
+			", filterTableField=", filterTableFieldName, ", filterValue=", filterValue,
+			", tableSortingField=", tableSortingFieldName, ", tableSortingDirection=", tableSortingDirectionName,
+			", tablePageSize=", tablePageSizeName, ", pageNumber=", pageNumberString,
+			", queryUrl=", queryUrl, ", finalResultFileName=", finalResultFileName,
+			", firstRegistrationDateTime=", firstRegistrationDateTimeString, ", firstRegistrationAuthUser=", firstRegistrationAuthUserEmail,
+			", lastModificationDateTime=", lastModificationDateTimeString, ", lastModificationAuthUser=", lastModificationAuthUserEmail, "]");
 
 		return result;
 	}
