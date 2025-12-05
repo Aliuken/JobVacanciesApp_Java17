@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="811e674b-8575-4c23-be2a-462e8dd9b0fd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/aliuken/jobvacanciesapp/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aliuken/jobvacanciesapp/controller/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/aliuken/jobvacanciesapp/model/comparator/superclass/AbstractEntityComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aliuken/jobvacanciesapp/model/comparator/superclass/AbstractEntityComparator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -221,11 +221,11 @@
     </configuration>
     <list>
       <item itemvalue="Application.Run App J17" />
-      <item itemvalue="JUnit.Run Tests J17" />
       <item itemvalue="JUnit.AuthRoleRepositoryTest" />
       <item itemvalue="JUnit.AuthUserRepositoryTest" />
       <item itemvalue="JUnit.JobVacancyRepositoryTest" />
       <item itemvalue="JUnit.JobVacancyRepositoryTest.testGetEntityClass_Ok" />
+      <item itemvalue="JUnit.Run Tests J17" />
       <item itemvalue="Maven.Maven [clean,install] J17" />
     </list>
     <recent_temporary>
