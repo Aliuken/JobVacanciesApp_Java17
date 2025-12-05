@@ -41,8 +41,8 @@ public record AuthUserDTO(
 	@NotNull(message="{initialCurrencySymbol.notEmpty}")
 	String initialCurrencySymbol,
 
-    @NotNull(message="{initialTableSortingDirectionCode.notNull}")
-    String initialTableSortingDirectionCode,
+	@NotNull(message="{initialTableSortingDirectionCode.notNull}")
+	String initialTableSortingDirectionCode,
 
 	@NotNull(message="{initialTablePageSizeValue.notNull}")
 	Integer initialTablePageSizeValue,
@@ -76,7 +76,7 @@ public record AuthUserDTO(
 		final String authRoleNamesString = authRoleNames.toString();
 
 		final String result = StringUtils.getStringJoined("AuthUserDTO [id=", idString, ", email=", email, ", name=", name, ", surnames=", surnames, ", languageCode=", languageCode, ", enabled=", enabledString,
-                ", initialTableSortingDirectionCode=", initialTableSortingDirectionCode, ", initialTablePageSizeValue=", initialTablePageSizeValueString, ", colorModeCode=", colorModeCode, ", pdfDocumentPageFormatCode=", pdfDocumentPageFormatCode, ", maxPriorityAuthRoleName=", maxPriorityAuthRoleName, ", authRoleNames=", authRoleNamesString, "]");
+				", initialTableSortingDirectionCode=", initialTableSortingDirectionCode, ", initialTablePageSizeValue=", initialTablePageSizeValueString, ", colorModeCode=", colorModeCode, ", pdfDocumentPageFormatCode=", pdfDocumentPageFormatCode, ", maxPriorityAuthRoleName=", maxPriorityAuthRoleName, ", authRoleNames=", authRoleNamesString, "]");
 		return result;
 	}
 }
