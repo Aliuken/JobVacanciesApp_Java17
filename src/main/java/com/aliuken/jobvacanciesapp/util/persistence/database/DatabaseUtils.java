@@ -2,7 +2,11 @@ package com.aliuken.jobvacanciesapp.util.persistence.database;
 
 import com.aliuken.jobvacanciesapp.Constants;
 import com.aliuken.jobvacanciesapp.util.javase.StringUtils;
-import jakarta.persistence.criteria.*;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Expression;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.ExampleMatcher.GenericPropertyMatcher;
 
