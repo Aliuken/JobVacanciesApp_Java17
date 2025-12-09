@@ -365,8 +365,8 @@ The PCs used to develop and execute the application were two:
 Other technologies currently used are:
 * **IntelliJ IDEA 2025.3**: As the IDE.
 * **Mozilla Firefox**: As the main web browser.
-* **PNG**: As the file format (**.png**) of the images.
-* **draw.io**: As the file format (**.drawio**) of the ERD.
+* **PNG**: As the file format (**.png**) of the [images](https://github.com/Aliuken/JobVacanciesApp_Java17/tree/main/src/main/resources/static/images).
+* **draw.io**: As the file format (**.drawio**) of the [ERD](https://github.com/Aliuken/JobVacanciesApp_Java17/blob/main/documentation/Entity-Relationship-Diagram.drawio).
 * **Markdown**: As the file format (**.md**) of the [documentation files](https://github.com/Aliuken/JobVacanciesApp_Java17/tree/main/documentation).
 * **Sourcetree**: As the Git GUI for Windows.
 * **Git Bash**: As the command-line shell for the Git CLI.
