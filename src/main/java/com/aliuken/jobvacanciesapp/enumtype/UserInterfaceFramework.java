@@ -4,30 +4,24 @@ import com.aliuken.jobvacanciesapp.Constants;
 import com.aliuken.jobvacanciesapp.config.ConfigPropertiesBean;
 import com.aliuken.jobvacanciesapp.enumtype.superinterface.ConfigurableEnum;
 import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
 
 public enum UserInterfaceFramework implements ConfigurableEnum<UserInterfaceFramework> {
 	BY_DEFAULT     ("-", "uiFramework.byDefault"),
 	MATERIAL_DESIGN("M", "uiFramework.materialDesign"),
 	BOOTSTRAP      ("B", "uiFramework.bootstrap");
 
+	@Getter
 	@NotNull
 	private final String code;
 
+	@Getter
 	@NotNull
 	private final String messageName;
 
 	private UserInterfaceFramework(final String code, final String messageName) {
 		this.code = code;
 		this.messageName = messageName;
-	}
-
-	public String getCode() {
-		return code;
-	}
-
-	@Override
-	public String getMessageName() {
-		return messageName;
 	}
 
 	public static UserInterfaceFramework findByCode(final String code) {

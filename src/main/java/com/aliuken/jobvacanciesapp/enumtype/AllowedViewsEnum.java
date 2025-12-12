@@ -2,6 +2,7 @@ package com.aliuken.jobvacanciesapp.enumtype;
 
 import com.aliuken.jobvacanciesapp.Constants;
 import jakarta.validation.constraints.NotEmpty;
+import lombok.Getter;
 import org.springframework.security.web.servlet.util.matcher.PathPatternRequestMatcher;
 
 import java.io.Serializable;
@@ -55,18 +56,23 @@ public enum AllowedViewsEnum implements Serializable {
 		PathPatternRequestMatcher.withDefaults().matcher("/my-user/app/**")
 	};
 
-	private final AnonymousAccessPermission anonymousAccessPermission;
+	@Getter
+    private final AnonymousAccessPermission anonymousAccessPermission;
 
-	@NotEmpty
+	@Getter
+    @NotEmpty
 	private final PathPatternRequestMatcher[] anonymousViewsArray;
 
-	@NotEmpty
+	@Getter
+    @NotEmpty
 	private final PathPatternRequestMatcher[] userViewsArray;
 
-	@NotEmpty
+	@Getter
+    @NotEmpty
 	private final PathPatternRequestMatcher[] supervisorViewsArray;
 
-	@NotEmpty
+	@Getter
+    @NotEmpty
 	private final PathPatternRequestMatcher[] administratorViewsArray;
 
 	private static final Map<AnonymousAccessPermission, AllowedViewsEnum> ALLOWED_VIEWS_MAP = AllowedViewsEnum.getAllowedViewsMap();
@@ -86,27 +92,7 @@ public enum AllowedViewsEnum implements Serializable {
 		this.administratorViewsArray = ADMINISTRATOR_VIEWS_ARRAY;
 	}
 
-	public AnonymousAccessPermission getAnonymousAccessPermission() {
-		return anonymousAccessPermission;
-	}
-
-	public PathPatternRequestMatcher[] getAnonymousViewsArray() {
-		return anonymousViewsArray;
-	}
-
-	public PathPatternRequestMatcher[] getUserViewsArray() {
-		return userViewsArray;
-	}
-
-	public PathPatternRequestMatcher[] getSupervisorViewsArray() {
-		return supervisorViewsArray;
-	}
-
-	public PathPatternRequestMatcher[] getAdministratorViewsArray() {
-		return administratorViewsArray;
-	}
-
-	public static AllowedViewsEnum getInstance(final AnonymousAccessPermission anonymousAccessPermission) {
+    public static AllowedViewsEnum getInstance(final AnonymousAccessPermission anonymousAccessPermission) {
 		final AllowedViewsEnum allowedViewsEnum = ALLOWED_VIEWS_MAP.get(anonymousAccessPermission);
 		return allowedViewsEnum;
 	}

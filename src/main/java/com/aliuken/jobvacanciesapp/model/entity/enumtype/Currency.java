@@ -4,6 +4,7 @@ import com.aliuken.jobvacanciesapp.Constants;
 import com.aliuken.jobvacanciesapp.config.ConfigPropertiesBean;
 import com.aliuken.jobvacanciesapp.enumtype.superinterface.ConfigurableEnum;
 import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
 
 import java.util.List;
 
@@ -12,24 +13,17 @@ public enum Currency implements ConfigurableEnum<Currency> {
 	US_DOLLAR ("$", "currency.usDollar"),
 	EURO      ("€", "currency.euro");
 
+	@Getter
 	@NotNull
 	private final String symbol;
 
+	@Getter
 	@NotNull
 	private final String messageName;
 
 	private Currency(final String symbol, final String messageName) {
 		this.symbol = symbol;
 		this.messageName = messageName;
-	}
-
-	public String getSymbol() {
-		return symbol;
-	}
-
-	@Override
-	public String getMessageName() {
-		return messageName;
 	}
 
 	public static Currency findBySymbol(final String symbol) {

@@ -4,6 +4,7 @@ import com.aliuken.jobvacanciesapp.Constants;
 import com.aliuken.jobvacanciesapp.config.ConfigPropertiesBean;
 import com.aliuken.jobvacanciesapp.enumtype.superinterface.ConfigurableEnum;
 import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
 
 import java.util.List;
 
@@ -17,23 +18,16 @@ public enum TablePageSize implements ConfigurableEnum<TablePageSize> {
 	SIZE_250  (250, "tablePageSize.250"),
 	SIZE_500  (500, "tablePageSize.500");
 
+	@Getter
 	private final int value;
 
+	@Getter
 	@NotNull
 	private final String messageName;
 
 	private TablePageSize(final int value, final String messageName) {
 		this.value = value;
 		this.messageName = messageName;
-	}
-
-	public int getValue() {
-		return value;
-	}
-
-	@Override
-	public String getMessageName() {
-		return messageName;
 	}
 
 	public static TablePageSize findByValue(final Integer value) {

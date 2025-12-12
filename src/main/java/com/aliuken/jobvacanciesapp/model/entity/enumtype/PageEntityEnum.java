@@ -1,6 +1,8 @@
 package com.aliuken.jobvacanciesapp.model.entity.enumtype;
 
 import com.aliuken.jobvacanciesapp.Constants;
+import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
 
 import java.io.Serializable;
 
@@ -13,14 +15,12 @@ public enum PageEntityEnum implements Serializable {
 	JOB_REQUEST         ("jobRequests"),
 	JOB_VACANCY         ("jobVacancies");
 
+	@Getter
+	@NotNull
 	private final String value;
 
 	private PageEntityEnum(final String value) {
 		this.value = value;
-	}
-
-	public String getValue() {
-		return value;
 	}
 
 	public static PageEntityEnum findByValue(final String value) {

@@ -5,6 +5,7 @@ import com.aliuken.jobvacanciesapp.util.javase.StringUtils;
 import com.aliuken.jobvacanciesapp.util.persistence.file.FileNameUtils;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -24,6 +25,7 @@ public enum FileType implements Serializable, DirectoryStream.Filter<Path> {
 	@NotEmpty
 	private final List<String> allowedLowerCaseFileExtensions;
 
+	@Getter
 	@NotNull
 	private final String allowedLowerCaseFileExtensionsString;
 
@@ -42,10 +44,6 @@ public enum FileType implements Serializable, DirectoryStream.Filter<Path> {
 
 		this.allowedLowerCaseFileExtensions = allowedLowerCaseFileExtensions;
 		this.allowedLowerCaseFileExtensionsString = StringUtils.getStringJoinedWithDelimiters(", ", null, null, allowedLowerCaseFileExtensions);
-	}
-
-	public String getAllowedLowerCaseFileExtensionsString() {
-		return allowedLowerCaseFileExtensionsString;
 	}
 
 	@Override

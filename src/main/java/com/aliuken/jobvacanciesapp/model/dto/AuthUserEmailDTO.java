@@ -5,23 +5,20 @@ import com.aliuken.jobvacanciesapp.util.javase.StringUtils;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
-import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-@Data
-public class AuthUserEmailDTO implements AbstractEntityDTO, Serializable {
-	private static final long serialVersionUID = 4350778405637490133L;
-
-	private static final AuthUserEmailDTO NO_ARGS_INSTANCE = new AuthUserEmailDTO(null, null);
-
-	private final Long id;
+public record AuthUserEmailDTO(
+	Long id,
 
 	@NotEmpty(message="{email.notEmpty}")
 	@Size(max=255, message="{email.maxSize}")
 	@Email(message="{email.validFormat}")
-	private final String email;
+	String email
+) implements AbstractEntityDTO, Serializable {
+
+	private static final AuthUserEmailDTO NO_ARGS_INSTANCE = new AuthUserEmailDTO(null, null);
 
 	public static AuthUserEmailDTO getNewInstance() {
 		return NO_ARGS_INSTANCE;

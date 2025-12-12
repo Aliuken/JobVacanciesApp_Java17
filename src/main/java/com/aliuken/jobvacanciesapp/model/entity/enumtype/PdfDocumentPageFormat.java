@@ -5,6 +5,8 @@ import com.aliuken.jobvacanciesapp.config.ConfigPropertiesBean;
 import com.aliuken.jobvacanciesapp.enumtype.superinterface.ConfigurableEnum;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Rectangle;
+import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
 
 public enum PdfDocumentPageFormat implements ConfigurableEnum<PdfDocumentPageFormat> {
 	BY_DEFAULT   ("---", "pdfDocumentPageFormat.byDefault",    null),
@@ -13,27 +15,22 @@ public enum PdfDocumentPageFormat implements ConfigurableEnum<PdfDocumentPageFor
 	A4_VERTICAL  ("A4V", "pdfDocumentPageFormat.verticalA4",   PageSize.A4),
 	A4_HORIZONTAL("A4H", "pdfDocumentPageFormat.horizontalA4", PageSize.A4.rotate());
 
+	@Getter
+	@NotNull
 	private final String code;
+
+	@Getter
+	@NotNull
 	private final String messageName;
+
+	@Getter
+	@NotNull
 	private final Rectangle rectangle;
 
 	private PdfDocumentPageFormat(final String code, final String messageName, final Rectangle rectangle) {
 		this.code = code;
 		this.messageName = messageName;
 		this.rectangle = rectangle;
-	}
-
-	public String getCode() {
-		return code;
-	}
-
-	@Override
-	public String getMessageName() {
-		return messageName;
-	}
-
-	public Rectangle getRectangle() {
-		return rectangle;
 	}
 
 	public static PdfDocumentPageFormat findByCode(final String code) {

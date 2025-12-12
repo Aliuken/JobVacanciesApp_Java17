@@ -341,7 +341,7 @@ public class HomeController {
 				return ControllerNavigationUtils.getNextRedirect("/forgotten-password", languageCode);
 			}
 
-			final String email = authUserEmailDTO.getEmail();
+			final String email = authUserEmailDTO.email();
 
 			final AuthUserCredentials authUserCredentials = authUserCredentialsService.findByEmail(email);
 			if(authUserCredentials == null) {
@@ -446,11 +446,11 @@ public class HomeController {
 			return ControllerNavigationUtils.getNextRedirect("/login", languageCode);
 		}
 
-		final String email = authUserResetPasswordDTO.getEmail();
-		final String uuid = authUserResetPasswordDTO.getUuid();
+		final String email = authUserResetPasswordDTO.email();
+		final String uuid = authUserResetPasswordDTO.uuid();
 		try {
-			final String newPassword1 = authUserResetPasswordDTO.getNewPassword1();
-			final String newPassword2 = authUserResetPasswordDTO.getNewPassword2();
+			final String newPassword1 = authUserResetPasswordDTO.newPassword1();
+			final String newPassword2 = authUserResetPasswordDTO.newPassword2();
 
 			if(!newPassword1.equals(newPassword2)) {
 				final String errorMsg = I18nUtils.getInternationalizedMessage(languageCode, "saveNewPassword.newPasswordsDontMatch", null);
@@ -475,7 +475,7 @@ public class HomeController {
 
 			authUserCredentials = authUserCredentialsService.saveAndFlush(authUserCredentials);
 
-			final Long authUserResetPasswordId = authUserResetPasswordDTO.getId();
+			final Long authUserResetPasswordId = authUserResetPasswordDTO.id();
 			authUserResetPasswordService.deleteByIdAndFlush(authUserResetPasswordId);
 
 			final String successMsg = I18nUtils.getInternationalizedMessage(languageCode, "resetPassword.successMsg", new Object[]{email});
