@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="811e674b-8575-4c23-be2a-462e8dd9b0fd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/Eclipse_vs_IntelliJ_highlighted.html" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/Eclipse_vs_IntelliJ_highlighted.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/aliuken/jobvacanciesapp/model/entity/AuthUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aliuken/jobvacanciesapp/model/entity/AuthUser.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +92,7 @@
       <recent name="com.aliuken.jobvacanciesapp.controller" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Run App J17">
+  <component name="RunManager" selected="Maven.Maven [clean,install] J17">
     <configuration name="Run App J17" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="17" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
